@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 436e7027cb19a6c4ba04677660a1a37b, type: 3}
+  m_Name: GestionnairePerso
+  m_EditorClassIdentifier: 
+  Speed: 0
+  isGlinding: 0
+  isReloading: 0
+  JumpCD: 0
+  KnockbackCD: 0
+  SuitActivated: 1
+  canSwitch: 0
+  atPoint: 1
+  Checkpoint: {x: -98.6, y: 3.5899963, z: 5}
+  bigCheckpoint: {x: -129.85, y: 8.08, z: -0.5951}
+  GravityAnchor: 0
+  WallProps: 0
+  Flamenwerfer: 0
+  Laser: 1
+  ShockWave: 0
+  Planeur: 0
+  VineBridge: 0
+  life: 3
+  maxLife: 3
+  invicible: 0
+  resetPU: 1
+  currentSalle: 0
+  manetteMode: 0
