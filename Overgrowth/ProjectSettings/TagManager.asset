@@ -74,3 +74,6 @@ TagManager:
   - name: Char
     uniqueID: 2887076199
     locked: 0
+  - name: Mob1
+    uniqueID: 2736665135
+    locked: 0
