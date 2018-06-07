@@ -134,13 +134,15 @@ public class PowerUps : MonoBehaviour {
         Gestionnaire.ShockWave = false;
       
         Gestionnaire.Planeur = false;
-      //  Gestionnaire.VineBridge = false;
+        
+        //  Gestionnaire.VineBridge = false;
 
         Gestionnaire.life = Gestionnaire.maxLife;
 
         Gestionnaire.SuitActivated = true;
         Gestionnaire.canSwitch = false;
         Gestionnaire.resetPU = true;
+        Gestionnaire.KnockbackCD = false;
 
         Gestionnaire.bigCheckpoint = basePos;
     }

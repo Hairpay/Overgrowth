@@ -74,7 +74,7 @@ public class UIGereur : MonoBehaviour {
 
         if (Gestionnaire.life < 1)
         {
-            SceneManager.LoadScene("1_2");
+            SceneManager.LoadScene("EmptyScene");
         }
 		
 	}

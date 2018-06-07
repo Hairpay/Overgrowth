@@ -52,10 +52,13 @@ public class ResetJumpCD : MonoBehaviour {
                 coll.gameObject.GetComponent<waveBreak>().waveBroke();
             }
         }
+
+        /*
         else if (coll.gameObject.tag == "Mob")
         {
             coll.gameObject.GetComponent<Dangerous>().aie();
         }
+        */
 
         //   Debug.Log("touché");
         if (touchSol > 2f && coll.gameObject.tag != "Wall")
