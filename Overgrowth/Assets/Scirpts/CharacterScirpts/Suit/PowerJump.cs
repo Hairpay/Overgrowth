@@ -105,12 +105,12 @@ public class PowerJump : MonoBehaviour {
             body.velocity = new Vector2(0f, 0f);
             Jump = new Vector2((p.x - transform.position.x) * 4 * Multiplier, (p.y - transform.position.y) * 4 * Multiplier);
 
-            if (gameObject.GetComponent<ResetJumpCD>().isGliding == true && gameObject.GetComponent<ResetJumpCD>().distance < 0 && Jump.x > 0)
+            if (Gestionnaire.isGlinding == true && gameObject.GetComponent<ResetJumpCD>().distance < 0 && Jump.x > 0)
             {
                 Jump.x = -Jump.x * 0.2f;
             }
 
-            if (gameObject.GetComponent<ResetJumpCD>().isGliding == true && gameObject.GetComponent<ResetJumpCD>().distance > 0 && Jump.x < 0)
+            if (Gestionnaire.isGlinding == true && gameObject.GetComponent<ResetJumpCD>().distance > 0 && Jump.x < 0)
             {
                 Jump.x = -Jump.x * 0.2f;
             }

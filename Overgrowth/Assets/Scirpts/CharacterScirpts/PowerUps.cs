@@ -143,6 +143,7 @@ public class PowerUps : MonoBehaviour {
         Gestionnaire.canSwitch = false;
         Gestionnaire.resetPU = true;
         Gestionnaire.KnockbackCD = false;
+        Gestionnaire.isGlinding = false;
 
         Gestionnaire.bigCheckpoint = basePos;
     }

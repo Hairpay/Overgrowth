@@ -9,7 +9,7 @@ public class ResetJumpCD : MonoBehaviour {
     public int Collision = 40;
     public Gestionnaire Gestionnaire;
 
-    public bool isGliding;
+   // public bool isGliding;
     public float distance;
 
     public float baseGravity;
@@ -26,7 +26,7 @@ public class ResetJumpCD : MonoBehaviour {
 
         Vitesse = body.velocity;
 
-        if(isGliding == true)
+        if(Gestionnaire.isGlinding == true)
         {
             gameObject.GetComponent<Rigidbody2D>().gravityScale = baseGravity * 0.1f;          
         }
@@ -76,15 +76,19 @@ public class ResetJumpCD : MonoBehaviour {
                // gameObject.GetComponent<PowerJump>().Cooldown = 0;
                 Gestionnaire.JumpCD = 0;
             }
-            
-            isGliding = true;         
-            distance = gameObject.transform.position.x - coll.gameObject.transform.position.x;
 
+            Gestionnaire.isGlinding = true;         
+            distance = gameObject.transform.position.x - coll.gameObject.transform.position.x;
+            Gestionnaire.directGlide = distance;
+
+            /*
             if (Mathf.Abs(Vitesse.x) > 15 || Mathf.Abs(Vitesse.y) > 15)
-           {
+            {
               //  Debug.Log("touché et Mur");
                 body.velocity = new Vector2(0f, 0f);               
             }
+            */
+            body.velocity = new Vector2(0f, 0f);
         }
     }
 
@@ -94,7 +98,7 @@ public class ResetJumpCD : MonoBehaviour {
 
         if (coll.gameObject.tag == "Wall")
         {
-            isGliding = false;
+            Gestionnaire.isGlinding = false;
         }     
     }
  }

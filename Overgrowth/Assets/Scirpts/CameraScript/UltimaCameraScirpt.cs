@@ -36,11 +36,14 @@ public class UltimaCameraScirpt : MonoBehaviour {
     public bool touchBot;
 
     public float t = 2f;
+    public Gestionnaire Gestionnaire;
    
     // Use this for initialization
     void Start()
     {
         Character = GameObject.Find("character");
+        Gestionnaire = Character.GetComponent<PowerUps>().Gestionnaire;
+
         Directioneur = GameObject.Find("Directioneur");
         basePos = gameObject.transform.localPosition;
         layer_mask = LayerMask.GetMask("CameraWall");
@@ -133,14 +136,29 @@ public class UltimaCameraScirpt : MonoBehaviour {
         //end of raycasts
 
         // x axis switching
-        if (Directiangle < 0.55f)
+        if (Gestionnaire.isGlinding == false)
         {
-            direction = true;           
+            if (Directiangle < 0.55f)
+            {
+                direction = true;
+            }
+            if (Directiangle > 0.85f)
+            {
+                direction = false;
+            }
         }
-        if (Directiangle > 0.85f )
+        else
         {
-            direction = false;                             
+            if (Gestionnaire.directGlide < -1)
+            {
+                direction = false;
+            }
+            else if(Gestionnaire.directGlide > 1)
+            {
+                direction = true;
+            }
         }
+            
         
         if(direction == true)
         {
