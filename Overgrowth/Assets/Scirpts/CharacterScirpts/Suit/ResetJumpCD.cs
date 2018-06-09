@@ -39,9 +39,6 @@ public class ResetJumpCD : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D coll)
     {
         gameObject.GetComponent<SuitMove>().enabled = true;
-        //  Debug.Log(coll.gameObject);
-
-        // RaycastHit2D wallHit = Physics2D.Raycast(gameObject.transform.position, coll.gameObject.transform.position);
         touchSol = gameObject.transform.position.y - coll.gameObject.transform.position.y;
 
         if (Mathf.Abs(Vitesse.x) > Collision || Mathf.Abs(Vitesse.y) > Collision )
@@ -52,50 +49,34 @@ public class ResetJumpCD : MonoBehaviour {
                 coll.gameObject.GetComponent<waveBreak>().waveBroke();
             }
         }
-
         /*
-        else if (coll.gameObject.tag == "Mob")
-        {
-            coll.gameObject.GetComponent<Dangerous>().aie();
-        }
-        */
-
-        //   Debug.Log("touché");
         if (touchSol > 2f && coll.gameObject.tag != "Wall")
         {
-           // Debug.Log("touché et sol");
-          //  gameObject.GetComponent<PowerJump>().Cooldown = 0;
+            Gestionnaire.JumpCD = 0;           
+        }
+        */
+        RaycastHit2D hitSol = Physics2D.Raycast(gameObject.transform.position, gameObject.transform.up *-1, 3f);
+        if (hitSol.collider != null && hitSol.collider.transform.tag == "Sol")
+        {
             Gestionnaire.JumpCD = 0;
-            gameObject.GetComponent<SuitMove>().enabled = true;
         }
 
         if (coll.gameObject.tag == "Wall" && coll.gameObject.tag != "Sol")
         {
             if (Gestionnaire.WallProps == true)
-            {
-               // gameObject.GetComponent<PowerJump>().Cooldown = 0;
+            {             
                 Gestionnaire.JumpCD = 0;
             }
 
             Gestionnaire.isGlinding = true;         
             distance = gameObject.transform.position.x - coll.gameObject.transform.position.x;
-            Gestionnaire.directGlide = distance;
-
-            /*
-            if (Mathf.Abs(Vitesse.x) > 15 || Mathf.Abs(Vitesse.y) > 15)
-            {
-              //  Debug.Log("touché et Mur");
-                body.velocity = new Vector2(0f, 0f);               
-            }
-            */
+            Gestionnaire.directGlide = distance;       
             body.velocity = new Vector2(0f, 0f);
         }
     }
 
     void OnCollisionExit2D(Collision2D coll)
     {
-       // gameObject.GetComponent<SuitMove>().enabled = false;
-
         if (coll.gameObject.tag == "Wall")
         {
             Gestionnaire.isGlinding = false;
