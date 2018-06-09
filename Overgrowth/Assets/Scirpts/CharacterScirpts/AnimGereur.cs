@@ -68,7 +68,7 @@ public class AnimGereur : MonoBehaviour {
                 charnim.SetBool("isJumping", false);
             }
 
-            else if (Gestionnaire.isReloading == true)
+            if (Gestionnaire.isReloading == true)
             {
                 charnim.Play("Reload");
             }
