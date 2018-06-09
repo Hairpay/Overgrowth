@@ -55,8 +55,8 @@ public class ResetJumpCD : MonoBehaviour {
             Gestionnaire.JumpCD = 0;           
         }
         */
-        RaycastHit2D hitSol = Physics2D.Raycast(gameObject.transform.position, gameObject.transform.up *-1, 3f);
-        if (hitSol.collider != null && hitSol.collider.transform.tag == "Sol")
+        RaycastHit2D hitSol = Physics2D.Raycast(gameObject.transform.position, gameObject.transform.up *-1, 30f);
+        if (hitSol.collider != null )
         {
             Gestionnaire.JumpCD = 0;
         }
