@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4169830574543216}
   - component: {fileID: 212135807593467158}
-  - component: {fileID: 114448292680197074}
   - component: {fileID: 61095504910560332}
+  - component: {fileID: 114448292680197074}
   - component: {fileID: 114203320032594818}
   m_Layer: 0
   m_Name: SuperVine

@@ -9,18 +9,25 @@ public class DOIgo : MonoBehaviour {
     public GameObject MainCamera;
     public GameObject explosion;
 
+    public Vector3 baseRotation;
+
     // Use this for initialization
     void Start () {
+
+        baseRotation = gameObject.transform.localEulerAngles;
 
         MainCamera = GameObject.Find("CameraUltima");
 
         if (MainCamera.GetComponent<UltimaCameraScirpt>().direction == true)
         {
             pos = new Vector2(w.transform.position.x - gameObject.transform.position.x, w.transform.position.y - gameObject.transform.position.y);
+            gameObject.transform.localEulerAngles = baseRotation;
         }
         else
         {
             pos = new Vector2(w.transform.position.x - gameObject.transform.position.x, -(w.transform.position.y - gameObject.transform.position.y));
+            gameObject.transform.localEulerAngles = new Vector3(0, 0, -(baseRotation.z + 180));
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
         }
        
  
