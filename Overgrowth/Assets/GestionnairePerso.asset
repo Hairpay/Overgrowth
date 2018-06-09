@@ -21,14 +21,14 @@ MonoBehaviour:
   canSwitch: 0
   atPoint: 1
   Checkpoint: {x: -111.4, y: 13.2, z: -1}
-  bigCheckpoint: {x: -111.4, y: 13.2, z: -1}
+  bigCheckpoint: {x: -19.32, y: 45.239998, z: 0}
   GravityAnchor: 0
   WallProps: 0
   Flamenwerfer: 0
   Laser: 1
   ShockWave: 0
   Planeur: 0
-  VineBridge: 0
+  VineBridge: 1
   life: 3
   maxLife: 3
   invicible: 0

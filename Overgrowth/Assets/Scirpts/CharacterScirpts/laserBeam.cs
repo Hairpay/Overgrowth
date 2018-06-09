@@ -69,9 +69,14 @@ public class laserBeam : MonoBehaviour
             line.SetPosition(1, ray);
 
 
-            if (hit.collider != null && hit.collider.gameObject.GetComponent<Description>() != null 
-                && Mathf.Abs(hit.point.x-gameObject.transform.position.x) < 10 && Mathf.Abs(hit.point.y - gameObject.transform.position.y) < 10
-                || hit.collider != null && hit.collider.gameObject.GetComponent<Description>() != null && analazing == true)
+            if (hit.collider != null && 
+                hit.collider.gameObject.GetComponent<Description>() != null && 
+                Mathf.Abs(hit.point.x-gameObject.transform.position.x) < 10 && 
+                Mathf.Abs(hit.point.y - gameObject.transform.position.y) < 10
+
+                || hit.collider != null &&
+                hit.collider.gameObject.GetComponent<Description>() != null &&
+                analazing == true)
             {
                 analazing = true;
                 Debug.Log(hit.collider.gameObject);

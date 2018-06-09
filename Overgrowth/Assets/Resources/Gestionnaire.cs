@@ -11,7 +11,7 @@ public class Gestionnaire : ScriptableObject {
     public float Speed;
     
     public bool isGlinding;
-    public float directGlide;
+    public bool GlideGauche;
     public bool isReloading;
    
 

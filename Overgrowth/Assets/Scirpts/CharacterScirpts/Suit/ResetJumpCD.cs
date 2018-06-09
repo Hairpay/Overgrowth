@@ -11,12 +11,15 @@ public class ResetJumpCD : MonoBehaviour {
 
    // public bool isGliding;
     public float distance;
-
+ 
     public float baseGravity;
     public float touchSol;
-    
+    private int layer_mask;
+
     // Use this for initialization
     void Start () {
+
+        layer_mask = ~LayerMask.GetMask("Player");
         body = gameObject.GetComponent<Rigidbody2D>();
         baseGravity = gameObject.GetComponent<Rigidbody2D>().gravityScale;
     }
@@ -34,6 +37,17 @@ public class ResetJumpCD : MonoBehaviour {
         {
             gameObject.GetComponent<Rigidbody2D>().gravityScale = baseGravity;
         }
+
+        if (Gestionnaire.JumpCD > 0)
+        {
+            RaycastHit2D hitSol = Physics2D.Raycast(gameObject.transform.position, gameObject.transform.up * -1, 2f, layer_mask);
+
+            if (hitSol.collider != null && hitSol.collider.tag == "Sol")
+            {
+                Debug.Log("outch" + hitSol.collider.name);
+                Gestionnaire.JumpCD = 0;
+            }
+        }       
     }
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -44,21 +58,14 @@ public class ResetJumpCD : MonoBehaviour {
         if (Mathf.Abs(Vitesse.x) > Collision || Mathf.Abs(Vitesse.y) > Collision )
         {
             gameObject.GetComponent<Shockwave>().wave();
-            if (coll.gameObject.tag == "waveBreakable" && Gestionnaire.ShockWave == true || coll.gameObject.tag == "Mob" && Gestionnaire.ShockWave == true)
+            if (coll.gameObject.tag == "waveBreakable" &&
+                Gestionnaire.ShockWave == true 
+                
+                || coll.gameObject.tag == "Mob" &&
+                Gestionnaire.ShockWave == true)
             {
                 coll.gameObject.GetComponent<waveBreak>().waveBroke();
             }
-        }
-        /*
-        if (touchSol > 2f && coll.gameObject.tag != "Wall")
-        {
-            Gestionnaire.JumpCD = 0;           
-        }
-        */
-        RaycastHit2D hitSol = Physics2D.Raycast(gameObject.transform.position, gameObject.transform.up *-1, 30f);
-        if (hitSol.collider != null )
-        {
-            Gestionnaire.JumpCD = 0;
         }
 
         if (coll.gameObject.tag == "Wall" && coll.gameObject.tag != "Sol")
@@ -68,9 +75,24 @@ public class ResetJumpCD : MonoBehaviour {
                 Gestionnaire.JumpCD = 0;
             }
 
-            Gestionnaire.isGlinding = true;         
-            distance = gameObject.transform.position.x - coll.gameObject.transform.position.x;
-            Gestionnaire.directGlide = distance;       
+            Gestionnaire.isGlinding = true;
+            Gestionnaire.GlideGauche = true;
+            //   distance = gameObject.transform.position.x - coll.gameObject.transform.position.x;
+
+            RaycastHit2D hitWall = Physics2D.Raycast(gameObject.transform.position, gameObject.transform.right, 2f, layer_mask);
+
+            if (hitWall.collider != null && hitWall.collider.tag == "Wall")
+            {
+                Debug.Log("touche " + hitWall.collider.name);
+                Gestionnaire.GlideGauche = true;
+                distance = -1;
+            }
+            else
+            {
+                Gestionnaire.GlideGauche = false;
+                distance = 1;
+            }
+
             body.velocity = new Vector2(0f, 0f);
         }
     }

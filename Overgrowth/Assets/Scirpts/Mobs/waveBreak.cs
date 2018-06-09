@@ -16,6 +16,14 @@ public class waveBreak : MonoBehaviour {
 
     public void waveBroke()
     {
-        Destroy(gameObject);
+        if (gameObject.GetComponent<MecheMob>() != null)
+        {
+            gameObject.GetComponent<MecheMob>().life = 0;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+     
     }
 }

@@ -149,14 +149,7 @@ public class UltimaCameraScirpt : MonoBehaviour {
         }
         else
         {
-            if (Gestionnaire.directGlide < -1)
-            {
-                direction = false;
-            }
-            else if(Gestionnaire.directGlide > 1)
-            {
-                direction = true;
-            }
+            direction = Gestionnaire.GlideGauche;
         }
             
         
