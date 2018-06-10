@@ -15,6 +15,11 @@ public class PlayerPlatformer2 : PhysicsObject
     // Use this for initialization
     void Awake()
     {
+       // character = GameObject.Find("character");
+        //Gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;
+    }
+    void Start()
+    {
         character = GameObject.Find("character");
         Gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;
     }

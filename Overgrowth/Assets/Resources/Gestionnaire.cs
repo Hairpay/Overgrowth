@@ -27,6 +27,7 @@ public class Gestionnaire : ScriptableObject {
     public Vector3 bigCheckpoint;
 
     // Suit Power ups
+    public bool Switchbeam;
     public bool GravityAnchor;
     public bool WallProps;
     public bool Flamenwerfer;

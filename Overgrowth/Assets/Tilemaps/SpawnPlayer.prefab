@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f61f728831c5844a533297b0e571e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabPlayer: {fileID: 1789528646785598, guid: 94e4838a640c40f47834d916612fa127,
+  PrefabPlayer: {fileID: 1183916710845148, guid: 7a9a97b22bd258840a6bea90ccc2ba7e,
     type: 2}
   isPlayer: 1
 --- !u!212 &212655398800201978
