@@ -37,6 +37,9 @@ public class laserBeam : MonoBehaviour
         character = GameObject.Find("character");
         Gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;
 
+        analysisText.enabled = false;
+        analysisPanel.enabled = false;
+
     }
 
     // Update is called once per frame

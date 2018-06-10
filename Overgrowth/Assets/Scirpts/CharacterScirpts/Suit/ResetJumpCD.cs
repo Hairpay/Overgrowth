@@ -11,9 +11,8 @@ public class ResetJumpCD : MonoBehaviour {
 
    // public bool isGliding;
     public float distance;
- 
-    public float baseGravity;
-    public float touchSol;
+    public float distanceReset; 
+    public float baseGravity;  
     private int layer_mask;
 
     // Use this for initialization
@@ -37,24 +36,23 @@ public class ResetJumpCD : MonoBehaviour {
         {
             gameObject.GetComponent<Rigidbody2D>().gravityScale = baseGravity;
         }
-
         if (Gestionnaire.JumpCD > 0)
         {
+            /*
             RaycastHit2D hitSol = Physics2D.Raycast(gameObject.transform.position, gameObject.transform.up * -1, 2f, layer_mask);
-
+         
             if (hitSol.collider != null && hitSol.collider.tag == "Sol")
             {
                 Debug.Log("outch" + hitSol.collider.name);
                 Gestionnaire.JumpCD = 0;
+                
             }
-        }       
+            */
+        }
     }
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        gameObject.GetComponent<SuitMove>().enabled = true;
-        touchSol = gameObject.transform.position.y - coll.gameObject.transform.position.y;
-
         if (Mathf.Abs(Vitesse.x) > Collision || Mathf.Abs(Vitesse.y) > Collision )
         {
             gameObject.GetComponent<Shockwave>().wave();

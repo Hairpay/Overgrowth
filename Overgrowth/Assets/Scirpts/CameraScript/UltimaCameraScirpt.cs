@@ -19,6 +19,7 @@ public class UltimaCameraScirpt : MonoBehaviour {
     private Vector3 basePos;
     public Vector3 actualPos;
     private Vector3 newPos;
+    public float offset;
 
     private Vector3 rightPos;
     private Vector3 leftPos;
@@ -41,14 +42,19 @@ public class UltimaCameraScirpt : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        basePos = new Vector3(-offset, offset, 0f);
         Character = GameObject.Find("character");
+        // gameObject.transform.localPosition = new Vector2(Character.transform.localPosition.x - 3, Character.transform.localPosition.y + 3); = new Vector2(Character.transform.position.x - 3, Character.transform.position.y + 3);
+        gameObject.transform.position = Character.transform.position;
         Gestionnaire = Character.GetComponent<PowerUps>().Gestionnaire;
 
         Directioneur = GameObject.Find("Directioneur");
-        basePos = gameObject.transform.localPosition;
+       // basePos = gameObject.transform.position;
         layer_mask = LayerMask.GetMask("CameraWall");
         layer_maskG = LayerMask.GetMask("CameraGround");
         layer_maskC = LayerMask.GetMask("CameraCeiling");
+
+       
     }
 
     // Update is called once per frame
@@ -62,8 +68,8 @@ public class UltimaCameraScirpt : MonoBehaviour {
         CharPos = Character.transform.position;
         actualPos = gameObject.transform.position;
 
-        leftPos = new Vector3(CharPos.x + basePos.x, CharPos.y + basePos.y, CharPos.z + basePos.z);
-        rightPos = new Vector3(CharPos.x - basePos.x, CharPos.y + basePos.y, CharPos.z + basePos.z);
+        leftPos = new Vector3(CharPos.x + basePos.x, CharPos.y + basePos.y + offset * 0.5f, CharPos.z + basePos.z);
+        rightPos = new Vector3(CharPos.x - basePos.x, CharPos.y + basePos.y + offset * 0.5f, CharPos.z + basePos.z);
 
         lastDirection = direction;
         lastDirectionY = directionY;

@@ -37,18 +37,21 @@ public class SwitchBeam : MonoBehaviour {
             }
             else
             {
+                reloading = 1;
+                /*
                 if(Gestionnaire.JumpCD == 0)
                 {
                     body.velocity = new Vector2(0f, 0f);                 
                     reloading = 1;
                     body.simulated = false;
-                }               
+                } 
+                */
             }
         }
 
         if (Input.GetButtonUp("Fire3"))
         {       
-            body.simulated = true;
+         //   body.simulated = true;
             reloading = 0;
         }
 
@@ -71,7 +74,7 @@ public class SwitchBeam : MonoBehaviour {
             Gestionnaire.SuitActivated = true;
             reloading = 0;
             cooldown = false;
-            body.simulated = true;
+          //  body.simulated = true;
         }
 
         reloadLight.range = reloading * 0.1f;

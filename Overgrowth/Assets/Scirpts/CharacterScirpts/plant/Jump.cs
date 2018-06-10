@@ -31,35 +31,39 @@ public class Jump : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Gestionnaire.SuitActivated == false)
         {
-            jumpPressed = true;
-        }
+            if (Input.GetButtonDown("Jump"))
+            {
+                jumpPressed = true;
+            }
 
-        if (Input.GetButtonUp("Jump"))
-        {
-            jumpPressed = false;
-        }
+            if (Input.GetButtonUp("Jump"))
+            {
+                jumpPressed = false;
+            }
 
-        if (jumpPressed == true || Input.GetAxis("JumpM") < -0.3)
-        {
-            _Jump();
-        }
+            if (jumpPressed == true || Input.GetAxis("JumpM") < -0.3)
+            {
+                _Jump();
+            }
 
-        if (jumpPressed == false && Gestionnaire.manetteMode == false || Mathf.Abs( Input.GetAxis("JumpM")) < 0.1 && Gestionnaire.manetteMode == true)
-        {            
-            _JumpUp();
-        }
+            if (jumpPressed == false && Gestionnaire.manetteMode == false || Mathf.Abs(Input.GetAxis("JumpM")) < 0.1 && Gestionnaire.manetteMode == true)
+            {
+                _JumpUp();
+            }
 
-        if (isGliding == true)
-        {
-            isPlaning = false;
-            gameObject.GetComponent<Rigidbody2D>().gravityScale = baseGravity * 0.1f;
+            if (isGliding == true)
+            {
+                isPlaning = false;
+                gameObject.GetComponent<Rigidbody2D>().gravityScale = baseGravity * 0.1f;
+            }
+            else if (isPlaning == false)
+            {
+                gameObject.GetComponent<Rigidbody2D>().gravityScale = baseGravity;
+            }
         }
-        else if (isPlaning == false)
-        {
-            gameObject.GetComponent<Rigidbody2D>().gravityScale = baseGravity;
-        }
+        
     }
         public void _Jump()
     {
@@ -72,14 +76,14 @@ public class Jump : MonoBehaviour {
         if (Gestionnaire.JumpCD == 0)
             {
 
-                if (isGliding == true && distance < 0)
+                if (isGliding == true && Gestionnaire.GlideGauche == false)
                 {
                     gameObject.GetComponent<SuitMove>().enabled = false;
                     decale = -200f;
                     StartCoroutine("ReturnVariables");
                 }
 
-                else if (isGliding == true && distance > 0)
+                else if (isGliding == true && Gestionnaire.GlideGauche == false)
                 {
                     gameObject.GetComponent<SuitMove>().enabled = false;
                     decale = 200f;
@@ -110,7 +114,7 @@ public class Jump : MonoBehaviour {
 
 
 
-        
+   /*     
     void OnCollisionEnter2D(Collision2D coll)
     {      
         touchSol = gameObject.transform.position.y - coll.gameObject.transform.position.y;
@@ -132,6 +136,7 @@ public class Jump : MonoBehaviour {
 
         }
     }
+    
 
     void OnCollisionExit2D(Collision2D coll)
     {
@@ -142,7 +147,7 @@ public class Jump : MonoBehaviour {
             isGliding = false;
         }
     }
-
+    */
     IEnumerator ReturnVariables()
     {
         yield return new WaitForSeconds(0.2f);

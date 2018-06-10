@@ -14,6 +14,7 @@ public class SpawnPlayer : MonoBehaviour {
             GameObject prefabPlayer;
             prefabPlayer = Instantiate(PrefabPlayer, this.transform);
             prefabPlayer.transform.localPosition = new Vector3(0, 0, 0);
+            prefabPlayer.transform.parent = null;
         }
       
     }

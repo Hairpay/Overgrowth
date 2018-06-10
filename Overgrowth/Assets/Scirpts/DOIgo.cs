@@ -36,13 +36,16 @@ public class DOIgo : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        gameObject.GetComponent<Rigidbody2D>().AddForce(pos*50);
+        gameObject.GetComponent<Rigidbody2D>().AddForce(pos*100);
     }
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        GameObject EXP = Instantiate(explosion);
-        EXP.transform.position = gameObject.transform.position;
-        Destroy(gameObject);        
+        if (coll.transform.tag != "Player")
+        {
+            GameObject EXP = Instantiate(explosion);
+            EXP.transform.position = gameObject.transform.position;
+            Destroy(gameObject);
+        }           
     }
 }

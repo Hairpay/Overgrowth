@@ -16,6 +16,7 @@ public class Gestionnaire : ScriptableObject {
    
 
     public int JumpCD;
+    public bool Jcd;
     public bool KnockbackCD;
 
     public bool SuitActivated;

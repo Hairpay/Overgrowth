@@ -6,7 +6,7 @@ using Anima2D;
 public class PowerUps : MonoBehaviour {
 
     public Gestionnaire Gestionnaire;
-    public GameObject flecherwerfer;
+    //public GameObject flecherwerfer;
 
     public Color suitColor;
     public Color plantColor;
@@ -24,59 +24,27 @@ public class PowerUps : MonoBehaviour {
     void Start () {
 
         basePos = Gestionnaire.bigCheckpoint;
-        flecherwerfer = GameObject.Find("Flecherwerfer");
-       // Torse = GameObject.Find("Torse");
         suitColor = Torse.GetComponent<SpriteMeshInstance>().color;
         plantColor = suitColor;        
         plantColor.b = 0;            
     }
+
+    
     void Update()
     {
         if (Gestionnaire.SuitActivated == true)
         {
-            suitMode();
+           
             Torse.GetComponent<SpriteMeshInstance>().color = suitColor;
         }
         else
         {
-            planteMode();
+          
             Torse.GetComponent<SpriteMeshInstance>().color = plantColor;
         }
-/*
-        if (Input.GetButtonDown("Fire5") && Gestionnaire.atPoint == true && Gestionnaire.canSwitch == true)
-        {
-            Gestionnaire.SuitActivated = !Gestionnaire.SuitActivated;
-        }
-        */
      }
 
-    public void planteMode()
-    {
-        gameObject.GetComponent<PowerJump>().enabled = false;
-        gameObject.GetComponent<Shockwave>().enabled = false;
-        gameObject.GetComponent<ResetJumpCD>().enabled = false;
-      //  flecherwerfer.GetComponent<Laser>().enabled = false;
 
-        gameObject.GetComponent<Jump>().enabled = true;
-      //  gameObject.GetComponent<VineBridge>().enabled = true;
-
-        gameObject.GetComponent<SuitMove>().Speed = gameObject.GetComponent<SuitMove>().MaxSpeedPlant;
-
-    }
-
-    public void suitMode()
-    {
-        gameObject.GetComponent<PowerJump>().enabled = true;
-        gameObject.GetComponent<Shockwave>().enabled = true;
-        gameObject.GetComponent<ResetJumpCD>().enabled = true;
-      //  flecherwerfer.GetComponent<Laser>().enabled = true;
-
-        gameObject.GetComponent<Jump>().enabled = false;
-       // gameObject.GetComponent<VineBridge>().enabled = false;
-
-        gameObject.GetComponent<SuitMove>().Speed = gameObject.GetComponent<SuitMove>().MaxSpeedBase;
-
-    }
 
     // Update is called once per frame	
     void OnCollisionEnter2D(Collision2D coll)

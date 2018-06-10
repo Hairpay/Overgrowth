@@ -8,7 +8,7 @@ public class SuitMove : MonoBehaviour {
 
     public float MaxSpeedBase = 10f;
     public float MaxSpeedPlant = 13f;
-    public float MaxSpeedCharge = 7f;
+  
     public float Speed;
     public int isJumping;
 
@@ -29,8 +29,16 @@ public class SuitMove : MonoBehaviour {
         float h = Input.GetAxis("Horizontal");       
         isJumping = Gestionnaire.JumpCD;
         Move(h);
-
         Gestionnaire.Speed = Mathf.Abs(body.velocity.x);
+
+        if ( Gestionnaire.SuitActivated == true)
+        {
+            Speed = MaxSpeedBase;
+        }
+        else
+        {
+            Speed = MaxSpeedPlant;
+        }
     }
 
     public void Move(float move)

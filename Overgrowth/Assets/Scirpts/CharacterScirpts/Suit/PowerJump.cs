@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PowerJump : MonoBehaviour {
 
-    private Rigidbody2D body;
-    private Vector3 mousePos;
+    public Rigidbody2D body;    
     public Vector3 p;
     public Vector2 Jump;
     public Camera Mcamera;
 
-    public float MinMultiplier;
-    public float MaxMultiplier;
+    public float MinMultiplier = 100;
+    public float MaxMultiplier = 700;
     public float Multiplier;
+    public float factor;
 
     public bool increaser;
 
@@ -34,6 +34,7 @@ public class PowerJump : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
+        Gestionnaire = gameObject.GetComponent<PowerUps>().Gestionnaire;
         body = gameObject.GetComponent<Rigidbody2D>();
 
         Multiplier = MinMultiplier;
@@ -60,29 +61,35 @@ public class PowerJump : MonoBehaviour {
 
         if (increaser == true && Multiplier < MaxMultiplier) 
         {
-            Multiplier = Multiplier + 15;
-            BoosterLight.range = (Multiplier*0.007f);
+            if (Gestionnaire.JumpCD < 1 || Gestionnaire.JumpCD < 2 && Gestionnaire.GravityAnchor == true)
+            {
+                Multiplier = Multiplier + 15;
+                BoosterLight.range = (Multiplier * 0.007f);
+            }
+       
         }
 
         p = Directioneur.transform.position;
 
-        if (Input.GetButtonDown("Jump") || Input.GetAxis("JumpM") < -0.9) 
+        if(Gestionnaire.SuitActivated == true)
         {
-            _PJumpDown();
-            axisPressed = true;
-        }
-        if (Input.GetButtonUp("Jump") || Input.GetAxis("JumpM") > -0.1 && axisPressed == true && Gestionnaire.manetteMode == true)
-        {
-            _PJumpUp();
-            axisPressed = false;
-        }
-
-
+            if (Input.GetButtonDown("Jump") || Input.GetAxis("JumpM") < -0.9)
+            {
+                _PJumpDown();
+                axisPressed = true;
+            }
+            if (Input.GetButtonUp("Jump") || Input.GetAxis("JumpM") > -0.1 && axisPressed == true && Gestionnaire.manetteMode == true)
+            {              
+                _PJumpUp();
+                axisPressed = false;
+                increaser = false;
+            }
+        }      
     }
     public void _PJumpDown()
     {
         increaser = true;
-        gameObject.GetComponent<SuitMove>().Speed = gameObject.GetComponent<SuitMove>().MaxSpeedCharge;
+    //    gameObject.GetComponent<SuitMove>().Speed = gameObject.GetComponent<SuitMove>().MaxSpeedCharge;
                 
             if (GravityAnchor == true && Gestionnaire.JumpCD == 1)
             {
@@ -94,7 +101,7 @@ public class PowerJump : MonoBehaviour {
     }
     public void _Jump()
     {
-        Jump = new Vector2((p.x - transform.position.x)*1500, (p.y - transform.position.y)*1500);
+        Jump = new Vector2((p.x - transform.position.x)*350* factor, (p.y - transform.position.y)*350*factor);
     }
 
     public void _PJumpUp()
@@ -103,8 +110,9 @@ public class PowerJump : MonoBehaviour {
         {
             body.simulated = true;
             body.velocity = new Vector2(0f, 0f);
-            Jump = new Vector2((p.x - transform.position.x) * 4 * Multiplier, (p.y - transform.position.y) * 4 * Multiplier);
+            Jump = new Vector2((p.x - transform.position.x) * factor * Multiplier, (p.y - transform.position.y) * factor * Multiplier);
 
+            /*
             if (Gestionnaire.isGlinding == true && gameObject.GetComponent<ResetJumpCD>().distance < 0 && Jump.x > 0)
             {
                 Jump.x = -Jump.x * 0.2f;
@@ -115,17 +123,19 @@ public class PowerJump : MonoBehaviour {
                 Jump.x = -Jump.x * 0.2f;
             }
 
-
+    */
             Gestionnaire.JumpCD = Gestionnaire.JumpCD + 1;
+            Gestionnaire.Jcd = true;
+            StartCoroutine("ResetJcd");
             Multiplier = MinMultiplier;
-            increaser = false;
+         
             BoosterLight.range = 1;
             AnchorLight.enabled = false;
 
             //gameObject.GetComponent<SuitMove>().enabled = false;
-            gameObject.GetComponent<SuitMove>().Speed = gameObject.GetComponent<SuitMove>().MaxSpeedBase;
-            body.AddForce(Jump);
-            }       
+           // gameObject.GetComponent<SuitMove>().Speed = gameObject.GetComponent<SuitMove>().MaxSpeedBase;
+            body.AddForce(Jump);         
+        }       
     }
 
 
@@ -133,5 +143,11 @@ public class PowerJump : MonoBehaviour {
     {
         yield return new WaitForSeconds(2f);
         zCD = false;
+    }
+
+    IEnumerator ResetJcd()
+    {
+        yield return new WaitForSeconds(0.2f);
+        Gestionnaire.Jcd = false;
     }
 }
