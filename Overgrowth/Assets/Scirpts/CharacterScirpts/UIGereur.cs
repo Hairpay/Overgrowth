@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class UIGereur : MonoBehaviour {
 
-    public GameObject UI;
+  //  public GameObject UI;
     public GameObject Character;
     public Gestionnaire Gestionnaire;
 
@@ -20,7 +20,7 @@ public class UIGereur : MonoBehaviour {
     // Use this for initialization
     void Awake()
     {
-        UI.SetActive(true);
+        //UI.SetActive(true);
         Character = GameObject.Find("character");
         Gestionnaire = Character.GetComponent<PowerUps>().Gestionnaire;
 
@@ -70,7 +70,7 @@ public class UIGereur : MonoBehaviour {
         {
           
           
-          //  SceneManager.LoadScene();
+            SceneManager.LoadScene("AntoineScene");
         }
 		
 	}

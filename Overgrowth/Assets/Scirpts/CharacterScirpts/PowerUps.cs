@@ -57,7 +57,7 @@ public class PowerUps : MonoBehaviour {
 
         if (coll.gameObject.tag == "canSwitch")
         {
-            Gestionnaire.canSwitch = true;
+            Gestionnaire.Switchbeam = true;
         }
 
         if ( Gestionnaire.SuitActivated == true)
