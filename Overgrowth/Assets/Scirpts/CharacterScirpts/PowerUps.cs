@@ -26,7 +26,11 @@ public class PowerUps : MonoBehaviour {
         basePos = Gestionnaire.bigCheckpoint;
         suitColor = Torse.GetComponent<SpriteMeshInstance>().color;
         plantColor = suitColor;        
-        plantColor.b = 0;            
+        plantColor.b = 0;
+
+        Gestionnaire.KnockbackCD = false;
+        Gestionnaire.JumpCD = 0;
+        Gestionnaire.SuitActivated = true;
     }
 
     
