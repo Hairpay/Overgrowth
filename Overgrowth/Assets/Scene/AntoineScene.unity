@@ -531,6 +531,11 @@ Prefab:
       propertyPath: m_Solver.targetPosition.y
       value: 6.7357
       objectReference: {fileID: 0}
+    - target: {fileID: 114073299673254924, guid: 7a9a97b22bd258840a6bea90ccc2ba7e,
+        type: 2}
+      propertyPath: lifes
+      value: 
+      objectReference: {fileID: 1718984671}
     m_RemovedComponents:
     - {fileID: 114841887533672444, guid: 7a9a97b22bd258840a6bea90ccc2ba7e, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 7a9a97b22bd258840a6bea90ccc2ba7e, type: 2}
@@ -97591,7 +97596,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 890418755}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
