@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114887585552902266}
   - component: {fileID: 114254064160371100}
   - component: {fileID: 114041393546246372}
+  - component: {fileID: 114073299673254924}
   m_Layer: 0
   m_Name: character
   m_TagString: Player
@@ -91,6 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4588043846834822}
   - component: {fileID: 114090036881002356}
+  - component: {fileID: 114530674787016054}
   m_Layer: 0
   m_Name: ExtraArm IK
   m_TagString: Untagged
@@ -1493,6 +1495,25 @@ MonoBehaviour:
   decale: 0
   isPlaning: 0
   jumpPressed: 0
+--- !u!114 &114073299673254924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1069281721219912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9f7a95f5abbb5443b7343ae6fc5e2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI: {fileID: 0}
+  Character: {fileID: 0}
+  Gestionnaire: {fileID: 0}
+  lifes: {fileID: 0}
+  lastLife: 0
+  iFrames: 1
+  analysis: {fileID: 0}
+  analysisPanel: {fileID: 0}
 --- !u!114 &114090036881002356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1929,6 +1950,20 @@ MonoBehaviour:
     m_RestoreDefaultPose: 1
     targetPosition: {x: 19.465149, y: 16.817951, z: 0}
     flip: 0
+--- !u!114 &114530674787016054
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1125846241135672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df48beb8381303543994cad908c06d40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainCamera: {fileID: 0}
+  baseScale: {x: 0, y: 0, z: 0}
+  baseRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &114623906873291998
 MonoBehaviour:
   m_ObjectHideFlags: 1

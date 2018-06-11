@@ -15,7 +15,7 @@ public class Description : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        charaDual = GameObject.Find("CharaDual");
+        charaDual = GameObject.Find("character");
         analysisPanel = charaDual.GetComponent<UIGereur>().analysisPanel;
         analysisText = charaDual.GetComponent<UIGereur>().analysis;
 
