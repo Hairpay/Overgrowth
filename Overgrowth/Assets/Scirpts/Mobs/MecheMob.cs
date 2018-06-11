@@ -31,7 +31,7 @@ public class MecheMob : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (life == 0)
+        if (life < 1)
         {
             gameObject.GetComponent<Explotron2D>().Explosion();
             Destroy(mobdossier);
@@ -42,7 +42,7 @@ public class MecheMob : MonoBehaviour
     {
         if (coll.gameObject.tag == "Orb")
         {
-            life = life - 1;
+            life = life - coll.gameObject.GetComponent<DOIgo>().dammage;
 
             for (int i = 0; i < mobVisu.Length; i++)
             {

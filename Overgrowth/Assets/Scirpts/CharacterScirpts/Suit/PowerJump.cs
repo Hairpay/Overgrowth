@@ -52,7 +52,8 @@ public class PowerJump : MonoBehaviour {
 
         if (Input.GetButtonDown("Fire6") && zCD == false)
         {
-            body.AddForce(new Vector2(0f, 1000f));
+            //body.AddForce(new Vector2(0f, 1000f));
+            Gestionnaire.SuitActivated = !Gestionnaire.SuitActivated;
             zCD = true;
             StartCoroutine("ReturnVariables");
         }
@@ -141,7 +142,7 @@ public class PowerJump : MonoBehaviour {
 
     IEnumerator ReturnVariables()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.2f);
         zCD = false;
     }
 

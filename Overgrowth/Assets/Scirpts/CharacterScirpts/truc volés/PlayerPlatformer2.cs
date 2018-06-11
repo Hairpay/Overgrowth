@@ -44,7 +44,7 @@ public class PlayerPlatformer2 : PhysicsObject
       
         if (grounded == true && Gestionnaire.Jcd == false)
         {
-            Debug.Log("grounded");
+           // Debug.Log("grounded");
             Gestionnaire.JumpCD = 0;           
         }
 

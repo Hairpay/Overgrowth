@@ -16,6 +16,9 @@ public class SwitchBeam : MonoBehaviour {
     public int reloading;
     public Light reloadLight;
 
+    public bool firing;
+    public float firespeed;
+
     // Use this for initialization
     void Start () {
 
@@ -26,75 +29,119 @@ public class SwitchBeam : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(firing == true)
+        {
+            if (cooldown == false)
+            {
+                if(Gestionnaire.SuitActivated == true)
+                {
+                    firespeed = 0.2f;
+                }
+                else
+                {
+                    firespeed = 0.1f;
+                }
+
+                cooldown = true;
+                StartCoroutine("firePrep");
+
+                if (Gestionnaire.SuitActivated == false)
+                {
+                    reloading = 1;
+                }
+            }            
+        }
 
         if (Input.GetButtonDown("Fire3") && Gestionnaire.Switchbeam == true)
-        {           
-            if(cooldown == false)
-            {
-                cooldown = true;             
-                StartCoroutine("firePrep");
-               
-            }
-            else
-            {
-                reloading = 1;
-                /*
-                if(Gestionnaire.JumpCD == 0)
-                {
-                    body.velocity = new Vector2(0f, 0f);                 
-                    reloading = 1;
-                    body.simulated = false;
-                } 
-                */
-            }
-        }
-
-        if (Input.GetButtonUp("Fire3"))
-        {       
-         //   body.simulated = true;
-            reloading = 0;
-        }
-
-        if(reloading > 0)
         {
-            Reload();
-            Gestionnaire.isReloading = true;
+            firing = true;
+        }
+
+        if (reloading > 0)
+        {
+            Reload();           
+        }
+       
+        /*
+        if (cooldown == false)
+        {
+            cooldown = true;
+            StartCoroutine("firePrep");
+
         }
         else
         {
-            Gestionnaire.isReloading = false;
+            reloading = 1;
+
+            if(Gestionnaire.JumpCD == 0)
+            {
+                body.velocity = new Vector2(0f, 0f);                 
+                reloading = 1;
+                body.simulated = false;
+            } 
+
         }
+
+    }
+
+    if (Input.GetButtonUp("Fire3"))
+    {
+        //   body.simulated = true;
+        firing = false;
+        reloading = 0;
+    }
+
+   
+}
+    */
+
+        if (Input.GetButtonUp("Fire3"))
+        {
+            //   body.simulated = true;
+            firing = false;
+           // reloading = 0;
+        }
+
+      
     }
 
     void Reload()
     {
         reloading++;
         if (reloading > 50)
-        {
-            Gestionnaire.SuitActivated = true;
+        {     
             reloading = 0;
             cooldown = false;
-          //  body.simulated = true;
         }
 
         reloadLight.range = reloading * 0.1f;
     }
 
-
-    void Fire()
+        void Fire()
     {
-        Gestionnaire.SuitActivated = false;
+       // Gestionnaire.SuitActivated = false;
         GameObject DOI = Instantiate(projectile);
    
         DOI.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);                
         DOI.transform.localRotation = gameObject.transform.localRotation;
 
-        body.velocity = new Vector2(0f, 0f);
-        character.GetComponent<PowerJump>()._Jump();
-        knockback = - character.GetComponent<PowerJump>().Jump;
-        body.AddForce(knockback);
+        if (Gestionnaire.SuitActivated == false)
+        {
+            body.velocity = new Vector2(0f, 0f);
+            character.GetComponent<PowerJump>()._Jump();
+            knockback = -character.GetComponent<PowerJump>().Jump;
+            body.AddForce(knockback);
+            Gestionnaire.KnockbackCD = true;
+            DOI.GetComponent<DOIgo>().dammage = 3;
+            DOI.GetComponent<SpriteRenderer>().color = new Color(0, 255, 255);
+        }
+        else
+        {
+            DOI.GetComponent<DOIgo>().dammage = 1;
+            cooldown = false;
+        }
 
-        Gestionnaire.KnockbackCD = true;
+        StopAllCoroutines();
         StartCoroutine("resetKCD");
         firedP.Play();
     }
@@ -103,10 +150,12 @@ public class SwitchBeam : MonoBehaviour {
         yield return new WaitForSeconds(0.5f);
         Gestionnaire.KnockbackCD = false;
         firedP.Stop();
+       // cooldown = false;
     }
     IEnumerator firePrep()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(firespeed);
         Fire();
+        
     }
 }

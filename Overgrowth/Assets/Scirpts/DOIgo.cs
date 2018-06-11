@@ -11,6 +11,8 @@ public class DOIgo : MonoBehaviour {
 
     public Vector3 baseRotation;
 
+    public int dammage;
+
     // Use this for initialization
     void Start () {
 
@@ -29,9 +31,11 @@ public class DOIgo : MonoBehaviour {
             gameObject.transform.localEulerAngles = new Vector3(0, 0, -(baseRotation.z + 180));
             gameObject.GetComponent<SpriteRenderer>().flipX = true;
         }
-       
- 
-	}
+
+        gameObject.transform.localScale = gameObject.transform.localScale  + (gameObject.transform.localScale * dammage * 0.5f);
+
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -41,10 +45,14 @@ public class DOIgo : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.transform.tag != "Player")
+        if (coll.transform.tag != "Player" && coll.transform.tag != "Orb")
         {
-            GameObject EXP = Instantiate(explosion);
-            EXP.transform.position = gameObject.transform.position;
+            if (dammage > 1)
+            {
+                GameObject EXP = Instantiate(explosion);
+                EXP.transform.position = gameObject.transform.position;
+            }
+           
             Destroy(gameObject);
         }           
     }
