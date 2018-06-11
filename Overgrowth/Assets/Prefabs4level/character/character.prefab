@@ -1506,7 +1506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9f7a95f5abbb5443b7343ae6fc5e2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI: {fileID: 0}
   Character: {fileID: 0}
   Gestionnaire: {fileID: 0}
   lifes: {fileID: 0}
