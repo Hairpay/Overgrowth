@@ -14,9 +14,6 @@ public class UIGereur : MonoBehaviour {
     public int lastLife;
     public float iFrames = 1f;
 
-    public Color baseColor;
-    public Color otherColor;
-
     public Text analysis;
     public Image analysisPanel;
 
@@ -52,10 +49,7 @@ public class UIGereur : MonoBehaviour {
         lastLife = Gestionnaire.life;
         Gestionnaire.invicible = false;
 
-        baseColor = Character.GetComponent<SpriteRenderer>().color;
-        otherColor = baseColor;
-        otherColor.r = 0;
-       
+      
        // Gestionnaire.toLoad = SceneManager.GetActiveScene().ToString;
     }
 	
@@ -67,14 +61,16 @@ public class UIGereur : MonoBehaviour {
             lastLife = Gestionnaire.life;
             Gestionnaire.invicible = true;
             StartCoroutine("ReturnVariables");
-            Character.GetComponent<SpriteRenderer>().color = otherColor;
+    
         }
 
         lifes.text = "Energy: " + Gestionnaire.life.ToString();
 
         if (Gestionnaire.life < 1)
         {
-            SceneManager.LoadScene("EmptyScene");
+          
+          
+          //  SceneManager.LoadScene();
         }
 		
 	}
@@ -83,7 +79,6 @@ public class UIGereur : MonoBehaviour {
     {
 
         yield return new WaitForSeconds(iFrames);
-        Gestionnaire.invicible = false;
-        Character.GetComponent<SpriteRenderer>().color = baseColor;
+        Gestionnaire.invicible = false;     
     }
 }

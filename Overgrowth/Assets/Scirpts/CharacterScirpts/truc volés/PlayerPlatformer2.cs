@@ -35,11 +35,11 @@ public class PlayerPlatformer2 : PhysicsObject
             velocity.y = jumpTakeOffSpeed;
         } else if (Input.GetButtonUp ("Jump")) 
         {
-            if (velocity.y > 0) {
+            if (velocity.y > 0)
+            {
                 velocity.y = velocity.y * 0.5f;
             }
-        }
-          
+        }         
         }   
       
         if (grounded == true && Gestionnaire.Jcd == false)
