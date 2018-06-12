@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 61986673831786678}
   - component: {fileID: 114493176942195990}
   - component: {fileID: 114661665781367516}
+  - component: {fileID: 114951866030852082}
+  - component: {fileID: 114656812527584286}
   m_Layer: 0
   m_Name: Vine
   m_TagString: flamable
@@ -37,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1983012964321800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.422205, y: 3.7051494, z: 0}
+  m_LocalPosition: {x: 175.7225, y: 14.109222, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -59,14 +61,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &114493176942195990
 MonoBehaviour:
@@ -83,6 +85,20 @@ MonoBehaviour:
   burnColor: {r: 0, g: 0, b: 0, a: 0}
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   actualColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &114656812527584286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1983012964321800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 681b70c7c538a864780d81c8a027add9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shrap: {fileID: 1651283066740880, guid: 3a6c053a0437f7c4188929a500512478, type: 2}
+  movescale: 0.3
+  autoExplo: 0
 --- !u!114 &114661665781367516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,6 +115,22 @@ MonoBehaviour:
   analysisPanel: {fileID: 0}
   description: Looks flamable.
   compteur: 0
+--- !u!114 &114951866030852082
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1983012964321800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 426cbc64114a03c4ea2a0a96075dbe2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mobdossier: {fileID: 1983012964321800}
+  mobVisu: []
+  actualColor: []
+  life: 0
+  maxLife: 1
 --- !u!212 &212878406647962586
 SpriteRenderer:
   m_ObjectHideFlags: 1
