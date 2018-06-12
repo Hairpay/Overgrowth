@@ -37,8 +37,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1298146956259744}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.7536774, y: -3.2677422, z: 0.421875}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 34.42, y: -38.103073, z: 0.421875}
+  m_LocalScale: {x: 1.7288758, y: 1.728876, z: 1.728876}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
   charaDual: {fileID: 0}
   analysisText: {fileID: 0}
   analysisPanel: {fileID: 0}
-  description: Infuser, press "e" at a checkpoint to use.
+  description: Infuser, press "z" to change mode.
   compteur: 0
 --- !u!114 &114786532164870254
 MonoBehaviour:
@@ -133,7 +133,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4a744f18a508c8f4a91bbe9c982bdd22, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7378bc37db03ebf4b81420c24fecc87f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

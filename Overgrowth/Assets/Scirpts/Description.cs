@@ -50,5 +50,10 @@ public class Description : MonoBehaviour {
         analysisText.enabled = true;
         analysisPanel.enabled = true;
        
-    }   
+    } 
+    public void hidenalyse()
+    {
+        analysisText.enabled = false;
+        analysisPanel.enabled = false;
+    }  
 }

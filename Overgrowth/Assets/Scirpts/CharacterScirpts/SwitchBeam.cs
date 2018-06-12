@@ -29,7 +29,18 @@ public class SwitchBeam : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(firing == true)
+
+        if (Input.GetButtonDown("Fire6") && firing == false && Gestionnaire.canSwitch == true)
+        {
+            Gestionnaire.SuitActivated = !Gestionnaire.SuitActivated;
+            
+            if (cooldown == true && reloading == 0)
+            {
+                cooldown = false;
+            }        
+        }
+
+        if (firing == true)
         {
             if (cooldown == false)
             {

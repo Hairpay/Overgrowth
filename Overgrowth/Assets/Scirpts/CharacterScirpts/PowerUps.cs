@@ -30,7 +30,7 @@ public class PowerUps : MonoBehaviour {
 
         Gestionnaire.KnockbackCD = false;
         Gestionnaire.JumpCD = 0;
-        Gestionnaire.SuitActivated = true;
+       // Gestionnaire.SuitActivated = true;
     }
 
     
@@ -56,12 +56,12 @@ public class PowerUps : MonoBehaviour {
         // suit & plant power ups
         if (coll.gameObject.tag == "WallProps")
         {
-            Gestionnaire.WallProps = true;
+            Gestionnaire.Switchbeam = true;
         }
 
         if (coll.gameObject.tag == "canSwitch")
         {
-            Gestionnaire.Switchbeam = true;
+            Gestionnaire.canSwitch = true;
         }
 
         if ( Gestionnaire.SuitActivated == true)

@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Level1/1_2.unity
     guid: 8593a4a75d2de2340a5f18e850ce7fd2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/AntoineScene.unity
     guid: 0d76eb08546f1be48b640ad78e208184
+  - enabled: 1
+    path: Assets/Scene/Level0.unity
+    guid: 8414bca5677f96c49a42063700bc778e

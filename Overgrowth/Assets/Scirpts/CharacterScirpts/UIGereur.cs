@@ -70,7 +70,7 @@ public class UIGereur : MonoBehaviour {
         {
           
           
-            SceneManager.LoadScene("AntoineScene");
+            SceneManager.LoadScene("Level0");
         }
 		
 	}

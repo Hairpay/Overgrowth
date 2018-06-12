@@ -50,14 +50,14 @@ public class PowerJump : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetButtonDown("Fire6") && zCD == false)
+        if (Input.GetButtonDown("Fire6"))
         {
-            //body.AddForce(new Vector2(0f, 1000f));
-            Gestionnaire.SuitActivated = !Gestionnaire.SuitActivated;
-            zCD = true;
-            StartCoroutine("ReturnVariables");
+            Multiplier = MinMultiplier;
+            //body.AddForce(new Vector2(0f, 1000f));         
+            //zCD = true;
+            //StartCoroutine("ReturnVariables");
         }
-
+        
         GravityAnchor = Gestionnaire.GravityAnchor;
 
         if (increaser == true && Multiplier < MaxMultiplier) 

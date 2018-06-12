@@ -45,7 +45,7 @@ public class SuitMove : MonoBehaviour {
     {
         if (isJumping > 0 && Gestionnaire.SuitActivated == true || Gestionnaire.KnockbackCD == true)
         {
-            body.velocity = new Vector2((move * Speed * 0.03f) + (body.velocity.x), body.velocity.y);
+            body.velocity = new Vector2((move * Speed * 0.06f) + (body.velocity.x), body.velocity.y);
         }
         else
         {
