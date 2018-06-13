@@ -9,6 +9,8 @@ public class SpawnPlayer : MonoBehaviour {
 
     void Awake()
     {
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
         if (isPlayer == true)
         {
             GameObject prefabPlayer;

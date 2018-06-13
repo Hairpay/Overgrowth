@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4988943561997160}
   - component: {fileID: 212939275119632508}
-  - component: {fileID: 114325899934375596}
   - component: {fileID: 61277230550251514}
   - component: {fileID: 114749575511641274}
+  - component: {fileID: 114735512900914436}
   m_Layer: 0
   m_Name: OmniDeathZone
   m_TagString: Respawn
@@ -37,8 +37,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1473879688591558}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -71.6, y: -11.7, z: 2.999937}
-  m_LocalScale: {x: 4.701576, y: 4.024427, z: 6.998971}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -59,16 +59,16 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114325899934375596
+--- !u!114 &114735512900914436
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -76,11 +76,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1473879688591558}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cfbb479080349746a453bcbcc7f01a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 61ac420bb035af243b1702bab3d67bf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 0}
+  Character: {fileID: 0}
+  charBody: {fileID: 0}
   Gestionnaire: {fileID: 0}
+  touche: {x: 0, y: 0}
+  impact: {x: 0, y: 0}
+  cooldown: 0
 --- !u!114 &114749575511641274
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -30,7 +30,7 @@ public class PowerUps : MonoBehaviour {
 
         Gestionnaire.KnockbackCD = false;
         Gestionnaire.JumpCD = 0;
-       // Gestionnaire.SuitActivated = true;
+        Gestionnaire.SuitActivated = true;
     }
 
     
