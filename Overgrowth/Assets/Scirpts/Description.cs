@@ -34,8 +34,15 @@ public class Description : MonoBehaviour {
     public void addnalyse()
     {
         if (compteur < 60)
-        {
-            compteur = compteur + 1;
+        {   
+            if (gameObject.GetComponent<PorteAnalyse>() != null)
+            {
+                compteur = compteur + 3;
+            }
+            else
+            {
+                compteur = compteur + 1;
+            }
         }
 
         if (compteur > 1 && compteur < 50)
@@ -44,7 +51,15 @@ public class Description : MonoBehaviour {
         }
         else if (compteur > 50)
         {
-            analysisText.text = description;
+            
+            if (gameObject.GetComponent<PorteAnalyse>() != null)
+            {
+                gameObject.GetComponent<PorteAnalyse>().Unlockage();
+            }
+            else
+            {
+                analysisText.text = description;
+            }
         }
 
         analysisText.enabled = true;
@@ -55,5 +70,10 @@ public class Description : MonoBehaviour {
     {
         analysisText.enabled = false;
         analysisPanel.enabled = false;
+
+        if (gameObject.GetComponent<PorteAnalyse>() != null)
+        {
+            compteur = 0;
+        }
     }  
 }

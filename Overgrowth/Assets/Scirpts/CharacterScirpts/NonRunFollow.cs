@@ -23,7 +23,7 @@ public class NonRunFollow : MonoBehaviour
     {
         gameObject.transform.position = Character.transform.position;
 
-        float h = Input.GetAxis("Horizontal");
+        //float h = Input.GetAxis("Horizontal");
         /*
         if(h < 0)
         {
