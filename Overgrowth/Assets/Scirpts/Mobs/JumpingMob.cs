@@ -5,7 +5,6 @@ using UnityEngine;
 public class JumpingMob : MonoBehaviour {
 
     public Transform point1;
-    public Transform point2;
     public Transform currentPoint;
    
     public float dist;
@@ -18,6 +17,7 @@ public class JumpingMob : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
         moBody = gameObject.GetComponent<Rigidbody2D>();
         currentPoint = point1;
     }
@@ -35,18 +35,7 @@ public class JumpingMob : MonoBehaviour {
             moBody.AddForce(new Vector2(Jump.x * 35000,Jump.y *35000 + BonusJump));
             cooldown = true;
             StartCoroutine("ReturnVariables");
-        }       
-        if (dist < 8f)
-        {
-            if (currentPoint == point1)
-            {
-                currentPoint = point2;
-            }
-            else
-            {
-                currentPoint = point1;
-            }
-        }
+        }              
     }
     IEnumerator ReturnVariables()
     {
