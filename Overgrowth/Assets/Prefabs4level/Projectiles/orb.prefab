@@ -133,6 +133,7 @@ MonoBehaviour:
   MainCamera: {fileID: 0}
   explosion: {fileID: 1007561732712744, guid: 0e8b8b26630dc394fb01100263d60d7f, type: 2}
   baseRotation: {x: 0, y: 0, z: 0}
+  tagignore: Player
   dammage: 0
 --- !u!212 &212831930878233228
 SpriteRenderer:

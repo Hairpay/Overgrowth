@@ -10,6 +10,7 @@ public class DOIgo : MonoBehaviour {
     public GameObject explosion;
 
     public Vector3 baseRotation;
+    public string tagignore;
 
     public int dammage;
 
@@ -34,6 +35,7 @@ public class DOIgo : MonoBehaviour {
 
         gameObject.transform.localScale = gameObject.transform.localScale  + (gameObject.transform.localScale * dammage * 0.5f);
 
+        StartCoroutine("selfdestrucc");
 
     }
 	
@@ -45,15 +47,25 @@ public class DOIgo : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.transform.tag != "Player" && coll.transform.tag != "Orb")
+        if (coll.transform.tag != tagignore && coll.transform.tag != gameObject.transform.tag)
         {
-            if (dammage > 1)
-            {
-                GameObject EXP = Instantiate(explosion);
-                EXP.transform.position = gameObject.transform.position;
-            }
-           
-            Destroy(gameObject);
+            Xploz();
         }           
+    }
+
+    public void Xploz()
+    {
+        if (dammage > 1)
+        {
+            GameObject EXP = Instantiate(explosion);
+            EXP.transform.position = gameObject.transform.position;
+        }
+
+        Destroy(gameObject);
+    }
+    IEnumerator selfdestrucc()
+    {
+        yield return new WaitForSeconds(1.05f);
+        Xploz();
     }
 }

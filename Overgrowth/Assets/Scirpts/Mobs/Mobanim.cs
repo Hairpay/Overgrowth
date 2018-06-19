@@ -15,6 +15,7 @@ public class Mobanim : MonoBehaviour {
     {
         animob = gameObject.GetComponent<Animator>();
         baseScale = gameObject.transform.localScale;
+        mobody = mobroll.GetComponent<Rigidbody2D>();
     }
 	
 	// Update is called once per frame

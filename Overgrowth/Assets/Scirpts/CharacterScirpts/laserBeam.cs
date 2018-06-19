@@ -9,7 +9,7 @@ public class laserBeam : MonoBehaviour
 
     public bool firing;
     public float maxDistance = 150f;
-    private int layer_mask;
+   // private int layer_mask;
 
     public Vector2 mouse;
     public LineRenderer line;
@@ -33,7 +33,7 @@ public class laserBeam : MonoBehaviour
         line = gameObject.GetComponent<LineRenderer>();
         line.SetVertexCount(2);
         line.SetWidth(0.2f, 0.25f);
-        layer_mask = ~LayerMask.GetMask("Player");
+      //  layer_mask = ~LayerMask.GetMask("Player");
         character = GameObject.Find("character");
         Gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;
 

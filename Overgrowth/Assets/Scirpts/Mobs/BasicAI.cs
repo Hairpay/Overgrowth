@@ -25,7 +25,7 @@ public class BasicAI : MonoBehaviour {
 
         dist = Vector3.Distance(Character.transform.position, transform.position);
 
-        if (dist < 15f)
+        if (dist < 30f)
         {
             RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Character.transform.position - gameObject.transform.position, dist, layer_mask);
             Debug.DrawLine(gameObject.transform.position, hit.point);
