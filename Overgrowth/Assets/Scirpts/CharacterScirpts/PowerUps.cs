@@ -64,6 +64,11 @@ public class PowerUps : MonoBehaviour {
             Gestionnaire.canSwitch = true;
         }
 
+        if (coll.gameObject.tag == "Analyser+")
+        {
+            Gestionnaire.analysisLevel = Gestionnaire.analysisLevel +1;
+        }
+
         if ( Gestionnaire.SuitActivated == true)
         {
             // suit power ups
@@ -118,5 +123,6 @@ public class PowerUps : MonoBehaviour {
         Gestionnaire.isGlinding = false;
 
         Gestionnaire.bigCheckpoint = basePos;
+        Gestionnaire.analysisLevel = 0;
     }
 }

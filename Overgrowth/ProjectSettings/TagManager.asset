@@ -19,6 +19,7 @@ TagManager:
   - Planeur
   - DoubleJump
   - Orb
+  - Analyser+
   layers:
   - Default
   - TransparentFX

@@ -59,6 +59,10 @@ public class Description : MonoBehaviour {
             else
             {
                 analysisText.text = description;
+                if (gameObject.GetComponent<PorteAnalyse>() != null)
+                {
+                    compteur = 0;
+                }
             }
         }
 

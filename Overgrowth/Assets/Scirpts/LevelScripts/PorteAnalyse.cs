@@ -58,7 +58,7 @@ public class PorteAnalyse : MonoBehaviour
     {
         if (AnalysisLevel > Gestionnaire.analysisLevel)
         {
-            analysisText.text = ErrorMessage;
+            analysisText.text = ErrorMessage + "This door require a level " + AnalysisLevel +" security.";
         }
         else
         {
