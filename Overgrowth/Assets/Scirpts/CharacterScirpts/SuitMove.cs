@@ -6,6 +6,7 @@ public class SuitMove : MonoBehaviour {
 
     private Rigidbody2D body;
 
+    public float FiringSpeed = 10f;
     public float MaxSpeedBase = 10f;
     public float MaxSpeedPlant = 13f;
   
@@ -31,11 +32,15 @@ public class SuitMove : MonoBehaviour {
         Move(h);
         Gestionnaire.Speed = Mathf.Abs(body.velocity.x);
 
-        if ( Gestionnaire.SuitActivated == true)
+        if (Gestionnaire.isFiring == true)
+        {
+            Speed = FiringSpeed;
+        }
+        else if (Gestionnaire.SuitActivated == true)
         {
             Speed = MaxSpeedBase;
         }
-        else
+        else if (Gestionnaire.SuitActivated == false)
         {
             Speed = MaxSpeedPlant;
         }

@@ -13,12 +13,13 @@ public class Gestionnaire : ScriptableObject {
     public bool isGlinding;
     public bool GlideGauche;
     public bool isReloading;
-   
+    public bool grounded;
 
     public int JumpCD;
     public bool Jcd;
     public bool KnockbackCD;
 
+    public bool isFiring;
     public bool SuitActivated;
     public bool canSwitch;
     public bool atPoint;

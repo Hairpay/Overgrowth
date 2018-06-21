@@ -64,7 +64,11 @@ public class PowerJump : MonoBehaviour {
         {
             if (Gestionnaire.JumpCD < 1 || Gestionnaire.JumpCD < 2 && Gestionnaire.GravityAnchor == true)
             {
-                Multiplier = Multiplier + 15;
+                if (Gestionnaire.grounded == true)
+                {
+                    body.velocity = new Vector2(0f, body.velocity.y);
+                }
+                Multiplier = Multiplier + 45;
                 BoosterLight.range = (Multiplier * 0.007f);
             }
        
@@ -79,7 +83,7 @@ public class PowerJump : MonoBehaviour {
                 _PJumpDown();
                 axisPressed = true;
             }
-            if (Input.GetButtonUp("Jump") || Input.GetAxis("JumpM") > -0.1 && axisPressed == true && Gestionnaire.manetteMode == true)
+            if (Input.GetButtonUp("Jump") || Input.GetAxis("JumpM") > -0.1 && axisPressed == true && Gestionnaire.manetteMode == true || Multiplier > MaxMultiplier -1)
             {              
                 _PJumpUp();
                 axisPressed = false;
@@ -87,6 +91,7 @@ public class PowerJump : MonoBehaviour {
             }
         }      
     }
+
     public void _PJumpDown()
     {
         increaser = true;
@@ -135,15 +140,17 @@ public class PowerJump : MonoBehaviour {
 
             //gameObject.GetComponent<SuitMove>().enabled = false;
            // gameObject.GetComponent<SuitMove>().Speed = gameObject.GetComponent<SuitMove>().MaxSpeedBase;
-            body.AddForce(Jump);         
+            body.AddForce(Jump);
+           // StartCoroutine("ReturnVariables");
         }       
     }
 
 
     IEnumerator ReturnVariables()
     {
-        yield return new WaitForSeconds(0.2f);
-        zCD = false;
+        yield return new WaitForSeconds(0.5f);
+        body.velocity = new Vector2(0f, 0f);
+       
     }
 
     IEnumerator ResetJcd()

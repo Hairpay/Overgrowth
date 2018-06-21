@@ -16,7 +16,6 @@ public class SwitchBeam : MonoBehaviour {
     public int reloading;
     public Light reloadLight;
 
-    public bool firing;
     public float firespeed;
 
     // Use this for initialization
@@ -30,7 +29,7 @@ public class SwitchBeam : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetButtonDown("Fire6") && firing == false && Gestionnaire.canSwitch == true)
+        if (Input.GetButtonDown("Fire6") && Gestionnaire.isFiring == false && Gestionnaire.canSwitch == true)
         {
             Gestionnaire.SuitActivated = !Gestionnaire.SuitActivated;
             
@@ -40,7 +39,7 @@ public class SwitchBeam : MonoBehaviour {
             }        
         }
 
-        if (firing == true)
+        if (Gestionnaire.isFiring == true)
         {
             if (cooldown == false)
             {
@@ -65,51 +64,18 @@ public class SwitchBeam : MonoBehaviour {
 
         if (Input.GetButtonDown("Fire3") && Gestionnaire.Switchbeam == true)
         {
-            firing = true;
+            Gestionnaire.isFiring = true;
         }
 
         if (reloading > 0)
         {
             Reload();           
-        }
-       
-        /*
-        if (cooldown == false)
-        {
-            cooldown = true;
-            StartCoroutine("firePrep");
-
-        }
-        else
-        {
-            reloading = 1;
-
-            if(Gestionnaire.JumpCD == 0)
-            {
-                body.velocity = new Vector2(0f, 0f);                 
-                reloading = 1;
-                body.simulated = false;
-            } 
-
-        }
-
-    }
-
-    if (Input.GetButtonUp("Fire3"))
-    {
-        //   body.simulated = true;
-        firing = false;
-        reloading = 0;
-    }
-
-   
-}
-    */
+        }      
 
         if (Input.GetButtonUp("Fire3"))
         {
             //   body.simulated = true;
-            firing = false;
+            Gestionnaire.isFiring = false;
            // reloading = 0;
         }
 
@@ -123,6 +89,7 @@ public class SwitchBeam : MonoBehaviour {
         {     
             reloading = 0;
             cooldown = false;
+            Gestionnaire.isFiring = false;
         }
 
         reloadLight.range = reloading * 0.1f;

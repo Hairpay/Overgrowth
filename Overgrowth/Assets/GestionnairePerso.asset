@@ -15,14 +15,17 @@ MonoBehaviour:
   isGlinding: 0
   GlideGauche: 0
   isReloading: 0
+  grounded: 1
   JumpCD: 0
   Jcd: 0
   KnockbackCD: 0
+  isFiring: 0
   SuitActivated: 1
   canSwitch: 0
   atPoint: 1
   Checkpoint: {x: -111.4, y: 13.2, z: -1}
-  bigCheckpoint: {x: 0, y: 0, z: 0}
+  bigCheckpoint: {x: 53.6, y: 0.8, z: 0}
+  analysisLevel: 0
   Switchbeam: 1
   GravityAnchor: 0
   WallProps: 0

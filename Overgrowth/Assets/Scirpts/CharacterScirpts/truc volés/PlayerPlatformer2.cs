@@ -48,7 +48,7 @@ public class PlayerPlatformer2 : PhysicsObject
             Gestionnaire.JumpCD = 0;           
         }
 
-
+        Gestionnaire.grounded = grounded;
         targetVelocity = move * maxSpeed;
     }
 
