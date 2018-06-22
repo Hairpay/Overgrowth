@@ -26,7 +26,7 @@ public class Dangerous : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.tag == "Player" && cooldown == false)
+        if (coll.gameObject.tag == "Player" && cooldown == false && gameObject.GetComponent<MecheMob>().isDed == false)
         {
             cooldown = true;
             StartCoroutine("ReturnVariables");

@@ -14,6 +14,7 @@ public class Gestionnaire : ScriptableObject {
     public bool GlideGauche;
     public bool isReloading;
     public bool grounded;
+    public bool CharJump;
 
     public int JumpCD;
     public bool Jcd;

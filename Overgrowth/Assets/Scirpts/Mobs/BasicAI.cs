@@ -11,11 +11,14 @@ public class BasicAI : MonoBehaviour {
 
     public bool cooldown;
     private int layer_mask;
+    public Gestionnaire Gestionnaire;
 
     // Use this for initialization
     void Start () {
 
         Character = GameObject.Find("character");
+        Gestionnaire = Character.GetComponent<PowerUps>().Gestionnaire;
+
         moBody = gameObject.GetComponent<Rigidbody2D>();
         layer_mask = ~LayerMask.GetMask("Mobs");
     }
@@ -25,7 +28,7 @@ public class BasicAI : MonoBehaviour {
 
         dist = Vector3.Distance(Character.transform.position, transform.position);
 
-        if (dist < 30f)
+        if (dist < 30f && Gestionnaire.SuitActivated == true)
         {
             RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Character.transform.position - gameObject.transform.position, dist, layer_mask);
             Debug.DrawLine(gameObject.transform.position, hit.point);
@@ -42,7 +45,11 @@ public class BasicAI : MonoBehaviour {
 
                 StartCoroutine("ReturnVariables");
             }
-        }      
+        }
+        if (Input.GetButtonDown("Fire5") && dist < 5f && gameObject.GetComponent<MecheMob>().isDed == true)
+        {            
+            StartCoroutine("gonadie");         
+        }
     }
 
     IEnumerator ReturnVariables()
@@ -50,5 +57,16 @@ public class BasicAI : MonoBehaviour {
 
         yield return new WaitForSeconds(0.5f);
         cooldown = false;
+    }
+
+    IEnumerator gonadie()
+    {
+        yield return new WaitForSeconds(0.5f);
+        gameObject.GetComponent<MecheMob>().ded();
+        if (Gestionnaire.life < Gestionnaire.maxLife)
+        {
+            Gestionnaire.life = Gestionnaire.life + 1;
+        }
+      
     }
 }

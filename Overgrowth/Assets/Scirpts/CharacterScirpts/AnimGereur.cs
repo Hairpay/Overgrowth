@@ -24,57 +24,75 @@ public class AnimGereur : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Gestionnaire.isGlinding == true)
+        if (Input.GetButtonDown("Fire5"))
         {
-            charnim.SetBool("isSliding", true);
-            charnim.Play("Sliding");
+            charnim.Play("CacAtac");
         }
         else
         {
-            charnim.SetBool("isSliding", false);
-            charnim.SetFloat("Velocity", Gestionnaire.Speed * 0.4f);
-
-            if (Gestionnaire.Speed > 0.05f && Gestionnaire.JumpCD < 1)
+            if (Gestionnaire.isGlinding == true)
             {
-                charnim.SetBool("isWalking", true);
+                charnim.SetBool("isSliding", true);
+                charnim.Play("Sliding");
             }
             else
             {
-                charnim.SetBool("isWalking", false);
-            }
+                charnim.SetBool("isSliding", false);
+                charnim.SetFloat("Velocity", Gestionnaire.Speed * 0.4f);
 
-            if (Gestionnaire.KnockbackCD == true)
-            {
-                if (isJumping == true)
+                if (Gestionnaire.CharJump == true)
                 {
-                    charnim.Play("JumpingKnock");
+                    charnim.Play("CharJump");
                 }
                 else
                 {
-                    charnim.Play("Knockback");
+                    if (Gestionnaire.Speed > 0.05f && Gestionnaire.JumpCD < 1)
+                    {
+                        charnim.SetBool("isWalking", true);
+                    }
+                    else
+                    {
+                        charnim.SetBool("isWalking", false);
+                    }
+
+                    if (Gestionnaire.KnockbackCD == true)
+                    {
+                        if (isJumping == true)
+                        {
+                            charnim.Play("JumpingKnock");
+                        }
+                        else
+                        {
+                            charnim.Play("Knockback");
+                        }
+
+                    }
+
+                    else if (Gestionnaire.JumpCD > 0)
+                    {
+                        charnim.Play("Jumping");
+                        isJumping = true;
+                        charnim.SetBool("isJumping", true);
+                    }
+                    else if (Gestionnaire.JumpCD < 1)
+                    {
+                        isJumping = false;
+                        charnim.SetBool("isJumping", false);
+                    }
+
+                    if (Gestionnaire.isReloading == true)
+                    {
+                        charnim.Play("Reload");
+                    }
                 }
-
             }
 
-            else if (Gestionnaire.JumpCD > 0)
-            {
-                charnim.Play("Jumping");
-                isJumping = true;
-                charnim.SetBool("isJumping", true);
-            }
-            else if (Gestionnaire.JumpCD < 1)
-            {
-                isJumping = false;
-                charnim.SetBool("isJumping", false);
-            }
 
-            if (Gestionnaire.isReloading == true)
-            {
-                charnim.Play("Reload");
-            }
+
+
+
         }
-
-       
-
     }
 }
+
+       

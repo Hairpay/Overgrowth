@@ -14,8 +14,6 @@ public class PowerJump : MonoBehaviour {
     public float Multiplier;
     public float factor;
 
-    public bool increaser;
-
     public bool GravityAnchor = false;
     //public int Cooldown = 0;
     public bool zCD;
@@ -60,7 +58,7 @@ public class PowerJump : MonoBehaviour {
         
         GravityAnchor = Gestionnaire.GravityAnchor;
 
-        if (increaser == true && Multiplier < MaxMultiplier) 
+        if (Gestionnaire.CharJump == true && Multiplier < MaxMultiplier) 
         {
             if (Gestionnaire.JumpCD < 1 || Gestionnaire.JumpCD < 2 && Gestionnaire.GravityAnchor == true)
             {
@@ -87,14 +85,14 @@ public class PowerJump : MonoBehaviour {
             {              
                 _PJumpUp();
                 axisPressed = false;
-                increaser = false;
+                Gestionnaire.CharJump = false;
             }
         }      
     }
 
     public void _PJumpDown()
     {
-        increaser = true;
+        Gestionnaire.CharJump = true;
     //    gameObject.GetComponent<SuitMove>().Speed = gameObject.GetComponent<SuitMove>().MaxSpeedCharge;
                 
             if (GravityAnchor == true && Gestionnaire.JumpCD == 1)
@@ -140,8 +138,15 @@ public class PowerJump : MonoBehaviour {
 
             //gameObject.GetComponent<SuitMove>().enabled = false;
            // gameObject.GetComponent<SuitMove>().Speed = gameObject.GetComponent<SuitMove>().MaxSpeedBase;
+           
+
+            if (Gestionnaire.grounded == true && Jump.y < 2000f)
+            {
+                Jump.y = 2000;
+            }
+
             body.AddForce(Jump);
-           // StartCoroutine("ReturnVariables");
+            // StartCoroutine("ReturnVariables");
         }       
     }
 

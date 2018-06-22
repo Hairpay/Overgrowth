@@ -10,6 +10,8 @@ public class Mobanim : MonoBehaviour {
     public Vector3 baseScale;
     public GameObject mobroll;
 
+    public bool dieonce;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -23,22 +25,33 @@ public class Mobanim : MonoBehaviour {
     {
         gameObject.transform.position = mobroll.transform.position;
 
-        if (mobody.velocity.x < -1)
+        if(mobroll.GetComponent<MecheMob>().isDed == true && dieonce == false)
         {
-            gameObject.transform.localScale = new Vector3(baseScale.x, baseScale.y, baseScale.z);
-        }
-        else if (mobody.velocity.x > 1)
-        {
-            gameObject.transform.localScale = new Vector3(-baseScale.x, baseScale.y, baseScale.z);
+            animob.Play("ded");
+            dieonce = true;
         }
 
-        if (Mathf.Abs(mobody.velocity.x) > 0.05f)
-        {
-            animob.SetBool("isWalking", true);
-        }
         else
         {
-            animob.SetBool("isWalking", false);
+            if (mobody.velocity.x < -1)
+            {
+                gameObject.transform.localScale = new Vector3(baseScale.x, baseScale.y, baseScale.z);
+            }
+            else if (mobody.velocity.x > 1)
+            {
+                gameObject.transform.localScale = new Vector3(-baseScale.x, baseScale.y, baseScale.z);
+            }
+
+            if (Mathf.Abs(mobody.velocity.x) > 0.05f)
+            {
+                animob.SetBool("isWalking", true);
+            }
+            else
+            {
+                animob.SetBool("isWalking", false);
+            }
         }
+
+       
     }
 }
