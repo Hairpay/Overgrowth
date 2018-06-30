@@ -62,12 +62,14 @@ public class PowerJump : MonoBehaviour {
         {
             if (Gestionnaire.JumpCD < 1 || Gestionnaire.JumpCD < 2 && Gestionnaire.GravityAnchor == true)
             {
-                if (Gestionnaire.grounded == true)
+                if (Gestionnaire.grounded == true && Multiplier > MaxMultiplier * 0.6f)
                 {
                     body.velocity = new Vector2(0f, body.velocity.y);
+                    BoosterLight.range = (Multiplier * 0.007f);
                 }
+
                 Multiplier = Multiplier + 45;
-                BoosterLight.range = (Multiplier * 0.007f);
+                
             }
        
         }
@@ -82,10 +84,22 @@ public class PowerJump : MonoBehaviour {
                 axisPressed = true;
             }
             if (Input.GetButtonUp("Jump") || Input.GetAxis("JumpM") > -0.1 && axisPressed == true && Gestionnaire.manetteMode == true || Multiplier > MaxMultiplier -1)
-            {              
-                _PJumpUp();
-                axisPressed = false;
-                Gestionnaire.CharJump = false;
+            {     
+                if (Multiplier > MaxMultiplier * 0.6f)
+                {
+                    _PJumpUp();
+                    axisPressed = false;
+                    Gestionnaire.CharJump = false;
+                }
+                else
+                {
+                    gameObject.GetComponent<Jump>()._Jump();
+                    Multiplier = MinMultiplier;
+
+                    axisPressed = false;
+                    Gestionnaire.CharJump = false;
+                }        
+               
             }
         }      
     }
