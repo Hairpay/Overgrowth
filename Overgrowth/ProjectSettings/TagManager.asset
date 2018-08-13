@@ -54,6 +54,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Fond
+    uniqueID: 3026965249
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -68,9 +71,6 @@ TagManager:
     locked: 0
   - name: Paralax4
     uniqueID: 1519503147
-    locked: 0
-  - name: Fond
-    uniqueID: 3026965249
     locked: 0
   - name: Mob1
     uniqueID: 2736665135
