@@ -57,6 +57,15 @@ TagManager:
   - name: Fond
     uniqueID: 3026965249
     locked: 0
+  - name: ArrierePlan
+    uniqueID: 707530301
+    locked: 0
+  - name: FadeArriere
+    uniqueID: 835065055
+    locked: 0
+  - name: PreArrierePlan
+    uniqueID: 2960634845
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
