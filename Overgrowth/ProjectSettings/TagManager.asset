@@ -20,6 +20,7 @@ TagManager:
   - DoubleJump
   - Orb
   - Analyser+
+  - Elevator
   layers:
   - Default
   - TransparentFX
@@ -38,7 +39,7 @@ TagManager:
   - P2
   - P3
   - P4
-  - 
+  - Elevator
   - 
   - 
   - orb
@@ -86,4 +87,7 @@ TagManager:
     locked: 0
   - name: Char
     uniqueID: 2887076199
+    locked: 0
+  - name: New Layer
+    uniqueID: 3610741281
     locked: 0

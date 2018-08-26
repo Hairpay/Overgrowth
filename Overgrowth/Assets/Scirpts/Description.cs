@@ -12,6 +12,8 @@ public class Description : MonoBehaviour {
     public string description;
     public int compteur;
 
+    public int speed = 1;
+
 	// Use this for initialization
 	void Start () {
 
@@ -34,14 +36,9 @@ public class Description : MonoBehaviour {
     public void addnalyse()
     {
         if (compteur < 60)
-        {   
-            if (gameObject.GetComponent<PorteAnalyse>() != null)
+        {             
             {
-                compteur = compteur + 3;
-            }
-            else
-            {
-                compteur = compteur + 1;
+                compteur = compteur + speed;
             }
         }
 
@@ -56,28 +53,36 @@ public class Description : MonoBehaviour {
             {
                 gameObject.GetComponent<PorteAnalyse>().Unlockage();
             }
+            else if(gameObject.GetComponent<CallElevator>() != null)
+            {
+                gameObject.GetComponent<CallElevator>().Call();
+                analysisText.text = description;
+            }
             else
             {
                 analysisText.text = description;
-                if (gameObject.GetComponent<PorteAnalyse>() != null)
-                {
-                    compteur = 0;
-                }
+                //  compteur = 0;                          
             }
+
+            StopAllCoroutines();
+            StartCoroutine("ReturnUnlock");
         }
 
         analysisText.enabled = true;
         analysisPanel.enabled = true;
        
-    } 
-    public void hidenalyse()
-    {
-        analysisText.enabled = false;
-        analysisPanel.enabled = false;
+    }
 
-        if (gameObject.GetComponent<PorteAnalyse>() != null)
-        {
-            compteur = 0;
-        }
+    IEnumerator ReturnUnlock()
+    {
+        yield return new WaitForSeconds(2f);
+        compteur = 0;
+    }
+
+    public void hidenalyse()
+    {      
+        analysisText.enabled = false;
+        analysisPanel.enabled = false;  
+        compteur = 0;        
     }  
 }

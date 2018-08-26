@@ -44,64 +44,71 @@ public class PowerJump : MonoBehaviour {
 
 
     }
-	
-	// Update is called once per frame
-	void Update () {
 
-        if (Input.GetButtonDown("Fire6"))
-        {
-            Multiplier = MinMultiplier;
-            //body.AddForce(new Vector2(0f, 1000f));         
-            //zCD = true;
-            //StartCoroutine("ReturnVariables");
-        }
-        
-        GravityAnchor = Gestionnaire.GravityAnchor;
+    // Update is called once per frame
+    void Update()
+    {
 
-        if (Gestionnaire.CharJump == true && Multiplier < MaxMultiplier) 
+        if (Gestionnaire.Locked == false)
         {
-            if (Gestionnaire.JumpCD < 1 || Gestionnaire.JumpCD < 2 && Gestionnaire.GravityAnchor == true)
+
+
+
+            if (Input.GetButtonDown("Fire6"))
             {
-                if (Gestionnaire.grounded == true && Multiplier > MaxMultiplier * 0.6f)
+                Multiplier = MinMultiplier;
+                //body.AddForce(new Vector2(0f, 1000f));         
+                //zCD = true;
+                //StartCoroutine("ReturnVariables");
+            }
+
+            GravityAnchor = Gestionnaire.GravityAnchor;
+
+            if (Gestionnaire.CharJump == true && Multiplier < MaxMultiplier)
+            {
+                if (Gestionnaire.JumpCD < 1 || Gestionnaire.JumpCD < 2 && Gestionnaire.GravityAnchor == true)
                 {
-                    body.velocity = new Vector2(0f, body.velocity.y);
-                    BoosterLight.range = (Multiplier * 0.007f);
+                    if (Gestionnaire.grounded == true && Multiplier > MaxMultiplier * 0.6f)
+                    {
+                        body.velocity = new Vector2(0f, body.velocity.y);
+                        BoosterLight.range = (Multiplier * 0.007f);
+                    }
+
+                    Multiplier = Multiplier + 45;
+
                 }
 
-                Multiplier = Multiplier + 45;
-                
             }
-       
-        }
 
-        p = Directioneur.transform.position;
+            p = Directioneur.transform.position;
 
-        if(Gestionnaire.SuitActivated == true)
-        {
-            if (Input.GetButtonDown("Jump") || Input.GetAxis("JumpM") < -0.9)
+            if (Gestionnaire.SuitActivated == true)
             {
-                _PJumpDown();
-                axisPressed = true;
-            }
-            if (Input.GetButtonUp("Jump") || Input.GetAxis("JumpM") > -0.1 && axisPressed == true && Gestionnaire.manetteMode == true || Multiplier > MaxMultiplier -1)
-            {     
-                if (Multiplier > MaxMultiplier * 0.6f)
+                if (Input.GetButtonDown("Jump") || Input.GetAxis("JumpM") < -0.9)
                 {
-                    _PJumpUp();
-                    axisPressed = false;
-                    Gestionnaire.CharJump = false;
+                    _PJumpDown();
+                    axisPressed = true;
                 }
-                else
+                if (Input.GetButtonUp("Jump") || Input.GetAxis("JumpM") > -0.1 && axisPressed == true && Gestionnaire.manetteMode == true || Multiplier > MaxMultiplier - 1)
                 {
-                    gameObject.GetComponent<Jump>()._Jump();
-                    Multiplier = MinMultiplier;
+                    if (Multiplier > MaxMultiplier * 0.6f)
+                    {
+                        _PJumpUp();
+                        axisPressed = false;
+                        Gestionnaire.CharJump = false;
+                    }
+                    else
+                    {
+                        gameObject.GetComponent<Jump>()._Jump();
+                        Multiplier = MinMultiplier;
 
-                    axisPressed = false;
-                    Gestionnaire.CharJump = false;
-                }        
-               
+                        axisPressed = false;
+                        Gestionnaire.CharJump = false;
+                    }
+
+                }
             }
-        }      
+        }
     }
 
     public void _PJumpDown()

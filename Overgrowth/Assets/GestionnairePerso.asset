@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Name: GestionnairePerso
   m_EditorClassIdentifier: 
   Speed: 0
+  Locked: 0
   isGlinding: 0
   GlideGauche: 0
   isReloading: 0
-  grounded: 1
+  grounded: 0
   CharJump: 0
-  JumpCD: 0
+  JumpCD: 1
   Jcd: 0
   KnockbackCD: 0
   isFiring: 0
@@ -25,7 +26,7 @@ MonoBehaviour:
   canSwitch: 0
   atPoint: 1
   Checkpoint: {x: -111.4, y: 13.2, z: -1}
-  bigCheckpoint: {x: 0, y: 0, z: 0}
+  bigCheckpoint: {x: -10.9, y: -93.8, z: 0}
   analysisLevel: 0
   Switchbeam: 1
   GravityAnchor: 0

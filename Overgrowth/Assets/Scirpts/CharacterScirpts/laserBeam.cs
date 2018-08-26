@@ -46,7 +46,7 @@ public class laserBeam : MonoBehaviour
     void Update()
     {
 
-        if (firing == true)
+        if (firing == true && Gestionnaire.Locked == false)
         {
 
             if (analazing == false)

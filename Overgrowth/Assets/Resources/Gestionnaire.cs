@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class Gestionnaire : ScriptableObject {
    
     public float Speed;
+    public bool Locked;
     
     public bool isGlinding;
     public bool GlideGauche;
