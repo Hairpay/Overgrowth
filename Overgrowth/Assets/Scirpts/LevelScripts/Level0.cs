@@ -12,13 +12,7 @@ public class Level0 : MonoBehaviour {
     void Start () {
               
         Character = GameObject.Find("character");
-        Gestionnaire = Character.GetComponent<PowerUps>().Gestionnaire;
-
-        Gestionnaire.GravityAnchor = false;
-        Gestionnaire.WallProps = false;
-        Gestionnaire.Flamenwerfer = false;
-        Gestionnaire.ShockWave = false;
-        
+        Gestionnaire = Character.GetComponent<PowerUps>().Gestionnaire;      
 
         SceneManager.LoadScene("1_1");
 	}

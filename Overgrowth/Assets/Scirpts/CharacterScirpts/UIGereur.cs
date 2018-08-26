@@ -22,16 +22,9 @@ public class UIGereur : MonoBehaviour {
     {
         //UI.SetActive(true);
         Character = GameObject.Find("character");
-        Gestionnaire = Character.GetComponent<PowerUps>().Gestionnaire;
+        Gestionnaire = Character.GetComponent<PowerUps>().Gestionnaire;       
 
-        if (Gestionnaire.resetPU == true)
-        {
-            Gestionnaire.bigCheckpoint = gameObject.transform.position;
-            Gestionnaire.currentSalle = 0;
-            Gestionnaire.resetPU = false;
-        }
-
-        gameObject.transform.position = Gestionnaire.bigCheckpoint;
+        gameObject.transform.position = Gestionnaire.Checkpoint;
 
         
     }

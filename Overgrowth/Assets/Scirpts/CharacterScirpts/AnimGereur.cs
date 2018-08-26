@@ -80,12 +80,7 @@ public class AnimGereur : MonoBehaviour {
                         {
                             isJumping = false;
                             charnim.SetBool("isJumping", false);
-                        }
-
-                        if (Gestionnaire.isReloading == true)
-                        {
-                            charnim.Play("Reload");
-                        }
+                        }                    
                     }
                 }
             }

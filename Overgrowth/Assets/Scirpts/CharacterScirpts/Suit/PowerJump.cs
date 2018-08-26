@@ -84,12 +84,12 @@ public class PowerJump : MonoBehaviour {
 
             if (Gestionnaire.SuitActivated == true)
             {
-                if (Input.GetButtonDown("Jump") || Input.GetAxis("JumpM") < -0.9)
+                if (Input.GetButtonDown("Jump"))
                 {
                     _PJumpDown();
                     axisPressed = true;
                 }
-                if (Input.GetButtonUp("Jump") || Input.GetAxis("JumpM") > -0.1 && axisPressed == true && Gestionnaire.manetteMode == true || Multiplier > MaxMultiplier - 1)
+                if (Input.GetButtonUp("Jump")  || Multiplier > MaxMultiplier - 1)
                 {
                     if (Multiplier > MaxMultiplier * 0.6f)
                     {

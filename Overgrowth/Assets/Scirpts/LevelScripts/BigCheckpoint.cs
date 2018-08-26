@@ -32,17 +32,17 @@ public class BigCheckpoint : MonoBehaviour
 
         if (dist < 10f)
         {
-            Gestionnaire.bigCheckpoint.x = gameObject.transform.position.x;
-            Gestionnaire.bigCheckpoint.y = gameObject.transform.position.y;
+            Gestionnaire.Checkpoint.x = gameObject.transform.position.x;
+            Gestionnaire.Checkpoint.y = gameObject.transform.position.y;
             gameObject.GetComponent<SpriteRenderer>().color = otherColor;
             Gestionnaire.life = Gestionnaire.maxLife;
-            Gestionnaire.atPoint = true;
+          //  Gestionnaire.atPoint = true;
           //   Savestionnaire = Gestionnaire;            
         }
         else if (dist < 20f && dist > 11f)
         {
             gameObject.GetComponent<SpriteRenderer>().color = baseColor;
-            Gestionnaire.atPoint = false;
+         //   Gestionnaire.atPoint = false;
         }
     }
 }

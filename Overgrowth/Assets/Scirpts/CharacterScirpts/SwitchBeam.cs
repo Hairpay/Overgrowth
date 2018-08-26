@@ -62,7 +62,7 @@ public class SwitchBeam : MonoBehaviour {
             }            
         }
 
-        if (Input.GetButtonDown("Fire3") && Gestionnaire.Switchbeam == true)
+        //if (Input.GetButtonDown("Fire3") && Gestionnaire.Switchbeam == true)
         {
             Gestionnaire.isFiring = true;
         }

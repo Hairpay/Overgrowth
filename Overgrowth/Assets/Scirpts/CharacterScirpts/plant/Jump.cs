@@ -48,7 +48,7 @@ public class Jump : MonoBehaviour {
                 _Jump();
             }
 
-            if (jumpPressed == false && Gestionnaire.manetteMode == false || Mathf.Abs(Input.GetAxis("JumpM")) < 0.1 && Gestionnaire.manetteMode == true)
+            if (jumpPressed == false)
             {
                 _JumpUp();
             }
@@ -67,11 +67,7 @@ public class Jump : MonoBehaviour {
     }
         public void _Jump()
     {
-        if (Gestionnaire.Planeur == true && isGliding == false && body.velocity.y < 0)
-        {
-            isPlaning = true;
-            gameObject.GetComponent<Rigidbody2D>().gravityScale = baseGravity * 0.1f;
-        }
+       
 
         if (Gestionnaire.JumpCD == 0)
             {

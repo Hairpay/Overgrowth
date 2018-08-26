@@ -25,7 +25,7 @@ public class Shockwave : MonoBehaviour {
 
     public void wave()
     {
-        if(Gestionnaire.ShockWave == true)
+      //  if(Gestionnaire.ShockWave == true)
         {
             waving = true;
             ShockParticle.Play();

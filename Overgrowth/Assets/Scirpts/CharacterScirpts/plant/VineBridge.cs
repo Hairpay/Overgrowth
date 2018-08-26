@@ -27,7 +27,7 @@ public class VineBridge : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Gestionnaire.VineBridge == true)
+        //if (Gestionnaire.VineBridge == true)
         {
             if (Input.GetButtonDown("Fire3"))
             {

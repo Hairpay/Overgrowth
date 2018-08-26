@@ -25,21 +25,18 @@ public class PowerUpSelfDestruct : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.tag == "Player" && suitMode == Gestionnaire.SuitActivated || coll.gameObject.tag == "Player" && doublePU == true)
-        {
+        if (coll.gameObject.tag == "Player")
+        {          
             gameObject.GetComponent<Collider2D>().enabled = false;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             gameObject.GetComponent<Description>().compteur = 55;
             gameObject.GetComponent<Description>().addnalyse();
             StartCoroutine("selfDestroy");
-            //Destroy(gameObject);
         }
-
-    }
+    }   
 
     IEnumerator selfDestroy()
     {
-
         yield return new WaitForSeconds(4f);
         gameObject.GetComponent<Description>().hidenalyse();
         Destroy(gameObject);

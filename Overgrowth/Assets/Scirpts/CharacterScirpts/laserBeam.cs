@@ -53,15 +53,8 @@ public class laserBeam : MonoBehaviour
             {
                 ray = (Camera.main.ScreenToWorldPoint(Input.mousePosition));
                 mouse = (Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            }                               
 
-
-            }
-                       
-            if (Gestionnaire.manetteMode == true && analazing == false)
-            {                                           
-                hit = Physics2D.Raycast(gameObject.transform.position, gameObject.transform.right * 1000, 200f);
-                ray = hit.point;
-            }
             else
             {
                 hit = Physics2D.Raycast(ray, ray, 0.1f);
