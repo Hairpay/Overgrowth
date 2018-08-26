@@ -13,8 +13,6 @@ public class PowerJump : MonoBehaviour {
     public float MaxMultiplier = 700;
     public float Multiplier;
     public float factor;
-
-    public bool GravityAnchor = false;
     //public int Cooldown = 0;
     public bool zCD;
 
@@ -62,11 +60,11 @@ public class PowerJump : MonoBehaviour {
                 //StartCoroutine("ReturnVariables");
             }
 
-            GravityAnchor = Gestionnaire.GravityAnchor;
+           
 
             if (Gestionnaire.CharJump == true && Multiplier < MaxMultiplier)
             {
-                if (Gestionnaire.JumpCD < 1 || Gestionnaire.JumpCD < 2 && Gestionnaire.GravityAnchor == true)
+                if (Gestionnaire.JumpCD < 1 || Gestionnaire.JumpCD < 2 && Gestionnaire.PowerUps[2] > 0)
                 {
                     if (Gestionnaire.grounded == true && Multiplier > MaxMultiplier * 0.6f)
                     {
@@ -116,7 +114,7 @@ public class PowerJump : MonoBehaviour {
         Gestionnaire.CharJump = true;
     //    gameObject.GetComponent<SuitMove>().Speed = gameObject.GetComponent<SuitMove>().MaxSpeedCharge;
                 
-            if (GravityAnchor == true && Gestionnaire.JumpCD == 1)
+            if (Gestionnaire.PowerUps[2] > 0 && Gestionnaire.JumpCD == 1)
             {
                 body.velocity = new Vector2(0f, 0f);
                 body.simulated = false;
@@ -131,7 +129,7 @@ public class PowerJump : MonoBehaviour {
 
     public void _PJumpUp()
     {
-        if (Gestionnaire.JumpCD < 1 || Gestionnaire.JumpCD < 2 && GravityAnchor == true)
+        if (Gestionnaire.JumpCD < 1 || Gestionnaire.JumpCD < 2 && Gestionnaire.PowerUps[2] > 0)
         {
             body.simulated = true;
             body.velocity = new Vector2(0f, 0f);

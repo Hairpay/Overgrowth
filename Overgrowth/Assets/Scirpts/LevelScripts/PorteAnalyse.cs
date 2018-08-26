@@ -56,7 +56,7 @@ public class PorteAnalyse : MonoBehaviour
 
     public void Unlockage()
     {
-        if (AnalysisLevel > Gestionnaire.analysisLevel)
+        if (AnalysisLevel > Gestionnaire.PowerUps[0])
         {
             analysisText.text = ErrorMessage + "This door require a level " + AnalysisLevel +" security.";
         }

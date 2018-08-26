@@ -38,22 +38,14 @@ public class PowerUps : MonoBehaviour {
     void Update()
     {
         if (Gestionnaire.SuitActivated == true)
-        {
-           
+        {           
             Torse.GetComponent<SpriteMeshInstance>().color = suitColor;
         }
         else
-        {
-          
+        {         
             Torse.GetComponent<SpriteMeshInstance>().color = plantColor;
         }
-     }
-
-
-
-    // Update is called once per frame	
-   
-        
+     }        
     
     void OnApplicationQuit()
     {
@@ -63,11 +55,11 @@ public class PowerUps : MonoBehaviour {
 
         Gestionnaire.life = Gestionnaire.maxLife;
 
-        Gestionnaire.SuitActivated = true;
-        Gestionnaire.canSwitch = false;
+        Gestionnaire.SuitActivated = true;      
         Gestionnaire.KnockbackCD = false;
 
         Gestionnaire.Checkpoint = basePos;
-        Gestionnaire.analysisLevel = 0;
+        Gestionnaire.PowerUps[1] = 0;
+        Gestionnaire.PowerUps[0] = 0;
     }
 }

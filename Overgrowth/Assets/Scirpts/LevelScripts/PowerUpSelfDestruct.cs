@@ -7,8 +7,7 @@ public class PowerUpSelfDestruct : MonoBehaviour {
     public GameObject Character;
     public Gestionnaire Gestionnaire;
 
-    public bool suitMode;
-    public bool doublePU;
+    public int Boost;
     
 
     // Use this for initialization
@@ -31,6 +30,9 @@ public class PowerUpSelfDestruct : MonoBehaviour {
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             gameObject.GetComponent<Description>().compteur = 55;
             gameObject.GetComponent<Description>().addnalyse();
+
+            Gestionnaire.PowerUps[Boost] = Gestionnaire.PowerUps[Boost] + 1;
+
             StartCoroutine("selfDestroy");
         }
     }   

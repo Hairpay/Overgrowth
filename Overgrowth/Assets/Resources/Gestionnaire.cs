@@ -22,12 +22,13 @@ public class Gestionnaire : ScriptableObject {
 
     public bool isFiring;
     public bool SuitActivated;
-    
+
 
     // Suit Power ups
-    public int analysisLevel;
-    public bool GravityAnchor;
-    public bool canSwitch;
+    public int[] PowerUps;
+    // 0 = Analysis level
+    // 1 = Can Switch
+    // 2 = Gravity Anchor
 
     //plant power ups 
     public int life;

@@ -29,7 +29,7 @@ public class SwitchBeam : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetButtonDown("Fire6") && Gestionnaire.isFiring == false && Gestionnaire.canSwitch == true)
+        if (Input.GetButtonDown("Fire6") && Gestionnaire.isFiring == false && Gestionnaire.PowerUps[1] > 0)
         {
             Gestionnaire.SuitActivated = !Gestionnaire.SuitActivated;
             
@@ -62,7 +62,7 @@ public class SwitchBeam : MonoBehaviour {
             }            
         }
 
-        //if (Input.GetButtonDown("Fire3") && Gestionnaire.Switchbeam == true)
+        if (Input.GetButtonDown("Fire3"))
         {
             Gestionnaire.isFiring = true;
         }

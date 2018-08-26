@@ -22,9 +22,9 @@ public class UIGereur : MonoBehaviour {
     {
         //UI.SetActive(true);
         Character = GameObject.Find("character");
-        Gestionnaire = Character.GetComponent<PowerUps>().Gestionnaire;       
+        Gestionnaire = Character.GetComponent<PowerUps>().Gestionnaire;
 
-        gameObject.transform.position = Gestionnaire.Checkpoint;
+        Gestionnaire.Checkpoint = gameObject.transform.position ;
 
         
     }
