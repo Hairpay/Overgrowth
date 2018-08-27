@@ -1600,7 +1600,7 @@ MonoBehaviour:
   MinMultiplier: 100
   MaxMultiplier: 700
   Multiplier: 0
-  factor: 1.2
+  factor: 1.25
   zCD: 0
   BoosterLight: {fileID: 108000202576356518}
   AnchorLight: {fileID: 108158918225486446}
