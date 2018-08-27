@@ -12,12 +12,10 @@ public class Ascenseur : MonoBehaviour {
 
     public GameObject[] Arrets;
     public int position;
+    public int basePosition;
 
     public bool isMoving;
     public float t;
-
-    public bool goUp;
-    public bool goDown;
 
     public Vector3 oldPos;
     public float v;
@@ -30,6 +28,7 @@ public class Ascenseur : MonoBehaviour {
         layer_mask = LayerMask.GetMask("Player");
 
         oldPos = gameObject.transform.position;
+        position = basePosition;
 
     }
 	
@@ -59,26 +58,28 @@ public class Ascenseur : MonoBehaviour {
                 character.GetComponent<Rigidbody2D>().simulated = false;
                 character.transform.parent = gameObject.transform;
                 Gestionnaire.Locked = true;
-            }
-            goUp = false;
+            }         
         }
 
         if (isMoving == false && active == true && v < -0.1f)
         {
-            if(position < Arrets.Length)
+            if(position < Arrets.Length - 1)
             {
                 isMoving = true;
                 position = position + 1;
                 character.GetComponent<Rigidbody2D>().simulated = false;
                 character.transform.parent = gameObject.transform;
                 Gestionnaire.Locked = true;
-            }        
-            goDown = false;
+            }                 
         }
 
         if(isMoving == true)
         {
-            gameObject.transform.position = new Vector3( gameObject.transform.position.x, (Mathf.Lerp(oldPos.y, Arrets[position].transform.position.y, t)), gameObject.transform.position.z);          
+            gameObject.transform.position = new Vector3(
+                gameObject.transform.position.x, 
+                (Mathf.Lerp(oldPos.y, Arrets[position].transform.position.y, t)),
+                gameObject.transform.position.z);  
+                    
             if (t < 1)
             {
                 t += 0.4f * Time.deltaTime;

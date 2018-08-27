@@ -52,7 +52,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1507739019489094}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -489, y: 188, z: 0}
   m_LocalScale: {x: 1.1935849, y: 1.193585, z: 1.193585}
   m_Children:
   - {fileID: 4253434472389058}
@@ -135,10 +135,11 @@ MonoBehaviour:
   directionY: 0
   lastDirectionY: 0
   actualPos: {x: 0, y: 0, z: 0}
+  newPos: {x: 0, y: 0, z: 0}
   offset: 3
-  distance: 30
-  distanceUp: 21
-  distanceBot: 20
+  distance: 32
+  distanceUp: 15
+  distanceBot: 15
   touchLeft: 0
   touchRight: 0
   touchUp: 0

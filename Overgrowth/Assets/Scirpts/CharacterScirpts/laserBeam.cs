@@ -7,11 +7,10 @@ using UnityEngine.UI;
 public class laserBeam : MonoBehaviour
 {
 
-    public bool firing;
-    public float maxDistance = 150f;
+    public bool firing;   
    // private int layer_mask;
 
-    public Vector2 mouse;
+
     public LineRenderer line;
     public Material lineMaterial;
     public bool analazing;
@@ -52,8 +51,8 @@ public class laserBeam : MonoBehaviour
             if (analazing == false)
             {
                 ray = (Camera.main.ScreenToWorldPoint(Input.mousePosition));
-                mouse = (Camera.main.ScreenToWorldPoint(Input.mousePosition));
-            }                               
+                hit = Physics2D.Raycast(ray, ray, 0.1f);
+            }
 
             else
             {
@@ -62,8 +61,7 @@ public class laserBeam : MonoBehaviour
 
             line.enabled = true;
             line.SetPosition(0, gameObject.transform.position);
-            line.SetPosition(1, ray);
-
+            line.SetPosition(1, ray);          
 
             if (hit.collider != null && 
                 hit.collider.gameObject.GetComponent<Description>() != null && 

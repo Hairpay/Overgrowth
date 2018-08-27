@@ -18,7 +18,7 @@ public class UltimaCameraScirpt : MonoBehaviour {
     private Vector3 CharPos;
     private Vector3 basePos;
     public Vector3 actualPos;
-    private Vector3 newPos;
+    public Vector3 newPos;
     public float offset;
 
     private Vector3 rightPos;
@@ -74,8 +74,8 @@ public class UltimaCameraScirpt : MonoBehaviour {
         lastDirection = direction;
         lastDirectionY = directionY;
 
-        RaycastHit2D left = Physics2D.Raycast(gameObject.transform.position, Vector2.left, distance, layer_mask);
-        Debug.DrawLine(gameObject.transform.position, left.point);
+        RaycastHit2D left = Physics2D.Raycast(transform.position, Vector2.left, distance, layer_mask);
+        Debug.DrawRay(transform.position, Vector2.left * distance);
 
         // raycasts
         if (left.collider != null)
@@ -91,8 +91,8 @@ public class UltimaCameraScirpt : MonoBehaviour {
             touchLeft = false;
         }
 
-        RaycastHit2D right = Physics2D.Raycast(gameObject.transform.position, Vector2.right, distance, layer_mask);
-        Debug.DrawLine(gameObject.transform.position, right.point);
+        RaycastHit2D right = Physics2D.Raycast(transform.position, Vector2.right, distance, layer_mask);       
+        Debug.DrawRay(transform.position, Vector2.right * distance);
 
         if (right.collider != null)
         {        
@@ -107,8 +107,8 @@ public class UltimaCameraScirpt : MonoBehaviour {
             touchRight = false;
         }
      
-        RaycastHit2D bot = Physics2D.Raycast(gameObject.transform.position, Vector2.down, distanceBot, layer_maskG);
-        Debug.DrawLine(gameObject.transform.position, bot.point);
+        RaycastHit2D bot = Physics2D.Raycast(transform.position, Vector2.down, distanceBot, layer_maskG);
+        Debug.DrawRay(transform.position, Vector2.down * distanceBot);
 
         if (bot.collider != null)
         {
@@ -123,8 +123,8 @@ public class UltimaCameraScirpt : MonoBehaviour {
             touchBot = false;
         }
 
-        RaycastHit2D Up = Physics2D.Raycast(gameObject.transform.position, Vector2.up, distanceUp, layer_maskC);
-        Debug.DrawLine(gameObject.transform.position, Up.point);
+        RaycastHit2D Up = Physics2D.Raycast(transform.position, Vector2.up, distanceUp, layer_maskC);
+        Debug.DrawRay(transform.position, Vector2.up * distanceUp);
 
         if (Up.collider != null)
         {

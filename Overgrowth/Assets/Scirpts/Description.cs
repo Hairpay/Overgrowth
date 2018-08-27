@@ -24,6 +24,11 @@ public class Description : MonoBehaviour {
         analysisText.enabled = false;
         analysisPanel.enabled = false;
 
+        if (gameObject.GetComponent<PorteAnalyse>() != null || gameObject.GetComponent<CallElevator>() != null)
+        {
+            speed = 3;
+        }
+    
     }
 	
 	// Update is called once per frame
