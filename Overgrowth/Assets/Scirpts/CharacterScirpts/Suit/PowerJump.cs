@@ -47,7 +47,7 @@ public class PowerJump : MonoBehaviour {
     void Update()
     {
 
-        if (Gestionnaire.Locked == false)
+        if (Gestionnaire.Locked == false && Gestionnaire.Crouch == false)
         {
 
 

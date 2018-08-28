@@ -65,7 +65,7 @@ public class DOIgo : MonoBehaviour {
     }
     IEnumerator selfdestrucc()
     {
-        yield return new WaitForSeconds(1.05f);
+        yield return new WaitForSeconds(.725f);
         Xploz();
     }
 }

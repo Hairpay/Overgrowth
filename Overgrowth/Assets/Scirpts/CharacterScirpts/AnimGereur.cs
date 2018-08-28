@@ -26,64 +26,90 @@ public class AnimGereur : MonoBehaviour {
 
         if (Gestionnaire.Locked == false)
         {
-            if (Input.GetButtonDown("Fire5"))
+            if (Gestionnaire.Crouch == true)
             {
-                charnim.Play("CacAtac");
-            }
-            else
-            {
-                if (Gestionnaire.isGlinding == true)
+                charnim.SetBool("isCrouching", true);              
+
+                if (Gestionnaire.Speed > 0.05f && Gestionnaire.JumpCD < 1)
                 {
-                    charnim.SetBool("isSliding", true);
-                    charnim.Play("Sliding");
+                    charnim.SetBool("isWalking", true);
+                    charnim.Play("CrouchWalk");
                 }
                 else
                 {
-                    charnim.SetBool("isSliding", false);
-                    charnim.SetFloat("Velocity", Gestionnaire.Speed * 0.4f);
+                    charnim.SetBool("isWalking", false);
+                    charnim.Play("CrouchIdle");
+                }
+            }
+            else
+            {
+                charnim.SetBool("isCrouching", false);
 
-                    if (Gestionnaire.CharJump == true)
+                if (Input.GetButtonDown("Fire5"))
+                {
+                    charnim.Play("CacAtac");
+                }
+                else
+                {
+                    if (Gestionnaire.isGlinding == true)
                     {
-                        charnim.Play("CharJump");
+                        charnim.SetBool("isSliding", true);
+                        charnim.Play("Sliding");
                     }
                     else
                     {
-                        if (Gestionnaire.Speed > 0.05f && Gestionnaire.JumpCD < 1)
+                        charnim.SetBool("isSliding", false);
+                        charnim.SetFloat("Velocity", Gestionnaire.Speed * 0.4f);
+
+                        if (Gestionnaire.CharJump == true)
                         {
-                            charnim.SetBool("isWalking", true);
+                            charnim.Play("CharJump");
                         }
                         else
                         {
-                            charnim.SetBool("isWalking", false);
-                        }
-
-                        if (Gestionnaire.KnockbackCD == true)
-                        {
-                            if (isJumping == true)
+                            if (Gestionnaire.Speed > 0.05f && Gestionnaire.JumpCD < 1)
                             {
-                                charnim.Play("JumpingKnock");
+                                charnim.SetBool("isWalking", true);
                             }
                             else
                             {
-                                charnim.Play("Knockback");
+                                charnim.SetBool("isWalking", false);
                             }
 
-                        }
+                            if (Gestionnaire.KnockbackCD == true)
+                            {
+                                if (isJumping == true)
+                                {
+                                    charnim.Play("JumpingKnock");
+                                }
+                                else
+                                {
+                                    charnim.Play("Knockback");
+                                }
 
-                        else if (Gestionnaire.JumpCD > 0)
-                        {
-                            charnim.Play("Jumping");
-                            isJumping = true;
-                            charnim.SetBool("isJumping", true);
+                            }
+
+                            else if (Gestionnaire.JumpCD > 0)
+                            {
+                                charnim.Play("Jumping");
+                                isJumping = true;
+                                charnim.SetBool("isJumping", true);
+                            }
+                            else if (Gestionnaire.JumpCD < 1)
+                            {
+                                isJumping = false;
+                                charnim.SetBool("isJumping", false);
+                            }
                         }
-                        else if (Gestionnaire.JumpCD < 1)
-                        {
-                            isJumping = false;
-                            charnim.SetBool("isJumping", false);
-                        }                    
                     }
                 }
             }
+
+            
+        }
+        else
+        {
+            charnim.Play("Idle");
         }
     }
 

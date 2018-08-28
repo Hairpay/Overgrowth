@@ -13,16 +13,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 0
   Locked: 0
+  Crouch: 0
   isGlinding: 0
   GlideGauche: 0
-  grounded: 0
+  grounded: 1
   CharJump: 0
-  JumpCD: 1
+  JumpCD: 0
   Jcd: 0
   KnockbackCD: 0
   isFiring: 0
   SuitActivated: 1
-  disfunction: 1
+  disfunction: 0
   PowerUps: 00000000000000000000000000000000
   life: 5
   maxLife: 5

@@ -81,8 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Character: {fileID: 0}
   Gestionnaire: {fileID: 0}
-  suitMode: 1
-  doublePU: 0
+  Boost: 0
 --- !u!114 &114561708131121584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,6 +98,7 @@ MonoBehaviour:
   analysisPanel: {fileID: 0}
   description: With this security pass, you can now open level 1 doors.
   compteur: 0
+  speed: 1
 --- !u!212 &212517396362934916
 SpriteRenderer:
   m_ObjectHideFlags: 1

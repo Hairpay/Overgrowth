@@ -49,6 +49,15 @@ public class Ascenseur : MonoBehaviour {
             active = false;
         }
 
+        if (isMoving == true && active == false)
+        {
+            gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        }
+        else
+        {
+            gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+        }
+
         if (isMoving == false && active == true && v > 0.1f)
         {
             if (position > 0)

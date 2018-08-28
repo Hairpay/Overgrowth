@@ -10,6 +10,7 @@ public class Gestionnaire : ScriptableObject {
    
     public float Speed;
     public bool Locked;
+    public bool Crouch;
     public bool isGlinding;
     public bool GlideGauche;
 

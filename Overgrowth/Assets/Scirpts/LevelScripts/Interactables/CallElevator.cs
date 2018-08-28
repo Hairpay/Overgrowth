@@ -19,7 +19,7 @@ public class CallElevator : MonoBehaviour {
 
     public void Call()
     {
-        if (Elevator.GetComponent<Ascenseur>().position != PositionArret)
+        if (Elevator.GetComponent<Ascenseur>().position != PositionArret && Elevator.GetComponent<Ascenseur>().isMoving == false)
         {
             Elevator.GetComponent<Ascenseur>().position = PositionArret;
             Elevator.GetComponent<Ascenseur>().isMoving = true;

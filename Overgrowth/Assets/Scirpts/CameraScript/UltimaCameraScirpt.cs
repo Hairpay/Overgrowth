@@ -20,6 +20,7 @@ public class UltimaCameraScirpt : MonoBehaviour {
     public Vector3 actualPos;
     public Vector3 newPos;
     public float offset;
+    public float offsetY;
 
     private Vector3 rightPos;
     private Vector3 leftPos;
@@ -42,7 +43,7 @@ public class UltimaCameraScirpt : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        basePos = new Vector3(-offset, offset, 0f);
+        basePos = new Vector3(-offset, offsetY, 0f);
         Character = GameObject.Find("character");
         // gameObject.transform.localPosition = new Vector2(Character.transform.localPosition.x - 3, Character.transform.localPosition.y + 3); = new Vector2(Character.transform.position.x - 3, Character.transform.position.y + 3);
         gameObject.transform.position = Character.transform.position;
@@ -185,7 +186,7 @@ public class UltimaCameraScirpt : MonoBehaviour {
 
         if (directionY == true)
         {
-            newPos.y = rightPos.y - 6;
+            newPos.y = rightPos.y - offsetY * 2;
         }
         else
         {

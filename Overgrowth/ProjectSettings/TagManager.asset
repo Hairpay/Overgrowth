@@ -21,6 +21,7 @@ TagManager:
   - Orb
   - Elevator
   - AnalyserPlus
+  - Analyser+
   layers:
   - Default
   - TransparentFX
@@ -40,7 +41,7 @@ TagManager:
   - P3
   - P4
   - Elevator
-  - 
+  - Environment
   - 
   - orb
   - 
