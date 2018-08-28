@@ -18,6 +18,7 @@ public class PorteAnalyse : MonoBehaviour
     public int AnalysisLevel;
     public string ErrorMessage;
     public string OpeningMessage;
+   
 
     public Text analysisText;
 

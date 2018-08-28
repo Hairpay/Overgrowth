@@ -22,6 +22,7 @@ public class Gestionnaire : ScriptableObject {
 
     public bool isFiring;
     public bool SuitActivated;
+    public bool disfunction;
 
 
     // Power ups

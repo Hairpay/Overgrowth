@@ -57,7 +57,7 @@ public class PowerUps : MonoBehaviour {
 
         Gestionnaire.SuitActivated = true;      
         Gestionnaire.KnockbackCD = false;
-
+        Gestionnaire.disfunction = false;
         Gestionnaire.Checkpoint = basePos;
 
         for (int i = 0; i < Gestionnaire.PowerUps.Length; i++)

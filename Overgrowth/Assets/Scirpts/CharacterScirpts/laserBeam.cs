@@ -23,6 +23,7 @@ public class laserBeam : MonoBehaviour
     public Gestionnaire Gestionnaire;
 
     public RaycastHit2D hit;
+    public bool blockAnalysis;
 
 
     // Use this for initialization
@@ -44,8 +45,9 @@ public class laserBeam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
 
-        if (firing == true && Gestionnaire.Locked == false)
+        if (firing == true && Gestionnaire.Locked == false && Gestionnaire.disfunction == false)
         {
 
             if (analazing == false)
