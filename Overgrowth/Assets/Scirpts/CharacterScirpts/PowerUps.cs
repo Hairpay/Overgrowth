@@ -59,7 +59,11 @@ public class PowerUps : MonoBehaviour {
         Gestionnaire.KnockbackCD = false;
 
         Gestionnaire.Checkpoint = basePos;
-        Gestionnaire.PowerUps[1] = 0;
-        Gestionnaire.PowerUps[0] = 0;
+
+        for (int i = 0; i < Gestionnaire.PowerUps.Length; i++)
+        {
+            Gestionnaire.PowerUps[i] = 0;            
+        }
+       
     }
 }

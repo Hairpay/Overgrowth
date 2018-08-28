@@ -39,7 +39,7 @@ public class SwitchBeam : MonoBehaviour {
             }        
         }
 
-        if (Gestionnaire.isFiring == true)
+        if (Gestionnaire.isFiring == true && Gestionnaire.PowerUps[3] > 0)
         {
             if (cooldown == false)
             {

@@ -22,7 +22,7 @@ MonoBehaviour:
   KnockbackCD: 0
   isFiring: 0
   SuitActivated: 1
-  PowerUps: 000000000000000000000000
+  PowerUps: 00000000000000000000000000000000
   life: 5
   maxLife: 5
   invicible: 0
