@@ -32,6 +32,14 @@ public class PowerUpSelfDestruct : MonoBehaviour {
             gameObject.GetComponent<Description>().addnalyse();
 
             Gestionnaire.PowerUps[Boost] = Gestionnaire.PowerUps[Boost] + 1;
+            if (Boost == 1)
+            {
+                Gestionnaire.disfunction = false;
+            }
+            if (Boost == 4)
+            {
+                Gestionnaire.life = Gestionnaire.PowerUps[4];
+            }
 
             StartCoroutine("selfDestroy");
         }

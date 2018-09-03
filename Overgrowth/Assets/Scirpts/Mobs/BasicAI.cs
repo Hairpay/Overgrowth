@@ -28,7 +28,7 @@ public class BasicAI : MonoBehaviour {
 
         dist = Vector3.Distance(Character.transform.position, transform.position);
 
-        if (dist < 30f && Gestionnaire.SuitActivated == true)
+        if (dist < 30f)
         {
             RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Character.transform.position - gameObject.transform.position, dist, layer_mask);
             Debug.DrawLine(gameObject.transform.position, hit.point);
@@ -39,10 +39,16 @@ public class BasicAI : MonoBehaviour {
             {
                 Debug.Log("je peux vous voir");
                 Jump = Character.transform.position - gameObject.transform.position;
-                Jump = Jump.normalized;               
-                moBody.AddForce(Jump * 20000);
+                Jump = Jump.normalized;       
+                if (Gestionnaire.SuitActivated == true)
+                {
+                    moBody.AddForce(Jump * 20000);
+                }
+                else
+                {
+                    moBody.AddForce(Jump * -20000);
+                }                                        
                 cooldown = true;
-
                 StartCoroutine("ReturnVariables");
             }
         }
@@ -55,7 +61,7 @@ public class BasicAI : MonoBehaviour {
     IEnumerator ReturnVariables()
     {
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
         cooldown = false;
     }
 
@@ -63,7 +69,7 @@ public class BasicAI : MonoBehaviour {
     {
         yield return new WaitForSeconds(0.5f);
         gameObject.GetComponent<MecheMob>().ded();
-        if (Gestionnaire.life < Gestionnaire.maxLife)
+        if (Gestionnaire.life < Gestionnaire.PowerUps[4])
         {
             Gestionnaire.life = Gestionnaire.life + 1;
         }

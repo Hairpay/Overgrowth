@@ -29,9 +29,8 @@ public class PowerUps : MonoBehaviour {
         plantColor.b = 0;
 
         Gestionnaire.KnockbackCD = false;
-        Gestionnaire.JumpCD = 0;
-        Gestionnaire.SuitActivated = true;
-        Gestionnaire.Locked = false;
+        Gestionnaire.JumpCD = 0;      
+
     }
 
     
@@ -53,11 +52,12 @@ public class PowerUps : MonoBehaviour {
         
         //  Gestionnaire.VineBridge = false;
 
-        Gestionnaire.life = Gestionnaire.maxLife;
+        Gestionnaire.life = Gestionnaire.PowerUps[4];
 
         Gestionnaire.SuitActivated = true;      
         Gestionnaire.KnockbackCD = false;
         Gestionnaire.disfunction = false;
+        Gestionnaire.Locked = false;
         Gestionnaire.Checkpoint = basePos;
 
         for (int i = 0; i < Gestionnaire.PowerUps.Length; i++)

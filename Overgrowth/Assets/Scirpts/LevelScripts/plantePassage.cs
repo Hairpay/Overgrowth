@@ -9,6 +9,8 @@ public class plantePassage : MonoBehaviour {
 
     public Color baseColor;
     public Color otherColor;
+    public int baseLayer;
+    
 
     // Use this for initialization
     void Awake ()
@@ -21,7 +23,8 @@ public class plantePassage : MonoBehaviour {
     void Start () {
 
         character = GameObject.Find("character");
-        Gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;     
+        Gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;
+        baseLayer = gameObject.layer;
     }
 	
 	// Update is called once per frame
@@ -31,11 +34,13 @@ public class plantePassage : MonoBehaviour {
         {
             gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
             gameObject.GetComponent<SpriteRenderer>().color = otherColor;
+            gameObject.layer = 0;
         }
         else
         {
             gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
             gameObject.GetComponent<SpriteRenderer>().color = baseColor;
+            gameObject.layer = baseLayer;        
         }                      
 	}
 }

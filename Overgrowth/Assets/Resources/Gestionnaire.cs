@@ -32,10 +32,11 @@ public class Gestionnaire : ScriptableObject {
     // 1 = Can Switch
     // 2 = Gravity Anchor
     // 3 = Gun
+    // 4 = life 
 
 
     public int life;
-    public int maxLife;
+
     public bool invicible;
     public Vector3 Checkpoint;
 }

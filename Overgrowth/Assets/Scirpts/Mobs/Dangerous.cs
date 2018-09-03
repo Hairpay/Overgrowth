@@ -30,13 +30,19 @@ public class Dangerous : MonoBehaviour {
         {
             if ( gameObject.GetComponent<MecheMob>().isDed == false)
             {
-                aie();
+                if (Gestionnaire.SuitActivated == true)
+                {
+                    aie();
+                }
             }
          
         }
         else if (coll.gameObject.tag == "Player" && cooldown == false &&  gameObject.GetComponent<MecheMob>() == null)
         {
-            aie();
+            if (Gestionnaire.SuitActivated == true)
+            {
+                aie();
+            }
         }
     }
     public void aie()

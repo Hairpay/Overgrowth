@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ascenseur : MonoBehaviour {
 
@@ -19,37 +20,71 @@ public class Ascenseur : MonoBehaviour {
 
     public Vector3 oldPos;
     public float v;
+    public bool noHitbox;
+    public bool power = true;
+
+    public Text analysisText;
+    public Image analysisPanel;
+
+    public Color baseColor;
+    public Color activeColor;
 
     // Use this for initialization
     void Start ()
     {
         character = GameObject.Find("character");
         Gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;
+        analysisPanel = character.GetComponent<UIGereur>().analysisPanel;
+        analysisText = character.GetComponent<UIGereur>().analysis;
+
         layer_mask = LayerMask.GetMask("Player");
 
         oldPos = gameObject.transform.position;
         position = basePosition;
 
+        baseColor = gameObject.GetComponent<SpriteRenderer>().color;
+        activeColor = baseColor;
+        activeColor.r = baseColor.r * 0.03f;
+
     }
 	
+    public void Error()
+    {
+        analysisText.text = "Error, this elevator has no power.";
+        analysisText.enabled = true;
+        analysisPanel.enabled = true;
+        StopAllCoroutines();
+        StartCoroutine("ReturnUnlock");
+    }
+    public void Called()
+    {
+        analysisText.text = "Elevator called.";
+        analysisText.enabled = true;
+        analysisPanel.enabled = true;
+        StopAllCoroutines();
+        StartCoroutine("ReturnUnlock");
+    }
+
 	// Update is called once per frame
 	void Update ()
     {
         v = Input.GetAxis("Vertical");
 
-        RaycastHit2D upHit = Physics2D.Raycast(transform.position, Vector2.up, 3f, layer_mask);
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.up)* 3f);
+        RaycastHit2D upHit = Physics2D.Raycast(transform.position, Vector2.up, 3f * transform.localScale.y, layer_mask);
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.up)* 3f * transform.localScale.y);
         if(upHit.collider != null)
         {
             Debug.Log(upHit.collider.name);
             active = true;
+            gameObject.GetComponent<SpriteRenderer>().color = activeColor;
         }
         else
         {
             active = false;
+            gameObject.GetComponent<SpriteRenderer>().color = baseColor;
         }
 
-        if (isMoving == true && active == false)
+        if (noHitbox == true)
         {
             gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
         }
@@ -58,7 +93,7 @@ public class Ascenseur : MonoBehaviour {
             gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
         }
 
-        if (isMoving == false && active == true && v > 0.1f)
+        if (isMoving == false && active == true && v > 0.1f && power == true)
         {
             if (position > 0)
             {
@@ -70,7 +105,7 @@ public class Ascenseur : MonoBehaviour {
             }         
         }
 
-        if (isMoving == false && active == true && v < -0.1f)
+        if (isMoving == false && active == true && v < -0.1f && power == true)
         {
             if(position < Arrets.Length - 1)
             {
@@ -84,24 +119,44 @@ public class Ascenseur : MonoBehaviour {
 
         if(isMoving == true)
         {
-            gameObject.transform.position = new Vector3(
-                gameObject.transform.position.x, 
-                (Mathf.Lerp(oldPos.y, Arrets[position].transform.position.y, t)),
-                gameObject.transform.position.z);  
-                    
-            if (t < 1)
-            {
-                t += 0.4f * Time.deltaTime;
+            if (power == true)
+            {               
+               gameObject.transform.position = new Vector3(
+               (Mathf.Lerp(oldPos.x, Arrets[position].transform.position.x, t)),
+               (Mathf.Lerp(oldPos.y, Arrets[position].transform.position.y, t)),
+               gameObject.transform.position.z);
+
+                if (t < 1)
+                {
+                    t += 0.4f * Time.deltaTime;
+                }
+                else
+                {
+                    isMoving = false;
+                    t = 0;
+                    oldPos = gameObject.transform.position;
+                    noHitbox = false;
+                    character.GetComponent<Rigidbody2D>().simulated = true;
+                    character.transform.parent = null;
+                    Gestionnaire.Locked = false;
+                }
             }
             else
             {
+                Error();
                 isMoving = false;
-                t = 0;
-                oldPos = gameObject.transform.position;
                 character.GetComponent<Rigidbody2D>().simulated = true;
                 character.transform.parent = null;
                 Gestionnaire.Locked = false;
+                noHitbox = false;
             }
+           
         }
     }
+    IEnumerator ReturnUnlock()
+    {
+        yield return new WaitForSeconds(2f);
+        analysisText.enabled = false;
+        analysisPanel.enabled = false;
+    }   
 }

@@ -68,9 +68,6 @@ TagManager:
   - name: PreArrierePlan
     uniqueID: 2960634845
     locked: 0
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Paralax1
     uniqueID: 1283666641
     locked: 0
@@ -82,6 +79,9 @@ TagManager:
     locked: 0
   - name: Paralax4
     uniqueID: 1519503147
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: Mob1
     uniqueID: 2736665135

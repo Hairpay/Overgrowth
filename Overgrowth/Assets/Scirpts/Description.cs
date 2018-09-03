@@ -61,7 +61,6 @@ public class Description : MonoBehaviour {
             else if(gameObject.GetComponent<CallElevator>() != null)
             {
                 gameObject.GetComponent<CallElevator>().Call();
-                analysisText.text = description;
             }
             else
             {

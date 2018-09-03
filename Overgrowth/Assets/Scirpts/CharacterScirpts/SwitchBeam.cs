@@ -50,19 +50,16 @@ public class SwitchBeam : MonoBehaviour {
                 if(Gestionnaire.SuitActivated == true)
                 {
                     firespeed = 0.2f;
+                    cooldown = true;
+                    StartCoroutine("firePrep");
                 }
-                else
+                else if (Gestionnaire.PowerUps[3] > 1)
                 {
                     firespeed = 0.1f;
-                }
-
-                cooldown = true;
-                StartCoroutine("firePrep");
-
-                if (Gestionnaire.SuitActivated == false)
-                {
+                    cooldown = true;
+                    StartCoroutine("firePrep");
                     reloading = 1;
-                }
+                }              
             }            
         }
 

@@ -19,10 +19,22 @@ public class CallElevator : MonoBehaviour {
 
     public void Call()
     {
-        if (Elevator.GetComponent<Ascenseur>().position != PositionArret && Elevator.GetComponent<Ascenseur>().isMoving == false)
+        if (Elevator.GetComponent<Ascenseur>().power == true)
         {
-            Elevator.GetComponent<Ascenseur>().position = PositionArret;
-            Elevator.GetComponent<Ascenseur>().isMoving = true;
-        }                 
+            Elevator.GetComponent<Ascenseur>().Called();
+
+            if (Elevator.GetComponent<Ascenseur>().position != PositionArret && Elevator.GetComponent<Ascenseur>().isMoving == false)
+            {
+                Elevator.GetComponent<Ascenseur>().position = PositionArret;
+                Elevator.GetComponent<Ascenseur>().isMoving = true;
+                Elevator.GetComponent<Ascenseur>().noHitbox = true;
+              
+            }
+        }
+        else
+        {
+            Elevator.GetComponent<Ascenseur>().Error();
+        }
+                      
     }
 }

@@ -57,7 +57,8 @@ public class SuitMove : MonoBehaviour {
         {
             Speed = MaxSpeedPlant;
         }
-        else if (Gestionnaire.Crouch == false)
+
+        if (Gestionnaire.Crouch == false)
         {
             gameObject.GetComponent<CapsuleCollider2D>().size = sizebox;
             gameObject.GetComponent<CapsuleCollider2D>().offset = new Vector2(0, 0.1f);

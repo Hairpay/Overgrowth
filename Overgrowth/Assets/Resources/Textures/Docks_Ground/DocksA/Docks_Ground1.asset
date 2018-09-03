@@ -196,7 +196,7 @@ MonoBehaviour:
     m_RandomTransform: 0
   - m_Neighbors: 0000000002000000000000000000000000000000000000000200000000000000
     m_Sprites:
-    - {fileID: 21300000, guid: cc72304b1ddc9c243812d8d8a9c8bd1d, type: 3}
+    - {fileID: 21300000, guid: 18326edab05e19c448a2ac0615fbc855, type: 3}
     m_AnimationSpeed: 1
     m_PerlinScale: 0.5
     m_RuleTransform: 0

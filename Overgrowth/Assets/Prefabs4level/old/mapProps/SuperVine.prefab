@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61095504910560332}
   - component: {fileID: 114448292680197074}
   - component: {fileID: 114203320032594818}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: SuperVine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,6 +84,7 @@ MonoBehaviour:
   analysisPanel: {fileID: 0}
   description: Flames dont work on thoses, but green things can go through.
   compteur: 0
+  speed: 1
 --- !u!114 &114448292680197074
 MonoBehaviour:
   m_ObjectHideFlags: 1

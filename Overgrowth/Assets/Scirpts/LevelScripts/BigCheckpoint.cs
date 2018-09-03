@@ -35,7 +35,7 @@ public class BigCheckpoint : MonoBehaviour
             Gestionnaire.Checkpoint.x = gameObject.transform.position.x;
             Gestionnaire.Checkpoint.y = gameObject.transform.position.y;
             gameObject.GetComponent<SpriteRenderer>().color = otherColor;
-            Gestionnaire.life = Gestionnaire.maxLife;
+            Gestionnaire.life = Gestionnaire.PowerUps[4];
           //  Gestionnaire.atPoint = true;
           //   Savestionnaire = Gestionnaire;            
         }
