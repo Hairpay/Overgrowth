@@ -63,7 +63,7 @@ public class UIGereur : MonoBehaviour {
         {
           
           
-            SceneManager.LoadScene("Level0_1");
+            SceneManager.LoadScene("Docks_P1_0");
         }
 		
 	}

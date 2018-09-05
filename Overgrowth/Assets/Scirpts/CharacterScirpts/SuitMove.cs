@@ -70,15 +70,15 @@ public class SuitMove : MonoBehaviour {
         Vector3 hautPos = new Vector3(transform.position.x, transform.position.y + 1.6f, 0);
         Vector3 basPos = new Vector3(transform.position.x, transform.position.y - 1, 0);
 
-        RaycastHit2D leftHaut = Physics2D.Raycast(hautPos, Vector2.left, 2, layer_mask);
-        Debug.DrawRay(hautPos, Vector2.left * 2);       
-        RaycastHit2D leftBas = Physics2D.Raycast(basPos, Vector2.left, 2, layer_mask);
-        Debug.DrawRay(basPos, Vector2.left * 2);       
+        RaycastHit2D leftHaut = Physics2D.Raycast(hautPos, Vector2.left, 1, layer_mask);
+        Debug.DrawRay(hautPos, Vector2.left * 1);       
+        RaycastHit2D leftBas = Physics2D.Raycast(basPos, Vector2.left, 1, layer_mask);
+        Debug.DrawRay(basPos, Vector2.left * 1);       
       
-        RaycastHit2D rightHaut = Physics2D.Raycast(hautPos, Vector2.right, 2, layer_mask);
-        Debug.DrawRay(hautPos, Vector2.right * 2);       
-        RaycastHit2D rightBas = Physics2D.Raycast(basPos, Vector2.right, 2, layer_mask);
-        Debug.DrawRay(basPos, Vector2.right * 2);
+        RaycastHit2D rightHaut = Physics2D.Raycast(hautPos, Vector2.right, 1, layer_mask);
+        Debug.DrawRay(hautPos, Vector2.right * 1);       
+        RaycastHit2D rightBas = Physics2D.Raycast(basPos, Vector2.right, 1, layer_mask);
+        Debug.DrawRay(basPos, Vector2.right * 1);
 
         RaycastHit2D centre = Physics2D.Raycast(transform.position, Vector2.up, 2, layer_mask);
         Debug.DrawRay(transform.position, Vector2.up * 2);

@@ -81,6 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Character: {fileID: 0}
   Gestionnaire: {fileID: 0}
+  textRamasse: 'Suit General Disfunction. '
 --- !u!114 &114258777337147390
 MonoBehaviour:
   m_ObjectHideFlags: 1

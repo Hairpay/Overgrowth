@@ -82,6 +82,7 @@ MonoBehaviour:
   Character: {fileID: 0}
   Gestionnaire: {fileID: 0}
   Boost: 3
+  textRamasse: Machine gun upgrade. ( fire with left click)
 --- !u!114 &114668159279849772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -134,7 +135,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4a744f18a508c8f4a91bbe9c982bdd22, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.7103448, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

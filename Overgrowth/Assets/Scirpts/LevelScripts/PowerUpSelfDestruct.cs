@@ -8,6 +8,7 @@ public class PowerUpSelfDestruct : MonoBehaviour {
     public Gestionnaire Gestionnaire;
 
     public int Boost;
+    public string textRamasse;
     
 
     // Use this for initialization
@@ -28,6 +29,8 @@ public class PowerUpSelfDestruct : MonoBehaviour {
         {          
             gameObject.GetComponent<Collider2D>().enabled = false;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
+            gameObject.GetComponent<Description>().description = textRamasse;
             gameObject.GetComponent<Description>().compteur = 55;
             gameObject.GetComponent<Description>().addnalyse();
 

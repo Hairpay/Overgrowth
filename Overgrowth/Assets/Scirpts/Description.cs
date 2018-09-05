@@ -28,15 +28,33 @@ public class Description : MonoBehaviour {
         {
             speed = 3;
         }
-    
+
+        if (gameObject.GetComponent<cakeslice.Outline>() == null)
+        {
+            gameObject.AddComponent<cakeslice.Outline>();
+        }
+
+        gameObject.GetComponent<cakeslice.Outline>().color = 1;
+        gameObject.GetComponent<cakeslice.Outline>().eraseRenderer = true;
+
+
     }
 	
 	// Update is called once per frame
-	void Update () {
-		
-       
+	void Update ()
+    {
+        
+        if (Input.GetButtonDown("Fire4"))
+        {
+            gameObject.GetComponent<cakeslice.Outline>().eraseRenderer = false;
+        }
 
-	}
+        if (Input.GetButtonUp("Fire4"))
+        {
+            gameObject.GetComponent<cakeslice.Outline>().eraseRenderer = true;
+        }
+    
+    }
 
     public void addnalyse()
     {

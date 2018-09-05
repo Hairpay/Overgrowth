@@ -52,8 +52,8 @@ public class laserBeam : MonoBehaviour
 
             if (analazing == false)
             {
-                ray = (Camera.main.ScreenToWorldPoint(Input.mousePosition));
-                hit = Physics2D.Raycast(ray, ray, 0.1f);
+                ray = (Camera.main.ScreenToWorldPoint(Input.mousePosition));               
+                hit = Physics2D.Raycast(ray, ray, 0.1f);            
             }
 
             else
@@ -61,9 +61,11 @@ public class laserBeam : MonoBehaviour
                 hit = Physics2D.Raycast(ray, ray, 0.1f);
             }
 
-            line.enabled = true;
-            line.SetPosition(0, gameObject.transform.position);
-            line.SetPosition(1, ray);          
+          
+                line.enabled = true;
+                line.SetPosition(0, gameObject.transform.position);
+                line.SetPosition(1, ray);
+            
 
             if (hit.collider != null && 
                 hit.collider.gameObject.GetComponent<Description>() != null && 
@@ -78,7 +80,17 @@ public class laserBeam : MonoBehaviour
                 Debug.Log(hit.collider.gameObject);
                 hit.collider.gameObject.GetComponent<Description>().addnalyse();
             }
-        }
+
+            if (hit.collider != null &&
+                hit.collider.gameObject.GetComponent<SerialNPC>() != null &&
+                Mathf.Abs(hit.point.x - gameObject.transform.position.x) < 10 &&
+                Mathf.Abs(hit.point.y - gameObject.transform.position.y) < 10)
+            {
+                Debug.Log(hit.collider.gameObject);
+                hit.collider.gameObject.GetComponent<SerialNPC>().speak();
+            }
+
+            }
         else
         {
             line.enabled = false;

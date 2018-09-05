@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scene/Docks_Prototype/Docks_P0.unity
     guid: 367be660ffc24ba4a9189a948e3eab25
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/Level0_1.unity
     guid: 4963d251648a77849a7df7a2ab088599
+  - enabled: 1
+    path: Assets/Scene/Docks_Prototype/Docks_P1_0.unity
+    guid: 1339ee65d77bdc744886391753fd3966
