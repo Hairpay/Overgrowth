@@ -145,11 +145,11 @@ public class UltimaCameraScirpt : MonoBehaviour {
         // x axis switching
         if (Gestionnaire.isGlinding == false)
         {
-            if (Directiangle < 0.55f)
+            if (Directiangle < 0.15f)
             {
                 direction = true;
             }
-            if (Directiangle > 0.85f)
+            if (Directiangle > 0.95f)
             {
                 direction = false;
             }
@@ -175,11 +175,11 @@ public class UltimaCameraScirpt : MonoBehaviour {
         }
 
         // Y axis switching
-        if (DirectiangleY < -0.2f)
+        if (DirectiangleY < -0.4f)
         {
             directionY = true;
         }
-        if (DirectiangleY > 0.2f)
+        if (DirectiangleY > 0.4f)
         {
             directionY = false;
         }

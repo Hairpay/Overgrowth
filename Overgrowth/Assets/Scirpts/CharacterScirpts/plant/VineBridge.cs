@@ -29,7 +29,7 @@ public class VineBridge : MonoBehaviour {
 	void Update () {
         //if (Gestionnaire.VineBridge == true)
         {
-            if (Input.GetButtonDown("Fire3"))
+            if (Input.GetButtonDown("Fire3") && Gestionnaire.SuitActivated == false) 
             {
                 RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - gameObject.transform.position, maxDistance, layer_mask);
                 Debug.DrawLine(gameObject.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - gameObject.transform.position, Color.green,5f);
@@ -55,7 +55,7 @@ public class VineBridge : MonoBehaviour {
                         between = (Impact2 - Impact1);
                         float distance = between.magnitude;
                         bridge = Instantiate(bloc, Impact1 + (between * 0.5f), Quaternion.identity);                        
-                        bridge.transform.localScale = new Vector3(distance * 0.5f,1,1);
+                        bridge.transform.localScale = new Vector3(distance,1,1);
                         bridge.transform.LookAt(Impact2);
                         bridge.transform.localRotation = new Quaternion(bridge.transform.localRotation.x, bridge.transform.localRotation.y, 0f,0f);
                         conteur = 0;
