@@ -21,7 +21,7 @@ public class ArmAttac : MonoBehaviour {
 
         gameObject.transform.position = new Vector3(
               (Mathf.Lerp(gameObject.transform.position.x, character.transform.position.x, t)),
-              (Mathf.Lerp(gameObject.transform.position.x, character.transform.position.y, t)),
+              (Mathf.Lerp(gameObject.transform.position.y, character.transform.position.y, t)),
               gameObject.transform.position.z);
 
         if (t < 1)
