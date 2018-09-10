@@ -189,7 +189,6 @@ GameObject:
   - component: {fileID: 50188564344380572}
   - component: {fileID: 58241803060321258}
   - component: {fileID: 114026343715003742}
-  - component: {fileID: 114001963781085554}
   - component: {fileID: 114801263674868850}
   - component: {fileID: 114094466530621210}
   - component: {fileID: 114755011573449550}
@@ -596,23 +595,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114001963781085554
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1841604343239768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af36902134161f345a313dfb82258122, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Vitesse: {x: 0, y: 0}
-  Collision: 40
-  Gestionnaire: {fileID: 11400000, guid: 2c51acbd504d2d741a58c6f7785fd0bf, type: 2}
-  distance: 0
-  distanceReset: 0
-  baseGravity: 0
 --- !u!114 &114026343715003742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -632,7 +614,6 @@ MonoBehaviour:
   MaxMultiplier: 500
   Multiplier: 0
   factor: 0
-  GravityAnchor: 0
   zCD: 0
   BoosterLight: {fileID: 108591539153360328}
   AnchorLight: {fileID: 108648783581535400}
@@ -703,7 +684,9 @@ MonoBehaviour:
   directionY: 0
   lastDirectionY: 0
   actualPos: {x: 0, y: 0, z: 0}
+  newPos: {x: 0, y: 0, z: 0}
   offset: 0
+  offsetY: 0
   distance: 30
   distanceUp: 21
   distanceBot: 20
@@ -819,9 +802,11 @@ MonoBehaviour:
   FiringSpeed: 10
   MaxSpeedBase: 10
   MaxSpeedPlant: 13
+  MaxCrouchSpeed: 7
   Speed: 0
   isJumping: 0
   Gestionnaire: {fileID: 0}
+  sizebox: {x: 0, y: 0}
 --- !u!114 &114801263674868850
 MonoBehaviour:
   m_ObjectHideFlags: 1
