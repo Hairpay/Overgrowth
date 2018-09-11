@@ -21,10 +21,18 @@ public class BossAI_1 : MonoBehaviour
     public GameObject ArmAttac;
     public int justLifted;
 
+    public GameObject Weapon;
+    public GameObject flamer;
+    public GameObject[] Flames;
+    public bool FlameThrowin;
+
     // Use this for initialization
     void Start()
     {
-
+        for (int i = 0; i < Flames.Length; i++)
+        {
+            Flames[i].GetComponent<ParticleSystem>().Stop();
+        }
         Character = GameObject.Find("character");
         moBody = gameObject.GetComponent<Rigidbody2D>();
         layer_mask = ~LayerMask.GetMask("Mobs");
@@ -34,7 +42,19 @@ public class BossAI_1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (FlameThrowin == true)
+        {
+            RaycastHit2D target = Physics2D.Raycast(flamer.transform.position, flamer.transform.right, 18f, layer_mask);
+            Debug.DrawRay(flamer.transform.position, flamer.transform.right * 18f, new Color(0, 252, 0));
+
+            if (target.collider != null && target.collider.tag == "Player")
+            {
+                Weapon.GetComponent<AimAtPlayer>().aie();
+            }
+
+        }
+
+
         dist = Vector3.Distance(Character.transform.position, transform.position);
 
         if (dist < 50f)
@@ -58,9 +78,31 @@ public class BossAI_1 : MonoBehaviour
                     StartCoroutine("PaternClose");
                     Debug.Log("Close Patern activated !");
                 }
-                else
+                 else if (dist > 40)
+                {
+                    if (Lifted == false)
+                    {
+                        StartCoroutine("Patern2");
+                    }
+                    else
+                    {
+                        randomAction = Random.Range(0, 2);
+
+                        if (randomAction == 0)
+                        {
+                            StartCoroutine("Patern0");
+                        }
+                        else if (randomAction == 1)
+                        {
+                            StartCoroutine("Patern1");
+                        }
+                    }
+                }
+                else 
                 {
                     randomAction = Random.Range(0, 3);
+                  
+
                     Debug.Log("Patern number " + randomAction + " activated !");
 
                     if (randomAction == 0)
@@ -83,8 +125,7 @@ public class BossAI_1 : MonoBehaviour
                         }
                      
                     }
-                }
-               
+                }               
             }
         }
     }
@@ -100,12 +141,33 @@ public class BossAI_1 : MonoBehaviour
         if( Lifted == false)
         {
             yield return new WaitForSeconds(1f);
-            BossAnim.Play("Boss_Hop");
-            yield return new WaitForSeconds(7f);
+            BossAnim.Play("Boss_HopnoAtac");         
+            yield return new WaitForSeconds(1.5f);
+            for (int i = 0; i < Flames.Length; i++)
+            {
+                Flames[i].GetComponent<ParticleSystem>().Play();
+            }
+            yield return new WaitForSeconds(0.5f);
+            FlameThrowin = true;
+            yield return new WaitForSeconds(1.5f);
+            FlameThrowin = false;
+            for (int i = 0; i < Flames.Length; i++)
+            {
+                Flames[i].GetComponent<ParticleSystem>().Stop();
+            }
+            yield return new WaitForSeconds(1.5f);
             StartCoroutine("resetCD");
         }
         else
         {
+            Weapon.GetComponent<AimAtPlayer>().LockPlayer = true;
+            yield return new WaitForSeconds(1f);
+            Weapon.GetComponent<AimAtPlayer>().LockPlayer = false;
+            yield return new WaitForSeconds(0.5f);
+            Weapon.GetComponent<AimAtPlayer>().targetDone = true;
+            yield return new WaitForSeconds(0.5f);
+            Weapon.GetComponent<AimAtPlayer>().targetDone = false;
+            Weapon.GetComponent<AimAtPlayer>().DoneShooting = true;
             StartCoroutine("resetCD");
         }
        
@@ -117,15 +179,34 @@ public class BossAI_1 : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             BossAnim.Play("Boss_ArmAttac");
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1f);
             GameObject ArmAtak = Instantiate(ArmAttac);           
-            ArmAtak.transform.position = new Vector3(Character.transform.position.x, gameObject.transform.position.y, 0);
-            yield return new WaitForSeconds(2f);
-            Destroy(ArmAtak);
+            ArmAtak.transform.position = new Vector3(Character.transform.position.x + Random.Range(-5, 5), gameObject.transform.position.y, 0);
+            yield return new WaitForSeconds(1.7f);
+            GameObject ArmAtak2 = Instantiate(ArmAttac);
+            ArmAtak2.transform.position = new Vector3(Character.transform.position.x + Random.Range(-5, 5), gameObject.transform.position.y, 0);
+            yield return new WaitForSeconds(1.5f);
+            Destroy(ArmAtak);          
             StartCoroutine("resetCD");
+            yield return new WaitForSeconds(1.5f);
+            Destroy(ArmAtak2);
         }
         else
         {
+            flamer.GetComponent<Animator>().Play("ZoneFlame");
+            yield return new WaitForSeconds(0.5f);
+            for (int i = 0; i < Flames.Length; i++)
+            {
+                Flames[i].GetComponent<ParticleSystem>().Play();
+            }
+            yield return new WaitForSeconds(0.5f);
+            FlameThrowin = true;
+            yield return new WaitForSeconds(1.5f);
+            FlameThrowin = false;
+            for (int i = 0; i < Flames.Length; i++)
+            {
+                Flames[i].GetComponent<ParticleSystem>().Stop();
+            }
             StartCoroutine("resetCD");
         }
        
@@ -141,9 +222,9 @@ public class BossAI_1 : MonoBehaviour
 
     IEnumerator resetCD()
     {
-        yield return new WaitForSeconds(1.5f);
-        moBody.velocity = new Vector2(0f, 0f);
+        yield return new WaitForSeconds(1f);
         cooldown = false;
+
         if (justLifted > 0)
         {
             justLifted = justLifted - 1;
