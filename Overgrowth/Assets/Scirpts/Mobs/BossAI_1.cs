@@ -25,6 +25,7 @@ public class BossAI_1 : MonoBehaviour
     public GameObject flamer;
     public GameObject[] Flames;
     public bool FlameThrowin;
+    public float inverFlame;
 
     // Use this for initialization
     void Start()
@@ -37,6 +38,8 @@ public class BossAI_1 : MonoBehaviour
         moBody = gameObject.GetComponent<Rigidbody2D>();
         layer_mask = ~LayerMask.GetMask("Mobs");
         BossAnim = BossVisu.GetComponent<Animator>();
+
+        inverFlame = gameObject.transform.localScale.x * 11;
     }
 
     // Update is called once per frame
@@ -44,8 +47,12 @@ public class BossAI_1 : MonoBehaviour
     {
         if (FlameThrowin == true)
         {
-            RaycastHit2D target = Physics2D.Raycast(flamer.transform.position, flamer.transform.right, 18f, layer_mask);
-            Debug.DrawRay(flamer.transform.position, flamer.transform.right * 18f, new Color(0, 252, 0));
+       
+           
+            
+
+            RaycastHit2D target = Physics2D.Raycast(flamer.transform.position, flamer.transform.right, inverFlame, layer_mask);
+            Debug.DrawRay(flamer.transform.position, flamer.transform.right * inverFlame, new Color(0, 252, 0));
 
             if (target.collider != null && target.collider.tag == "Player")
             {
@@ -199,9 +206,9 @@ public class BossAI_1 : MonoBehaviour
             {
                 Flames[i].GetComponent<ParticleSystem>().Play();
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
             FlameThrowin = true;
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1.7f);
             FlameThrowin = false;
             for (int i = 0; i < Flames.Length; i++)
             {
