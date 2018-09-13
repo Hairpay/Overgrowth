@@ -171,7 +171,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
+    oldSize: {x: 3.08, y: 3.22}
     newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -205,12 +205,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11672893c381214282bae9f4ddefd41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burnColor: {r: 0, g: 0, b: 0, a: 0}
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   actualColor: {r: 0, g: 0, b: 0, a: 0}
   life: 0
   maxLife: 3
-  burn: 0
 --- !u!114 &114634106379403938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -237,7 +235,9 @@ MonoBehaviour:
   charBody: {fileID: 0}
   Gestionnaire: {fileID: 0}
   touche: {x: 0, y: 0}
+  impact: {x: 0, y: 0}
   cooldown: 0
+  SuitDammage: 0
 --- !u!114 &114789313895711908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -254,6 +254,7 @@ MonoBehaviour:
   analysisPanel: {fileID: 0}
   description: This fella looks kinda drunk.
   compteur: 0
+  speed: 1
 --- !u!114 &114834898270906672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -266,7 +267,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point1: {fileID: 4310009955402068}
-  point2: {fileID: 4213005229819554}
   currentPoint: {fileID: 0}
   dist: 0
   moBody: {fileID: 0}
@@ -306,7 +306,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8179869f1e0305f4fadd7b4c6a7682bf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0f0f4d79297f9224ba11b98da68c3f83, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

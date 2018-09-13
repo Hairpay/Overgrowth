@@ -740,6 +740,7 @@ MonoBehaviour:
   touche: {x: 0, y: 0}
   impact: {x: 0, y: 0}
   cooldown: 0
+  SuitDammage: 1
 --- !u!114 &114275550634054640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1087,6 +1088,7 @@ MonoBehaviour:
   analysisPanel: {fileID: 0}
   description: This creature looks dangerous, better take my distances.
   compteur: 0
+  speed: 1
 --- !u!114 &114990075670761920
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1135,7 +1137,7 @@ SkinnedMeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1558302161
-  m_SortingLayer: 6
+  m_SortingLayer: 3
   m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
@@ -1184,7 +1186,7 @@ SkinnedMeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1558302161
-  m_SortingLayer: 6
+  m_SortingLayer: 3
   m_SortingOrder: 2
   serializedVersion: 2
   m_Quality: 0
@@ -1233,7 +1235,7 @@ SkinnedMeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1558302161
-  m_SortingLayer: 6
+  m_SortingLayer: 3
   m_SortingOrder: 1
   serializedVersion: 2
   m_Quality: 0

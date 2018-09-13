@@ -83,11 +83,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Mob1
-    uniqueID: 2736665135
-    locked: 0
   - name: Char
     uniqueID: 2887076199
+    locked: 0
+  - name: Tilemaps
+    uniqueID: 475296205
+    locked: 0
+  - name: Mob1
+    uniqueID: 2736665135
     locked: 0
   - name: Dialogues
     uniqueID: 3610741281

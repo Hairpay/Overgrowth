@@ -13,6 +13,11 @@ public class Dangerous : MonoBehaviour {
 
     public bool cooldown;
 
+    public int SuitDammage;
+    // 0 = always damaging
+    // 1 = dammage in suit mode
+    // 2 = dammage in green mode
+
     // Use this for initialization
     void Start () {
         Character = GameObject.Find("character");
@@ -39,7 +44,7 @@ public class Dangerous : MonoBehaviour {
         }
         else if (coll.gameObject.tag == "Player" && cooldown == false &&  gameObject.GetComponent<MecheMob>() == null)
         {
-            if (Gestionnaire.SuitActivated == true)
+            if (Gestionnaire.SuitActivated == true && SuitDammage == 1 || Gestionnaire.SuitActivated == false && SuitDammage == 2 || SuitDammage == 0)
             {
                 aie();
             }
