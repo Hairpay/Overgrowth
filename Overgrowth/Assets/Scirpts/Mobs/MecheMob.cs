@@ -30,6 +30,10 @@ public class MecheMob : MonoBehaviour
     void Start()
     {
         life = maxLife;
+        if (mobdossier == null)
+        {
+            mobdossier = gameObject;
+        }
     }
 
     // Update is called once per frame
@@ -87,6 +91,10 @@ public class MecheMob : MonoBehaviour
     }
     public void ded()
     {
+        if (gameObject.GetComponent<Die2Activate>() != null)
+        {
+            gameObject.GetComponent<Die2Activate>().activateDed();
+        }
         gameObject.GetComponent<Explotron2D>().Explosion();
         Destroy(mobdossier);
     }
