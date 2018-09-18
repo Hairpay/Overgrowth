@@ -24,8 +24,7 @@ MonoBehaviour:
   isFiring: 0
   SuitActivated: 0
   disfunction: 1
-  PowerUps: 0100000000000000000000000100000005000000
+  PowerUps: 010000000000000000000000010000000500000000000000
   life: 5
-  maxLife: 5
   invicible: 0
   Checkpoint: {x: 0, y: 0, z: 0}

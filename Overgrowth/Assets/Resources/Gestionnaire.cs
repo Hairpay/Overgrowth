@@ -33,6 +33,7 @@ public class Gestionnaire : ScriptableObject {
     // 2 = Gravity Anchor
     // 3 = Gun
     // 4 = life 
+    // 5 = vineBridge
 
 
     public int life;

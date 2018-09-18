@@ -4,64 +4,164 @@ using UnityEngine;
 
 public class VineBridge : MonoBehaviour {
 
+    public GameObject Character;
     public Gestionnaire Gestionnaire;
     private int layer_mask;
 
     public Vector3 Impact1;
-    public Vector3 Impact2;
     private Vector3 between;
 
+    public Vector3 AimPoint;
+    public bool isHit;
+
     public int conteur;
-    public float maxDistance = 25f;
+    public float maxDistance = 15f;
 
     public GameObject bloc;
 
     private GameObject point1;   
     private GameObject bridge;
 
+    public bool isAiming;
+    public LineRenderer line;
+
     // Use this for initialization
     void Start () {
-        Gestionnaire = gameObject.GetComponent<PowerUps>().Gestionnaire;
-        layer_mask = ~LayerMask.GetMask("Player");
+
+        Character = GameObject.Find("character");
+        Gestionnaire = Character.GetComponent<PowerUps>().Gestionnaire;
+
+        layer_mask = LayerMask.GetMask("Environment");
+        line = gameObject.GetComponent<LineRenderer>();
     }
 	
-	// Update is called once per frame
-	void Update () {
+    public void aiming()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - gameObject.transform.position, maxDistance, layer_mask);
+        Debug.DrawRay(gameObject.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - gameObject.transform.position, Color.green);
+        AimPoint = hit.point;
+       
+        line.SetPosition(0, gameObject.transform.position);
+
+        if (conteur < 1)
+        {
+            if (hit.collider != null)
+            {
+                isHit = true;
+                line.SetPosition(1, hit.point);
+                point1.transform.position = hit.point;
+                point1.GetComponent<Renderer>().enabled = true;
+            }
+            else
+            {
+                isHit = false;
+                line.SetPosition(1, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+                point1.GetComponent<Renderer>().enabled = false;
+            }
+        }
+        if (conteur > 0)
+        {
+            if (hit.collider != null)
+            {
+                BridgeMaking();
+                line.SetPosition(1, hit.point);
+            }  
+            else
+            {
+                bridge.transform.localScale = new Vector3(1, 1, 1);
+                bridge.transform.position = Impact1;
+
+                line.SetPosition(1, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            }         
+        }
+    }
+
+    // Create the first and second point for the bridge
+    public void BridgePoint()
+    {
+        if (conteur < 1)
+        {
+            point1 = Instantiate(bloc, AimPoint, Quaternion.identity);
+            point1.GetComponent<BoxCollider2D>().enabled = false;
+        }
+        if (conteur > 0)
+        {
+            DestroyImmediate(point1);
+            bridge = Instantiate(bloc, Impact1 + (between * 0.5f), Quaternion.identity);
+            bridge.GetComponent<BoxCollider2D>().enabled = false;
+        }
+
+    }
+
+    // Create the bridge by joining the 2 points
+    public void BridgeMaking()
+    {
+        if (conteur > 0)
+        {        
+            between = (AimPoint - Impact1);
+            float distance = between.magnitude;
+
+            bridge.transform.position = Impact1 + (between * 0.5f);
+            bridge.transform.localScale = new Vector3(distance, 1, 1);
+            bridge.transform.LookAt(AimPoint);
+            bridge.transform.localRotation = new Quaternion(bridge.transform.localRotation.x, bridge.transform.localRotation.y, 0f, 0f);    
+            
+            if (bridge.transform.localScale.x > 15)
+            {
+                bridge.transform.localScale = new Vector3(1, 1, 1);
+                bridge.transform.position = Impact1;
+            }      
+        }      
+    }
+
+    // Update is called once per frame
+    void Update () {
         //if (Gestionnaire.VineBridge == true)
         {
-            if (Input.GetButtonDown("Fire3") && Gestionnaire.SuitActivated == false) 
+            if (isAiming == true)
+            {             
+                aiming();
+            }
+
+            if (Input.GetButtonDown("Fire3") && Gestionnaire.SuitActivated == false && Gestionnaire.PowerUps[5] > 0)
             {
-                RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - gameObject.transform.position, maxDistance, layer_mask);
-                Debug.DrawLine(gameObject.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - gameObject.transform.position, Color.green,5f);
-                if (conteur < 1)
+                if (conteur > 1)
                 {
+                    conteur = 0;
                     DestroyImmediate(bridge);
-                    gameObject.GetComponent<Jump>().isGliding = false;
                 }
 
-                    if (hit.collider != null)
+                BridgePoint();
+                isAiming = true;
+                line.enabled = true;
+           
+                //moche ça:
+                gameObject.GetComponent<laserBeam>().enabled = false;
+            }
+                if (Input.GetButtonUp("Fire3") && Gestionnaire.SuitActivated == false && Gestionnaire.PowerUps[5] > 0) 
+            {
+                // DestroyImmediate(point1);
+                Impact1 = AimPoint;
+
+                isAiming = false;
+                line.enabled = false;
+                conteur++;
+
+                if (conteur > 1)
                 {
-                    if (conteur < 1)
-                    {
-                        Impact1 = hit.point;
-                        point1 = Instantiate(bloc, Impact1, Quaternion.identity);
-                        point1.GetComponent<BoxCollider2D>().enabled = false;
-                        conteur++;                      
-                    }
-                    else
-                    {
-                        DestroyImmediate(point1);
-                        Impact2 = hit.point;                       
-                        between = (Impact2 - Impact1);
-                        float distance = between.magnitude;
-                        bridge = Instantiate(bloc, Impact1 + (between * 0.5f), Quaternion.identity);                        
-                        bridge.transform.localScale = new Vector3(distance,1,1);
-                        bridge.transform.LookAt(Impact2);
-                        bridge.transform.localRotation = new Quaternion(bridge.transform.localRotation.x, bridge.transform.localRotation.y, 0f,0f);
-                        conteur = 0;
-                    }                    
-                }               
+                    bridge.GetComponent<BoxCollider2D>().enabled = true;
+                }
+
+                if (isHit == false)
+                {
+                    conteur = 0;
+                    DestroyImmediate(point1);
+                }
+
+                //moche ça:
+                gameObject.GetComponent<laserBeam>().enabled = true;
+
             }            
         }
-    }   
+    }
 }
