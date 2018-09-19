@@ -44,7 +44,7 @@ public class Ascenseur : MonoBehaviour {
 
         baseColor = gameObject.GetComponent<SpriteRenderer>().color;
         activeColor = baseColor;
-        activeColor.r = baseColor.r * 0.03f;
+        activeColor.g = baseColor.g * 0.03f;
 
     }
 	

@@ -30,9 +30,7 @@ public class SwitchBeam : MonoBehaviour {
 	void Update () {
 
         if (Input.GetButtonDown("Fire6") && Gestionnaire.isFiring == false && Gestionnaire.PowerUps[1] > 0)
-        {
-            Gestionnaire.SuitActivated = !Gestionnaire.SuitActivated;
-            
+        {        
             if (cooldown == true && reloading == 0)
             {
                 cooldown = false;
