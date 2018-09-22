@@ -25,11 +25,11 @@ public class Switchmode : MonoBehaviour {
     {
         if (Input.GetButtonDown("Fire6") && Gestionnaire.isFiring == false && Gestionnaire.PowerUps[1] > 0)
         {
-            RaycastHit2D upHit = Physics2D.Raycast(transform.position, Vector2.up, 2.5f, layer_mask);
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.up) * 2.5f, Color.red);
+            RaycastHit2D upHit = Physics2D.Raycast(transform.position, Vector2.up, 0.5f, layer_mask);
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.up) * 0.5f, Color.red, 2f);
             if (upHit.collider != null)
             {
-                Debug.Log(upHit.collider.name);
+                Debug.Log("Cant switch, hit:" + upHit.collider.name);
             }
             else
             {
