@@ -31,8 +31,11 @@ public class laserBeam : MonoBehaviour
     {
 
         line = gameObject.GetComponent<LineRenderer>();
-        line.SetVertexCount(2);
-        line.SetWidth(0.2f, 0.25f);
+        //line.SetVertexCount(2);
+        line.positionCount = 2;
+        //line.SetWidth(0.2f, 0.25f);
+        line.startWidth = 0.2f;
+        line.endWidth = 0.25f;
       //  layer_mask = ~LayerMask.GetMask("Player");
         character = GameObject.Find("character");
         Gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;

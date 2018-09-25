@@ -94,6 +94,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1944237707990210
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4407348852346214}
+  - component: {fileID: 20002473505086596}
+  m_Layer: 12
+  m_Name: Outline Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4092384168123246
 Transform:
   m_ObjectHideFlags: 1
@@ -101,7 +117,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1507739019489094}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.2, y: -87.4, z: 0}
+  m_LocalPosition: {x: -73, y: -790, z: 0}
   m_LocalScale: {x: 1.1935849, y: 1.193585, z: 1.193585}
   m_Children:
   - {fileID: 4253434472389058}
@@ -121,8 +137,22 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4665353689072130}
+  - {fileID: 4407348852346214}
   m_Father: {fileID: 4092384168123246}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4407348852346214
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1944237707990210}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0000009536743}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4253434472389058}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4665353689072130
 Transform:
@@ -163,6 +193,42 @@ Transform:
   m_Father: {fileID: 4092384168123246}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &20002473505086596
+Camera:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1944237707990210}
+  m_Enabled: 0
+  serializedVersion: 2
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 13.4
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 0
+  m_RenderingPath: 1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 0
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!20 &20170812573742170
 Camera:
   m_ObjectHideFlags: 1
@@ -282,27 +348,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ebb18f40925984fb8c5bfd83673483, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Character: {fileID: 0}
-  Directioneur: {fileID: 0}
-  Directiangle: 0
-  DirectiangleY: 0
-  direction: 0
-  lastDirection: 0
-  directionY: 0
-  lastDirectionY: 0
-  actualPos: {x: 0, y: 0, z: 0}
-  newPos: {x: 0, y: 0, z: 0}
-  offset: 3
-  offsetY: 4
+  character: {fileID: 0}
+  directioneur: {fileID: 0}
+  gestionnaire: {fileID: 0}
+  camOffset: {x: 3, y: 4}
+  lerpSpeed: 0.87
   distance: 32
-  distanceUp: 15
+  distanceTop: 11
   distanceBot: 15
-  touchLeft: 0
-  touchRight: 0
-  touchUp: 0
-  touchBot: 0
-  t: 2
-  Gestionnaire: {fileID: 0}
+  isLookingRight: 0
+  isLookingBot: 0
 --- !u!124 &124060284909903556
 Behaviour:
   m_ObjectHideFlags: 1

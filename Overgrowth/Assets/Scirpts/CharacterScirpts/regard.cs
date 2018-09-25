@@ -17,7 +17,7 @@ public class regard : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (MainCamera.GetComponent<UltimaCameraScirpt>().direction == true)
+        if (MainCamera.GetComponent<UltimaCameraScirpt>().IsLookingRight)
         {
             gameObject.transform.localScale = new Vector3(baseScale.x, baseScale.y, baseScale.z);
         }

@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class AimAtPlayer : MonoBehaviour
 {
-
-    public GameObject Character;
+    public GameObject character;
     public Rigidbody2D charBody;
 
-    public Gestionnaire Gestionnaire;
+    public Gestionnaire gestionnaire;
     public Vector2 touche;
     public Vector2 impact;
 
@@ -29,15 +28,16 @@ public class AimAtPlayer : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Character = GameObject.Find("character");
-        charBody = Character.GetComponent<Rigidbody2D>();
-        Gestionnaire = Character.GetComponent<PowerUps>().Gestionnaire;
+        character = GameObject.Find("character");
+        charBody = character.GetComponent<Rigidbody2D>();
+        gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;
 
         layer_mask = LayerMask.GetMask("Player", "Environment");
 
         for (int i = 0; i < line.Length; i++)
         {
-            line[i].SetVertexCount(2);
+            //line[i].SetVertexCount(2);
+            line[i].positionCount = 2;
             line[i].startWidth = 0.5f;
             line[i].endWidth = 0.5f;     
         }
@@ -49,8 +49,8 @@ public class AimAtPlayer : MonoBehaviour
     {
         if (LockPlayer == true && targetDone == false)
         {                        
-            RaycastHit2D target = Physics2D.Raycast(gameObject.transform.position, Character.transform.position - gameObject.transform.position, 200f, layer_mask);
-            Debug.DrawRay(transform.position, Character.transform.position - gameObject.transform.position, new Color(252,0,0));
+            RaycastHit2D target = Physics2D.Raycast(gameObject.transform.position, character.transform.position - gameObject.transform.position, 200f, layer_mask);
+            Debug.DrawRay(transform.position, character.transform.position - gameObject.transform.position, new Color(252,0,0));
             hitLaser = target.point;
 
             for (int i = 0; i < line.Length; i++)
@@ -97,12 +97,12 @@ public class AimAtPlayer : MonoBehaviour
         cooldown = true;
         StartCoroutine("ReturnVariables");
 
-        if (Gestionnaire.invicible == false)
+        if (gestionnaire.invicible == false)
         {
-            Gestionnaire.life = Gestionnaire.life - 1;
+            gestionnaire.life = gestionnaire.life - 1;
             Debug.Log("aie");
 
-            Gestionnaire.KnockbackCD = true;
+            gestionnaire.KnockbackCD = true;
             StartCoroutine("resetKCD");
 
 
@@ -124,7 +124,7 @@ public class AimAtPlayer : MonoBehaviour
     IEnumerator resetKCD()
     {
         yield return new WaitForSeconds(0.5f);
-        Gestionnaire.KnockbackCD = false;
+        gestionnaire.KnockbackCD = false;
     }
 
     IEnumerator ReturnVariables()

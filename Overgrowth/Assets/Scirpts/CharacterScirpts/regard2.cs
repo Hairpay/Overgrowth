@@ -22,7 +22,7 @@ public class regard2 : MonoBehaviour
     void Update()
     {
 
-        if (MainCamera.GetComponent<UltimaCameraScirpt>().direction == true)
+        if (MainCamera.GetComponent<UltimaCameraScirpt>().IsLookingRight)
         {
           //  gameObject.transform.localScale = new Vector3(baseScale.x, baseScale.y, baseScale.z);
             gameObject.transform.localEulerAngles = baseRotation;

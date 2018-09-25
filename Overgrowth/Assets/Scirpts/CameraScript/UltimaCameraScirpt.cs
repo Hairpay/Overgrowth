@@ -4,224 +4,196 @@ using UnityEngine;
 
 public class UltimaCameraScirpt : MonoBehaviour {
 
-    public GameObject Character;
-    public GameObject Directioneur;
-    public float Directiangle;
-    public float DirectiangleY;
+    public GameObject character;
+    public GameObject directioneur;
+    public Gestionnaire gestionnaire;
 
-    public bool direction;
-    public bool lastDirection;
+    public Vector2 camOffset;
+    [Range( 0.01f, 5.0f )]
+    public float lerpSpeed;
 
-    public bool directionY;
-    public bool lastDirectionY;
-
-    private Vector3 CharPos;
-    private Vector3 basePos;
-    public Vector3 actualPos;
-    public Vector3 newPos;
-    public float offset;
-    public float offsetY;
-
-    private Vector3 rightPos;
-    private Vector3 leftPos;
-
-    private int layer_mask;
-    private int layer_maskG;
-    private int layer_maskC;
     public float distance = 20f;
-    public float distanceUp = 11f;
+    public float distanceTop = 11f;
     public float distanceBot = 10f;
 
-    public bool touchLeft;
-    public bool touchRight;
-    public bool touchUp;
-    public bool touchBot;
+    // Si tu as besoin de certaines variables privées en dehors de ce script, regarde plus bas dans "Properties" pour voir comment il faut faire
 
-    public float t = 2f;
-    public Gestionnaire Gestionnaire;
-   
-    // Use this for initialization
+   // private float dirAngle;
+   // private float dirAngleY;
+
+    private bool isLookingRight;
+    private bool isLookingBot;
+    private bool wasLookingRight;
+    private bool wasLookingBot;
+
+    private Vector2 charPos;
+    private Vector2 basePos;
+    private Vector2 camPos;
+    private Vector2 newPos;
+
+    private Vector2 rightPos;
+    private Vector2 leftPos;
+
+    private int layerMaskWalls;
+    private int layerMaskGround;
+    private int layerMaskCeiling;
+
+    private bool isCollidingLeft;
+    private bool isCollidingRight;
+    private bool isCollidingTop;
+    private bool isCollidingBot;
+
+    private float t;
+
+    // Properties
+    public bool IsLookingRight { get { return isLookingRight; } }
+
     void Start()
     {
-        basePos = new Vector3(-offset, offsetY, 0f);
-        Character = GameObject.Find("character");
-        // gameObject.transform.localPosition = new Vector2(Character.transform.localPosition.x - 3, Character.transform.localPosition.y + 3); = new Vector2(Character.transform.position.x - 3, Character.transform.position.y + 3);
-        gameObject.transform.position = Character.transform.position;
-        Gestionnaire = Character.GetComponent<PowerUps>().Gestionnaire;
+        t = lerpSpeed;
+        basePos = new Vector2(-camOffset.x, camOffset.y);
+        character = GameObject.Find("character");
+        gameObject.transform.position = character.transform.position;
+        gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;
 
-        Directioneur = GameObject.Find("Directioneur");
-       // basePos = gameObject.transform.position;
-        layer_mask = LayerMask.GetMask("CameraWall");
-        layer_maskG = LayerMask.GetMask("CameraGround");
-        layer_maskC = LayerMask.GetMask("CameraCeiling");
+        directioneur = GameObject.Find("Directioneur");
+        layerMaskWalls = LayerMask.GetMask("CameraWall");
+        layerMaskGround = LayerMask.GetMask("CameraGround");
+        layerMaskCeiling = LayerMask.GetMask("CameraCeiling");
+    }
+    
+    void Update () {
+        //dirAngleY = directioneur.transform.localRotation.z;
+        //dirAngle = Mathf.Abs( dirAngleY );
+        charPos = character.transform.position;
+        camPos = gameObject.transform.position;
 
-       
+        leftPos = new Vector2( charPos.x + basePos.x, charPos.y + basePos.y + camOffset.x * 0.5f);
+        rightPos = new Vector2( charPos.x - basePos.x, charPos.y + basePos.y + camOffset.y * 0.5f );
+
+        wasLookingRight = isLookingRight;
+        wasLookingBot = isLookingBot;
+        
+        Debug.DrawRay( transform.position, Vector2.left * distance );
+
+        CheckCollisions();
+        CheckCameraOffset();
+        LerpCamera();
     }
 
-    // Update is called once per frame
-    void Update () {
+    ///<summary>Checks for any collision with boundaries</summary>
+    private void CheckCollisions()
+    {
+        RaycastHit2D left = Physics2D.Raycast( transform.position, Vector2.left, distance, layerMaskWalls );
+        Debug.DrawRay( transform.position, Vector2.left * distance );
 
-        // IMPORTANT: si le plafond n'est pas assez haut, le raycast de la gauche et droite vont se coller dessus ! ( effets imprévisibles)
-        // NOTE: éviter de mettre des fermetures d'ecran de chaque coté.
-        Directiangle = Directioneur.transform.localRotation.z;
-        DirectiangleY = Directiangle;
-        Directiangle = Mathf.Abs(Directiangle);
-        CharPos = Character.transform.position;
-        actualPos = gameObject.transform.position;
+        RaycastHit2D right = Physics2D.Raycast( transform.position, Vector2.right, distance, layerMaskWalls );
+        Debug.DrawRay( transform.position, Vector2.right * distance );
 
-        leftPos = new Vector3(CharPos.x + basePos.x, CharPos.y + basePos.y + offset * 0.5f, CharPos.z + basePos.z);
-        rightPos = new Vector3(CharPos.x - basePos.x, CharPos.y + basePos.y + offset * 0.5f, CharPos.z + basePos.z);
+        RaycastHit2D top = Physics2D.Raycast( transform.position, Vector2.up, distanceTop, layerMaskCeiling );
+        Debug.DrawRay( transform.position, Vector2.up * distanceTop );
 
-        lastDirection = direction;
-        lastDirectionY = directionY;
+        RaycastHit2D bot = Physics2D.Raycast( transform.position, Vector2.down, distanceBot, layerMaskGround );
+        Debug.DrawRay( transform.position, Vector2.down * distanceBot );
 
-        RaycastHit2D left = Physics2D.Raycast(transform.position, Vector2.left, distance, layer_mask);
-        Debug.DrawRay(transform.position, Vector2.left * distance);
+        if( isCollidingLeft = left.collider )
+            camPos.x = left.collider.gameObject.transform.position.x + distance + 1;
 
-        // raycasts
-        if (left.collider != null)
-        {       
-            touchLeft = true;
-            if (actualPos.x < left.collider.gameObject.transform.position.x + distance)
+        if( isCollidingRight = right.collider )
+            camPos.x = right.collider.gameObject.transform.position.x - distance - 1;
+
+        if( isCollidingBot = bot.collider )
+            camPos.y = bot.collider.gameObject.transform.position.y + distanceBot + 1;
+
+        if( isCollidingTop = top.collider )
+            camPos.y = top.collider.gameObject.transform.position.y - distanceTop - 1;
+    }
+
+    ///<summary>Checks where the camera should look using mouse position</summary>
+    private void CheckCameraOffset()
+    {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint( Input.mousePosition );
+
+        if( !gestionnaire.isGlinding )
+        {
+            if( mousePos.x > charPos.x + camOffset.x )
             {
-                actualPos.x = left.collider.gameObject.transform.position.x + distance +1;
-            }         
-        }
-        else
-        {          
-            touchLeft = false;
-        }
-
-        RaycastHit2D right = Physics2D.Raycast(transform.position, Vector2.right, distance, layer_mask);       
-        Debug.DrawRay(transform.position, Vector2.right * distance);
-
-        if (right.collider != null)
-        {        
-            touchRight = true;
-            if (actualPos.x > right.collider.gameObject.transform.position.x - distance && touchLeft == false)
-            {            
-                actualPos.x = right.collider.gameObject.transform.position.x - distance - 1;
+                isLookingRight = true;
             }
-        }
-        else
-        {        
-            touchRight = false;
-        }
-     
-        RaycastHit2D bot = Physics2D.Raycast(transform.position, Vector2.down, distanceBot, layer_maskG);
-        Debug.DrawRay(transform.position, Vector2.down * distanceBot);
-
-        if (bot.collider != null)
-        {
-            touchBot = true;
-            if (actualPos.y < bot.collider.gameObject.transform.position.y + distanceBot)
-            {          
-                actualPos.y = bot.collider.gameObject.transform.position.y + distanceBot +1;
-            }
-        }
-        else
-        {
-            touchBot = false;
-        }
-
-        RaycastHit2D Up = Physics2D.Raycast(transform.position, Vector2.up, distanceUp, layer_maskC);
-        Debug.DrawRay(transform.position, Vector2.up * distanceUp);
-
-        if (Up.collider != null)
-        {
-            touchUp = true;
-            if (actualPos.y > Up.collider.gameObject.transform.position.y - distanceUp && touchBot == false)
+            else if( mousePos.x < charPos.x - camOffset.x )
             {
-                actualPos.y = Up.collider.gameObject.transform.position.y - distanceUp - 1;
+                isLookingRight = false;
             }
         }
         else
         {
-            touchUp = false;
+            isLookingRight = gestionnaire.GlideGauche;
         }
 
-        //end of raycasts
+        if( mousePos.y > charPos.y + camOffset.y )
+        {
+            isLookingBot = false;
+        }
+        else if( mousePos.y < charPos.y - camOffset.y )
+        {
+            isLookingBot = true;
+        }
+    }
 
-        // x axis switching
-        if (Gestionnaire.isGlinding == false)
-        {
-            if (Directiangle < 0.15f)
-            {
-                direction = true;
-            }
-            if (Directiangle > 0.95f)
-            {
-                direction = false;
-            }
-        }
-        else
-        {
-            direction = Gestionnaire.GlideGauche;
-        }
-            
-        
-        if(direction == true)
+    ///<summary>Lerps the camera from its actual position to a new position</summary>
+    private void LerpCamera()
+    {
+        if( isLookingRight )
         {
             newPos = rightPos;
         }
         else
         {
             newPos = leftPos;
-        } 
-
-        if(direction != lastDirection)
-        {
-            t = 0.0f;
         }
 
-        // Y axis switching
-        if (DirectiangleY < -0.4f)
+        if( isLookingBot )
         {
-            directionY = true;
-        }
-        if (DirectiangleY > 0.4f)
-        {
-            directionY = false;
-        }
-
-        if (directionY == true)
-        {
-            newPos.y = rightPos.y - offsetY * 2;
+            newPos.y = rightPos.y - camOffset.y * 2;
         }
         else
         {
             newPos.y = rightPos.y;
         }
 
-        if (directionY != lastDirectionY)
+        if( isLookingRight != wasLookingRight || isLookingBot != wasLookingBot )
         {
             t = 0.0f;
         }
 
-        // rempalcement des mouvements si sort de l'ecran
-        if (touchLeft == true && newPos.x < actualPos.x)
-        {              
-            newPos.x = actualPos.x;                   
+        CheckBoundaries();
+
+        gameObject.transform.position = new Vector2( Mathf.Lerp( camPos.x, newPos.x, t ), Mathf.Lerp( camPos.y, newPos.y, t ) );
+        if( t < lerpSpeed )
+        {
+            t += lerpSpeed * Time.deltaTime;
         }
-        else if (touchRight == true && newPos.x > actualPos.x && touchLeft == false)
-        {      
-            newPos.x = actualPos.x;
+    }
+
+    ///<summary>Checks if the camera isn't out of the boundaries</summary>
+    private void CheckBoundaries()
+    {
+        if( isCollidingLeft && newPos.x < camPos.x )
+        {
+            newPos.x = camPos.x;
+        }
+        else if( isCollidingRight && newPos.x > camPos.x && !isCollidingLeft )
+        {
+            newPos.x = camPos.x;
         }
 
-        if (touchUp == true && newPos.y > actualPos.y && touchBot == false)
+        if( isCollidingTop && newPos.y > camPos.y && !isCollidingBot )
         {
-            newPos.y = actualPos.y;
+            newPos.y = camPos.y;
         }
-        else if (touchBot == true && newPos.y < actualPos.y )
+        else if( isCollidingBot && newPos.y < camPos.y )
         {
-            newPos.y = actualPos.y;
+            newPos.y = camPos.y;
         }
-        // LA ligne qui bouge la camera
-        gameObject.transform.position = new Vector3(Mathf.Lerp(actualPos.x, newPos.x, t), Mathf.Lerp(actualPos.y, newPos.y, t),newPos.z);
-        if(t < 2)
-        {
-            t += 2f * Time.deltaTime;
-        }                     
     }
 }
-

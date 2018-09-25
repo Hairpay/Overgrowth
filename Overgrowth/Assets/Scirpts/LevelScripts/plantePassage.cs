@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class plantePassage : MonoBehaviour {
     public GameObject character;
-    public Gestionnaire Gestionnaire;
+    public Gestionnaire gestionnaire;
     public bool suitMode;
 
     public Color baseColor;
@@ -23,14 +23,14 @@ public class plantePassage : MonoBehaviour {
     void Start () {
 
         character = GameObject.Find("character");
-        Gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;
+        gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;
         baseLayer = gameObject.layer;
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        if ( Gestionnaire. SuitActivated == suitMode)
+        if ( gestionnaire. SuitActivated == suitMode)
         {
             gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
             gameObject.GetComponent<SpriteRenderer>().color = otherColor;

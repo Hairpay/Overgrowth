@@ -21,7 +21,7 @@ public class DOIgo : MonoBehaviour {
 
         MainCamera = GameObject.Find("CameraUltima");
 
-        if (MainCamera.GetComponent<UltimaCameraScirpt>().direction == true)
+        if (MainCamera.GetComponent<UltimaCameraScirpt>().IsLookingRight)
         {
             pos = new Vector2(w.transform.position.x - gameObject.transform.position.x, w.transform.position.y - gameObject.transform.position.y);
             gameObject.transform.localEulerAngles = baseRotation;
