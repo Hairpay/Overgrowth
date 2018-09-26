@@ -11,7 +11,8 @@ public class MapScroller : MonoBehaviour
 
     private void LateUpdate()
     {
-        Vector3 charVel = m_Character.GetComponent<Rigidbody2D>().velocity;
-        m_Minimap.Translate(-charVel.x * m_MapScale, -charVel.y * m_MapScale, 1);
+        Vector2 charVel = m_Character.GetComponent<Rigidbody2D>().velocity;
+        if( m_Character.GetComponent<SuitMove>().m_HasMoved )
+            m_Minimap.Translate( -charVel.x * m_MapScale, -charVel.y * m_MapScale, 1 );
     }
 }

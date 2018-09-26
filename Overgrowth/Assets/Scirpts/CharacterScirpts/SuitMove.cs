@@ -18,6 +18,9 @@ public class SuitMove : MonoBehaviour {
     private int layerMask;
     public Vector2 sizebox;
 
+    private Vector2 m_LastPos;
+    public bool m_HasMoved;
+
     // Use this for initialization
     void Start () {
 
@@ -97,17 +100,33 @@ public class SuitMove : MonoBehaviour {
                 gestionnaire.Crouch = false;
             }          
         }
-    }  
+    }
 
-    public void Move(float move)
+    public void Move( float move )
     {
-        if (isJumping > 0 && gestionnaire.SuitActivated == true || gestionnaire.KnockbackCD == true)
+        if( isJumping > 0 && gestionnaire.SuitActivated == true || gestionnaire.KnockbackCD == true )
         {
-            body.velocity = new Vector2((move * speed * 0.06f) + (body.velocity.x), body.velocity.y);
+            body.velocity = new Vector2( ( move * speed * 0.06f ) + ( body.velocity.x ), body.velocity.y );
         }
         else
         {
-            body.velocity = new Vector2(move * speed, body.velocity.y);            
-        }       
+            body.velocity = new Vector2( move * speed, body.velocity.y );
+        }
+        m_HasMoved = HasMoved();
+        m_LastPos = body.position;
+    }
+
+    private bool HasMoved()
+    {
+        float epsilon = 0.0001f;
+        if( body.position.x > m_LastPos.x + epsilon || body.position.x < m_LastPos.x - epsilon )
+        {
+            return true;
+        }
+        if( body.position.y > m_LastPos.y + epsilon || body.position.y < m_LastPos.y - epsilon )
+        {
+            return true;
+        }
+        return false;
     }
 }
