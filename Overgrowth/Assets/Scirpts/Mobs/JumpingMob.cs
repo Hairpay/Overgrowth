@@ -35,7 +35,7 @@ public class JumpingMob : MonoBehaviour {
             moBody.AddForce(new Vector2(Jump.x * 35000,Jump.y *35000 + BonusJump));
             cooldown = true;
             StartCoroutine("ReturnVariables");
-        }              
+        }                             
     }
     IEnumerator ReturnVariables()
     {
