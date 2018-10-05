@@ -53,8 +53,7 @@ public class Bot_AutoAim : MonoBehaviour {
             {
                 if (gameObject.GetComponent<JumpingMob>() != null)
                 {
-                    gameObject.GetComponent<JumpingMob>().enabled = true;
-                    gameObject.GetComponent<LineRenderer>().enabled = false;
+                    HideLaser();
                 }
             }
             else
@@ -83,11 +82,20 @@ public class Bot_AutoAim : MonoBehaviour {
                     {
                         compteur = 0;
                     }
+                }
+                else if (Vector3.Distance(character.transform.position, transform.position) > 50)
+                {
+                    HideLaser();
                 }                   
             }                     
         }      
     }
-
+    public void HideLaser()
+    {
+        gameObject.GetComponent<JumpingMob>().enabled = true;
+        gameObject.GetComponent<LineRenderer>().enabled = false;
+        compteur = 0;
+    }
     public void AimLaser()
     {
         RaycastHit2D target = Physics2D.Raycast(gameObject.transform.position, character.transform.position - gameObject.transform.position, 200f, layer_mask);
