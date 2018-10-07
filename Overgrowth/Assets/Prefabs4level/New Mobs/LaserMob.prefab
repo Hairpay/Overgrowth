@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 114616866676114024}
   - component: {fileID: 120960291337355272}
   - component: {fileID: 114036891317224162}
+  - component: {fileID: 114881865101335130}
   m_Layer: 11
   m_Name: Mob
   m_TagString: Mob
@@ -170,7 +171,6 @@ MonoBehaviour:
   charaDual: {fileID: 0}
   analysisText: {fileID: 0}
   analysisPanel: {fileID: 0}
-  description: This fella looks kinda drunk.
   compteur: 0
   speed: 1
 --- !u!114 &114616866676114024
@@ -220,6 +220,21 @@ MonoBehaviour:
   impact: {x: 0, y: 0}
   cooldown: 0
   SuitDammage: 2
+--- !u!114 &114881865101335130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1259691007985944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f8f6706d0f5b64b91135de99698bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charaDual: {fileID: 0}
+  analysisText: {fileID: 0}
+  analysisPanel: {fileID: 0}
+  description: i should be careful with these lasers.
 --- !u!120 &120960291337355272
 LineRenderer:
   m_ObjectHideFlags: 1

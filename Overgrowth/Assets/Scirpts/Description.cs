@@ -6,18 +6,20 @@ using UnityEngine.UI;
 public class Description : MonoBehaviour {
 
     public GameObject charaDual;
+    public Gestionnaire Gestionnaire;
     public Text analysisText;
     public Image analysisPanel;
 
-    public string description;
     public int compteur;
-
     public int speed = 1;
+
+    public bool lastMode;
 
 	// Use this for initialization
 	void Start () {
 
         charaDual = GameObject.Find("character");
+        Gestionnaire = charaDual.GetComponent<PowerUps>().Gestionnaire;
         analysisPanel = charaDual.GetComponent<UIGereur>().analysisPanel;
         analysisText = charaDual.GetComponent<UIGereur>().analysis;
 
@@ -37,7 +39,7 @@ public class Description : MonoBehaviour {
         gameObject.GetComponent<cakeslice.Outline>().color = 1;
         gameObject.GetComponent<cakeslice.Outline>().eraseRenderer = true;
 
-
+        lastMode = Gestionnaire.SuitActivated;
     }
 	
 	// Update is called once per frame
@@ -54,6 +56,12 @@ public class Description : MonoBehaviour {
             gameObject.GetComponent<cakeslice.Outline>().eraseRenderer = true;
         }
     
+        if (lastMode != Gestionnaire.SuitActivated)
+        {
+            compteur = 0;
+            lastMode = Gestionnaire.SuitActivated;
+        }
+
     }
 
     public void addnalyse()
@@ -71,21 +79,6 @@ public class Description : MonoBehaviour {
         }
         else if (compteur > 50)
         {
-            
-            if (gameObject.GetComponent<PorteAnalyse>() != null)
-            {
-                gameObject.GetComponent<PorteAnalyse>().Unlockage();
-            }
-            else if(gameObject.GetComponent<CallElevator>() != null)
-            {
-                gameObject.GetComponent<CallElevator>().Call();
-            }
-            else
-            {
-                analysisText.text = description;
-                //  compteur = 0;                          
-            }
-
             StopAllCoroutines();
             StartCoroutine("ReturnUnlock");
         }

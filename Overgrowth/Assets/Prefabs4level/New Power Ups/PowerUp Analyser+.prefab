@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61060034296315626}
   - component: {fileID: 114519397189366844}
   - component: {fileID: 114561708131121584}
+  - component: {fileID: 114279454112641056}
   m_Layer: 0
   m_Name: PowerUp Analyser+
   m_TagString: Analyser+
@@ -68,6 +69,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.56, y: 2.56}
   m_EdgeRadius: 0
+--- !u!114 &114279454112641056
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1485910502410746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f8f6706d0f5b64b91135de99698bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charaDual: {fileID: 0}
+  analysisText: {fileID: 0}
+  analysisPanel: {fileID: 0}
+  description: Security pass
 --- !u!114 &114519397189366844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -97,7 +113,6 @@ MonoBehaviour:
   charaDual: {fileID: 0}
   analysisText: {fileID: 0}
   analysisPanel: {fileID: 0}
-  description: Security pass.
   compteur: 0
   speed: 1
 --- !u!212 &212517396362934916

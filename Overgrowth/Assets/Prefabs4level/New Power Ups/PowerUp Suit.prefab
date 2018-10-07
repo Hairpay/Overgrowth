@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61598450074865130}
   - component: {fileID: 114121703810443376}
   - component: {fileID: 114104978832057638}
+  - component: {fileID: 114406402899632284}
   m_Layer: 0
   m_Name: PowerUp Suit
   m_TagString: Analyser+
@@ -82,7 +83,6 @@ MonoBehaviour:
   charaDual: {fileID: 0}
   analysisText: {fileID: 0}
   analysisPanel: {fileID: 0}
-  description: You can now switch between the 2 stances.
   compteur: 0
   speed: 1
 --- !u!114 &114121703810443376
@@ -100,6 +100,21 @@ MonoBehaviour:
   Gestionnaire: {fileID: 0}
   Boost: 1
   textRamasse: You can now switch between the 2 stances. (with a)
+--- !u!114 &114406402899632284
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1815348301606978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f8f6706d0f5b64b91135de99698bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charaDual: {fileID: 0}
+  analysisText: {fileID: 0}
+  analysisPanel: {fileID: 0}
+  description: switcher
 --- !u!212 &212177635496729424
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114380775724796228}
   - component: {fileID: 114522173664360808}
   - component: {fileID: 114956989709700454}
-  m_Layer: 18
+  m_Layer: 22
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,6 @@ MonoBehaviour:
   charaDual: {fileID: 0}
   analysisText: {fileID: 0}
   analysisPanel: {fileID: 0}
-  description: Theses walls seems to stop green things.
   compteur: 0
   speed: 1
 --- !u!114 &114522173664360808

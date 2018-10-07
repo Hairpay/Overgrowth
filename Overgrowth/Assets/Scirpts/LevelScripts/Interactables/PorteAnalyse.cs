@@ -40,21 +40,24 @@ public class PorteAnalyse : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {        
-            dist = Vector3.Distance(character.transform.position, transform.position);
+    {
+        dist = Vector3.Distance(character.transform.position, transform.position);
 
-            if (open == false && Unlock == true)
-            {
-                Ouverture();
-                StopAllCoroutines();
-                StartCoroutine("ReturnUnlock");
-            }
-            else if (open == true && Unlock == false && dist > 3f)
-            {
-                fermeture();
-            }
-        
-        
+        if (open == false && Unlock == true)
+        {
+            Ouverture();
+            StopAllCoroutines();
+            StartCoroutine("ReturnUnlock");
+        }
+        else if (open == true && Unlock == false && dist > 3f)
+        {
+            fermeture();
+        }
+
+        if (gameObject.GetComponent<Description>().compteur > 50)
+        {
+            Unlockage();
+        }
     }
 
     public void Unlockage()

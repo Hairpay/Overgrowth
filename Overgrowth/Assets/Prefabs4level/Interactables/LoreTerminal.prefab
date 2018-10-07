@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212241870025399644}
   - component: {fileID: 114686007401157160}
   - component: {fileID: 61690933926202318}
+  - component: {fileID: 114682012472457450}
   m_Layer: 0
   m_Name: LoreTerminal
   m_TagString: Untagged
@@ -67,6 +68,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114682012472457450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1947237170499068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f8f6706d0f5b64b91135de99698bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charaDual: {fileID: 0}
+  analysisText: {fileID: 0}
+  analysisPanel: {fileID: 0}
+  description: 
 --- !u!114 &114686007401157160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -81,7 +97,6 @@ MonoBehaviour:
   charaDual: {fileID: 0}
   analysisText: {fileID: 0}
   analysisPanel: {fileID: 0}
-  description: Need lore here
   compteur: 0
   speed: 1
 --- !u!212 &212241870025399644

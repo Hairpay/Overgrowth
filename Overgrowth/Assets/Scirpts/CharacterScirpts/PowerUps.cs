@@ -64,6 +64,6 @@ public class PowerUps : MonoBehaviour {
         {
             Gestionnaire.PowerUps[i] = 0;            
         }
-       
+        Gestionnaire.PowerUps[4] = 5;
     }
 }

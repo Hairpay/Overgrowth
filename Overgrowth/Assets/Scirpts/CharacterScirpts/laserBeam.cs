@@ -24,6 +24,7 @@ public class laserBeam : MonoBehaviour
 
     public RaycastHit2D hit;
     public bool blockAnalysis;
+    public float tim2w8t;
 
 
     // Use this for initialization
@@ -111,12 +112,17 @@ public class laserBeam : MonoBehaviour
             StartCoroutine("ReturnVariables");
         }
     }
-
+    public void ReturnWait(float time)
+    {
+        tim2w8t = time;
+        StopAllCoroutines();
+        StartCoroutine("ReturnVariables");
+    }
 
     IEnumerator ReturnVariables()
     {
-
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(tim2w8t + 1f);
+        tim2w8t = 0f;
         analysisText.enabled = false;
         analysisPanel.enabled = false;        
     }

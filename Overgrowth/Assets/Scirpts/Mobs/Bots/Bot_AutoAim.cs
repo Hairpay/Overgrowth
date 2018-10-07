@@ -28,7 +28,7 @@ public class Bot_AutoAim : MonoBehaviour {
         charBody = character.GetComponent<Rigidbody2D>();
         gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;
 
-        layer_mask = LayerMask.GetMask("Player", "Environment");
+        layer_mask = LayerMask.GetMask("Player", "Environment","Door");
 
         line = gameObject.GetComponent<LineRenderer>();
 
@@ -51,10 +51,7 @@ public class Bot_AutoAim : MonoBehaviour {
         {
             if (gestionnaire.SuitActivated == true)
             {
-                if (gameObject.GetComponent<JumpingMob>() != null)
-                {
-                    HideLaser();
-                }
+                HideLaser();              
             }
             else
             {
@@ -92,7 +89,10 @@ public class Bot_AutoAim : MonoBehaviour {
     }
     public void HideLaser()
     {
-        gameObject.GetComponent<JumpingMob>().enabled = true;
+        if (gameObject.GetComponent<JumpingMob>() != null)
+        {
+            gameObject.GetComponent<JumpingMob>().enabled = true;
+        }      
         gameObject.GetComponent<LineRenderer>().enabled = false;
         compteur = 0;
     }

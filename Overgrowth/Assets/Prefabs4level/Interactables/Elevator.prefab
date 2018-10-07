@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61160526766558868}
   - component: {fileID: 114906239968043886}
   - component: {fileID: 114066028235157132}
+  - component: {fileID: 114414300424479168}
   m_Layer: 17
   m_Name: PlateForme
   m_TagString: Elevator
@@ -547,6 +548,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Elevator: {fileID: 1009770758929790}
   PositionArret: 2
+  charaDual: {fileID: 0}
+  analysisText: {fileID: 0}
+  analysisPanel: {fileID: 0}
 --- !u!114 &114066028235157132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -561,7 +565,6 @@ MonoBehaviour:
   charaDual: {fileID: 0}
   analysisText: {fileID: 0}
   analysisPanel: {fileID: 0}
-  description: This is an elevator, stand in the middle to move it up or down.
   compteur: 0
   speed: 1
 --- !u!114 &114209326431735132
@@ -578,7 +581,6 @@ MonoBehaviour:
   charaDual: {fileID: 0}
   analysisText: {fileID: 0}
   analysisPanel: {fileID: 0}
-  description: Elevator called.
   compteur: 0
   speed: 3
 --- !u!114 &114292607438831308
@@ -594,6 +596,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Elevator: {fileID: 1009770758929790}
   PositionArret: 0
+  charaDual: {fileID: 0}
+  analysisText: {fileID: 0}
+  analysisPanel: {fileID: 0}
 --- !u!114 &114329553058363546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -608,9 +613,23 @@ MonoBehaviour:
   charaDual: {fileID: 0}
   analysisText: {fileID: 0}
   analysisPanel: {fileID: 0}
-  description: Elevator called.
   compteur: 0
   speed: 3
+--- !u!114 &114414300424479168
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1009770758929790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f8f6706d0f5b64b91135de99698bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charaDual: {fileID: 0}
+  analysisText: {fileID: 0}
+  analysisPanel: {fileID: 0}
+  description: This is an elevator, stand in the middle to use.
 --- !u!114 &114530121867017716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -624,6 +643,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Elevator: {fileID: 1009770758929790}
   PositionArret: 1
+  charaDual: {fileID: 0}
+  analysisText: {fileID: 0}
+  analysisPanel: {fileID: 0}
 --- !u!114 &114639120764739104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -637,6 +659,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Elevator: {fileID: 1009770758929790}
   PositionArret: 3
+  charaDual: {fileID: 0}
+  analysisText: {fileID: 0}
+  analysisPanel: {fileID: 0}
 --- !u!114 &114807412483739186
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -651,7 +676,6 @@ MonoBehaviour:
   charaDual: {fileID: 0}
   analysisText: {fileID: 0}
   analysisPanel: {fileID: 0}
-  description: Elevator called.
   compteur: 0
   speed: 3
 --- !u!114 &114906239968043886
@@ -680,6 +704,12 @@ MonoBehaviour:
   t: 0
   oldPos: {x: 0, y: 0, z: 0}
   v: 0
+  noHitbox: 0
+  power: 1
+  analysisText: {fileID: 0}
+  analysisPanel: {fileID: 0}
+  baseColor: {r: 0, g: 0, b: 0, a: 0}
+  activeColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114921950147770528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -694,7 +724,6 @@ MonoBehaviour:
   charaDual: {fileID: 0}
   analysisText: {fileID: 0}
   analysisPanel: {fileID: 0}
-  description: Elevator called.
   compteur: 0
   speed: 3
 --- !u!212 &212122095651070226

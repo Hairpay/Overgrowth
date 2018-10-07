@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114656812527584286}
   - component: {fileID: 114985324954331378}
   - component: {fileID: 114291319453429574}
+  - component: {fileID: 114151518542026628}
   m_Layer: 18
   m_Name: Vine
   m_TagString: flamable
@@ -71,6 +72,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114151518542026628
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1983012964321800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f8f6706d0f5b64b91135de99698bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charaDual: {fileID: 0}
+  analysisText: {fileID: 0}
+  analysisPanel: {fileID: 0}
+  description: Theses vines could be destroyed with the right weapon.
 --- !u!114 &114291319453429574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,7 +130,6 @@ MonoBehaviour:
   charaDual: {fileID: 0}
   analysisText: {fileID: 0}
   analysisPanel: {fileID: 0}
-  description: Looks flamable.
   compteur: 0
   speed: 1
 --- !u!114 &114951866030852082
@@ -148,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 0}
-  Gestionnaire: {fileID: 0}
+  gestionnaire: {fileID: 0}
   suitMode: 0
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   otherColor: {r: 0, g: 0, b: 0, a: 0}

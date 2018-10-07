@@ -30,7 +30,7 @@ public class PowerUpSelfDestruct : MonoBehaviour {
             gameObject.GetComponent<Collider2D>().enabled = false;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
 
-            gameObject.GetComponent<Description>().description = textRamasse;
+            gameObject.GetComponent<DescriptionText>().description = textRamasse;
             gameObject.GetComponent<Description>().compteur = 55;
             gameObject.GetComponent<Description>().addnalyse();
 
@@ -50,8 +50,9 @@ public class PowerUpSelfDestruct : MonoBehaviour {
 
     IEnumerator selfDestroy()
     {
-        yield return new WaitForSeconds(4f);
-        gameObject.GetComponent<Description>().hidenalyse();
+        GameObject.Find("Directiowerfer").GetComponent<laserBeam>().ReturnWait(3f);
+        yield return new WaitForSeconds(0.2f);
+     //   gameObject.GetComponent<Description>().hidenalyse();
         Destroy(gameObject);
     }
 }

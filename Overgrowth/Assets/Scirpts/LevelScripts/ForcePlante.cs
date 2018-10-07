@@ -30,7 +30,7 @@ public class ForcePlante : MonoBehaviour
             gameObject.GetComponent<Collider2D>().enabled = false;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
 
-            gameObject.GetComponent<Description>().description = textRamasse;
+            gameObject.GetComponent<DescriptionText>().description = textRamasse;
             gameObject.GetComponent<Description>().compteur = 55;
             gameObject.GetComponent<Description>().addnalyse();
 

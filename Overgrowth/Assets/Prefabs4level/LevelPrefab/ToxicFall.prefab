@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61834527740929232}
   - component: {fileID: 114451915917134684}
   - component: {fileID: 114842127024255690}
+  - component: {fileID: 114174607033096778}
   m_Layer: 0
   m_Name: Fall
   m_TagString: Untagged
@@ -111,6 +112,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AimPoint: {x: 0, y: 0, z: 0}
   bridge: {fileID: 1502619707692548}
+--- !u!114 &114174607033096778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1502619707692548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f8f6706d0f5b64b91135de99698bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charaDual: {fileID: 0}
+  analysisText: {fileID: 0}
+  analysisPanel: {fileID: 0}
+  description: Toxic waste is flooding from the roof.
 --- !u!114 &114451915917134684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -143,7 +159,6 @@ MonoBehaviour:
   charaDual: {fileID: 0}
   analysisText: {fileID: 0}
   analysisPanel: {fileID: 0}
-  description: A lot of toxic waste is flooding from the roof.
   compteur: 0
   speed: 1
 --- !u!212 &212610018063917310

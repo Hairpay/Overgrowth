@@ -30,7 +30,7 @@ public class Explotron2D : MonoBehaviour {
         parent.transform.position = gameObject.transform.position;
         parent.AddComponent<DelePilotron>();
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 20; i++)
         {            
             GameObject shrapnel = Instantiate(Shrap);
         

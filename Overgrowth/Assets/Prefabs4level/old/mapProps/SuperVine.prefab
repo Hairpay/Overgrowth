@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114448292680197074}
   - component: {fileID: 114203320032594818}
   - component: {fileID: 114296075057748680}
+  - component: {fileID: 114694185793820698}
   m_Layer: 18
   m_Name: SuperVine
   m_TagString: Untagged
@@ -83,7 +84,6 @@ MonoBehaviour:
   charaDual: {fileID: 0}
   analysisText: {fileID: 0}
   analysisPanel: {fileID: 0}
-  description: Flames dont work on thoses, but green things can go through.
   compteur: 0
   speed: 1
 --- !u!114 &114296075057748680
@@ -113,11 +113,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 0}
-  Gestionnaire: {fileID: 0}
+  gestionnaire: {fileID: 0}
   suitMode: 0
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   otherColor: {r: 0, g: 0, b: 0, a: 0}
   baseLayer: 0
+--- !u!114 &114694185793820698
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1651283066740880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f8f6706d0f5b64b91135de99698bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charaDual: {fileID: 0}
+  analysisText: {fileID: 0}
+  analysisPanel: {fileID: 0}
+  description: Theses vines are indestructibles.
 --- !u!212 &212135807593467158
 SpriteRenderer:
   m_ObjectHideFlags: 1
