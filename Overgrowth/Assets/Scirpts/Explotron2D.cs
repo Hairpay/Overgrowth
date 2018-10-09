@@ -54,9 +54,9 @@ public class Explotron2D : MonoBehaviour {
         
             Vector3 scale = new Vector3(
 
-              (move.y + 3) / 10,
-              (move.y + 3) / 10,
-              (move.y + 3) / 10
+              (move.y + 1),
+              (move.y + 1),
+              (move.y + 1) 
                );
 
             shrapnel.transform.localScale = scale;
