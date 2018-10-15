@@ -66,8 +66,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1452455122398650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 372.8449, y: -24.785892, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4596306048156296}
   m_Father: {fileID: 0}
@@ -135,6 +135,7 @@ MonoBehaviour:
   touche: {x: 0, y: 0}
   impact: {x: 0, y: 0}
   cooldown: 0
+  SuitDammage: 0
 --- !u!114 &114130323072702354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,6 +154,8 @@ MonoBehaviour:
   baseRotation: {x: 0, y: 0, z: 0}
   tagignore: Mob
   dammage: 0
+  speed: 30
+  lifetime: 2
 --- !u!212 &212831930878233228
 SpriteRenderer:
   m_ObjectHideFlags: 1

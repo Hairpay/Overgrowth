@@ -5,6 +5,7 @@ using UnityEngine;
 public class Mob2AI : MonoBehaviour {
 
     Actions myState;
+    Anims animState;
     public int layer_mask;
 
     public float distance;
@@ -14,6 +15,7 @@ public class Mob2AI : MonoBehaviour {
 
     public Gestionnaire gestionnaire;
     public Rigidbody2D body;
+    public Animator animator;
 
     public float speed;
     public float side = -1;
@@ -22,8 +24,10 @@ public class Mob2AI : MonoBehaviour {
     public bool laserCD;
 
     public GameObject hitbox;
+    public GameObject head;
     public float lastLife;
 
+    public GameObject projectile;
 
     // Use this for initialization
     void Start ()
@@ -45,28 +49,52 @@ public class Mob2AI : MonoBehaviour {
         attac,
         shoot
     }
-	// Update is called once per frame
-	void Update ()
+    public enum Anims
+    {
+        walkAnim,
+        attacAnim,
+        idleAnim,
+        shootAnim
+    }
+    // Update is called once per frame
+    void Update ()
     {      
         distance = Vector3.Distance(character.transform.position, transform.position);      
 
         switch (myState)
         {
             case Actions.patrol:
-                CheckActions();
                 Debug.Log("Patrol ongoing !");
+                CheckActions();
                 Patrol();
                 break;
             case Actions.follow:
-                Debug.Log("follow ongoing !");
+                Debug.Log("follow incoming !");
                 Follow();
                 break;
             case Actions.attac:
-                Attac();
+                Debug.Log("Attac incoming !");
+                Patrol();
                 break;
             case Actions.shoot:
                 Debug.Log("shoot ongoing !");
-                Shoot();
+                break;
+        }
+        switch (animState)
+        {
+            case Anims.idleAnim:
+                animator.SetBool("isWalking", false);          
+                break;
+            case Anims.walkAnim:
+                animator.SetBool("isWalking", true);
+                break;
+            case Anims.attacAnim:
+                animator.Play("Atacc");
+                animator.SetBool("isWalking", false);
+                break;
+            case Anims.shootAnim:
+                animator.Play("Shoot");
+                animator.SetBool("isWalking", false);
                 break;
         }
 
@@ -84,7 +112,7 @@ public class Mob2AI : MonoBehaviour {
             {
                 myState = Actions.follow;
             }         
-            else if (hit.collider.tag != "Player" && distanceHit < 5)
+            else if (hit.collider.tag != "Player" && distanceHit < 10)
             {
                 TurnBacc();
             }
@@ -102,7 +130,9 @@ public class Mob2AI : MonoBehaviour {
 
     public void Patrol()
     {   
-        body.velocity = new Vector2(speed * side, 0f);       
+        body.velocity = new Vector2(speed * side, 0f);
+        animator.SetFloat("walkspeed", 1f);
+        animState = Anims.walkAnim;
     }
     public void Follow()
     {
@@ -120,27 +150,34 @@ public class Mob2AI : MonoBehaviour {
 
         if (target.collider != null && target.collider.tag == "Player")
         {
-            if (distance > 10)
+            if (distance > 7)
             {
                 if (laserCD == false)
                 {
                     myState = Actions.shoot;
+                    animState = Anims.shootAnim;
+                    StartCoroutine("ResetLaser");
                     laserCD = true;
                 }
                 else
                 {
-                    body.velocity = new Vector2(speed * side, 0f);
+                    body.velocity = new Vector2(speed * side * 2, 0f);
+                    animator.SetFloat("walkspeed", 2f);
+                    animState = Anims.walkAnim;
                     compteurLoss = 0;
                 }                       
             }
             else
             {
                 myState = Actions.attac;
+                animState = Anims.attacAnim;
+                StartCoroutine("Attacc");
                 body.velocity = new Vector2(0f, 0f);
             }          
         }
         else
         {
+            animState = Anims.idleAnim;
             body.velocity = new Vector2(0f, 0f);
             compteurLoss = compteurLoss + 1;
             if (compteurLoss > 150)
@@ -149,18 +186,7 @@ public class Mob2AI : MonoBehaviour {
                 myState = Actions.patrol;
             }
         }
-    }
-    public void Attac()
-    {
-        Debug.Log("attac ongoing !");
-        myState = Actions.follow;
-    }
-    public void Shoot()
-    {
-        Debug.Log("shoot ongoing !");
-        myState = Actions.follow;
-        StartCoroutine("ResetLaser");
-    }
+    } 
     public void TurnBacc()
     {
         Debug.Log("turnbacc ongoing !");
@@ -168,10 +194,34 @@ public class Mob2AI : MonoBehaviour {
         side = -side;
         gameObject.transform.localScale = new Vector3(-gameObject.transform.localScale.x, gameObject.transform.localScale.y,1f); 
     }
+    public void Shoot()
+    {
+        myState = Actions.follow;  
+        GameObject DOI = Instantiate(projectile);
 
+        DOI.transform.position = head.transform.position;
+        Vector3 difference = character.transform.position - head.transform.position;
+        difference.Normalize();
+        float rotation_z = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        DOI.transform.rotation = Quaternion.Euler(0f, 0f, rotation_z);                  
+    }
+    IEnumerator Attacc()
+    {
+        yield return new WaitForSeconds(0.5f);
+        animState = Anims.idleAnim;
+        yield return new WaitForSeconds(1.5f);
+        myState = Actions.follow;
+    }
     IEnumerator ResetLaser()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1.3f);
+        Shoot();
+        yield return new WaitForSeconds(0.3f);
+        Shoot();
+        yield return new WaitForSeconds(0.3f);
+        Shoot();
+        animState = Anims.idleAnim;
+        yield return new WaitForSeconds(3f);
         laserCD = false;
     }
 }

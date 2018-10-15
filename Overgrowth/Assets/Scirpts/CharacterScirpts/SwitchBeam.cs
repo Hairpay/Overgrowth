@@ -94,7 +94,7 @@ public class SwitchBeam : MonoBehaviour {
         reloadLight.range = reloading * 0.1f;
     }
 
-        void Fire()
+    void Fire()
     {
        // Gestionnaire.SuitActivated = false;
         GameObject DOI = Instantiate(projectile);

@@ -13,6 +13,8 @@ public class DOIgo : MonoBehaviour {
     public string tagignore;
 
     public int dammage;
+    public float speed = 100;
+    public float lifetime = 0.725f;
 
     // Use this for initialization
     void Start () {
@@ -42,7 +44,7 @@ public class DOIgo : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        gameObject.GetComponent<Rigidbody2D>().AddForce(pos*100);
+        gameObject.GetComponent<Rigidbody2D>().AddForce(pos*speed);
     }
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -65,7 +67,7 @@ public class DOIgo : MonoBehaviour {
     }
     IEnumerator selfdestrucc()
     {
-        yield return new WaitForSeconds(.725f);
+        yield return new WaitForSeconds(lifetime);
         Xploz();
     }
 }
