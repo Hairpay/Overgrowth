@@ -34,6 +34,7 @@ public class Gestionnaire : ScriptableObject {
     // 3 = Gun
     // 4 = life 
     // 5 = vineBridge
+    // 6 = wall jump
 
 
     public int life;

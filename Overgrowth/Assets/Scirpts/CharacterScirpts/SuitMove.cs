@@ -20,6 +20,7 @@ public class SuitMove : MonoBehaviour {
 
     private Vector2 m_LastPos;
     public bool m_HasMoved;
+    public float glideFactor;
 
     // Use this for initialization
     void Start () {
@@ -27,7 +28,7 @@ public class SuitMove : MonoBehaviour {
         body = gameObject.GetComponent<Rigidbody2D>();
         speed = maxSpeedBase;
         gestionnaire = gameObject.GetComponent<PowerUps>().Gestionnaire;
-        layerMask = LayerMask.GetMask("Environment");
+        layerMask = LayerMask.GetMask("Environment","VineBridge","Glass");
         sizebox = gameObject.GetComponent<CapsuleCollider2D>().size;
 
     }
@@ -35,8 +36,7 @@ public class SuitMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        CheckCrouch();
-
+      
         float h = Input.GetAxis("Horizontal");       
         isJumping = gestionnaire.JumpCD;
         Move(h);
@@ -66,6 +66,9 @@ public class SuitMove : MonoBehaviour {
             gameObject.GetComponent<CapsuleCollider2D>().size = sizebox;
             gameObject.GetComponent<CapsuleCollider2D>().offset = new Vector2(0, 0.1f);
         }
+
+        CheckCrouch();
+
     }
 
     public void CheckCrouch()
@@ -86,6 +89,7 @@ public class SuitMove : MonoBehaviour {
         RaycastHit2D centre = Physics2D.Raycast(transform.position, Vector2.up, 2, layerMask);
         Debug.DrawRay(transform.position, Vector2.up * 2);
 
+        //check crouch here
         if (leftBas.collider == null && leftHaut.collider != null || rightBas.collider == null && rightHaut.collider != null)
         {
             if (gestionnaire.grounded == true)
@@ -100,17 +104,43 @@ public class SuitMove : MonoBehaviour {
                 gestionnaire.Crouch = false;
             }          
         }
+        //check glide here
+        if (leftBas.collider != null && gestionnaire.grounded == false)
+        {
+            Glide();
+            gestionnaire.GlideGauche = true;
+        }
+        else if ( rightBas.collider != null && gestionnaire.grounded == false)
+        {
+            Glide();
+            gestionnaire.GlideGauche = false;
+        }
+        else
+        {
+            gestionnaire.isGlinding = false;
+            glideFactor = 1;
+        }
+    }
+
+    public void Glide()
+    {             
+        glideFactor = 1f;
+        gestionnaire.isGlinding = true;
+         if (gestionnaire.PowerUps[6] > 0)
+         {
+            gestionnaire.JumpCD = 0;
+         }       
     }
 
     public void Move( float move )
     {
         if( isJumping > 0 && gestionnaire.SuitActivated == true || gestionnaire.KnockbackCD == true )
         {
-            body.velocity = new Vector2( ( move * speed * 0.06f ) + ( body.velocity.x ), body.velocity.y );
+            body.velocity = new Vector2( ( move * speed * 0.06f ) + ( body.velocity.x ), body.velocity.y * glideFactor);
         }
         else
         {
-            body.velocity = new Vector2( move * speed, body.velocity.y );
+            body.velocity = new Vector2( move * speed, body.velocity.y * glideFactor );
         }
         m_HasMoved = HasMoved();
         m_LastPos = body.position;

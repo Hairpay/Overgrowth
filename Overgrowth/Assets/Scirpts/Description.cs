@@ -10,9 +10,10 @@ public class Description : MonoBehaviour {
     public Text analysisText;
     public Image analysisPanel;
 
-    public int compteur;
-    public int speed = 1;
+    public float compteur;
+    public float speed = 1;
 
+    public int affichage;
     public bool lastMode;
 
 	// Use this for initialization
@@ -75,7 +76,8 @@ public class Description : MonoBehaviour {
 
         if (compteur > 1 && compteur < 50)
         {
-            analysisText.text = "analyzing..." + (compteur * 2).ToString() + " %";
+            affichage = (int)compteur;
+            analysisText.text = "analyzing..." + (affichage * 2).ToString() + " %";
         }
         else if (compteur > 50)
         {

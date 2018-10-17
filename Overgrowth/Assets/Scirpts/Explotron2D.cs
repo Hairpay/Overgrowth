@@ -6,6 +6,7 @@ public class Explotron2D : MonoBehaviour {
     public GameObject Shrap;
     public float movescale = 0.3f;
     public bool autoExplo = false;
+    public int nombre = 20;
 
     // Use this for initialization
     void Start () {
@@ -30,7 +31,7 @@ public class Explotron2D : MonoBehaviour {
         parent.transform.position = gameObject.transform.position;
         parent.AddComponent<DelePilotron>();
 
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < nombre; i++)
         {            
             GameObject shrapnel = Instantiate(Shrap);
         

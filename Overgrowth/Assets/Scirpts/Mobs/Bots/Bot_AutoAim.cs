@@ -28,7 +28,7 @@ public class Bot_AutoAim : MonoBehaviour {
         charBody = character.GetComponent<Rigidbody2D>();
         gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;
 
-        layer_mask = LayerMask.GetMask("Player", "Environment","Door");
+        layer_mask = LayerMask.GetMask("Player", "Environment","Door", "VineBridge");
 
         line = gameObject.GetComponent<LineRenderer>();
 

@@ -49,9 +49,6 @@ public class PowerJump : MonoBehaviour {
 
         if (Gestionnaire.Locked == false && Gestionnaire.Crouch == false)
         {
-
-
-
             if (Input.GetButtonDown("Fire6"))
             {
                 Multiplier = MinMultiplier;
@@ -112,9 +109,14 @@ public class PowerJump : MonoBehaviour {
     public void _PJumpDown()
     {
         Gestionnaire.CharJump = true;
-    //    gameObject.GetComponent<SuitMove>().Speed = gameObject.GetComponent<SuitMove>().MaxSpeedCharge;
-                
-            if (Gestionnaire.PowerUps[2] > 0 && Gestionnaire.JumpCD == 1)
+        //    gameObject.GetComponent<SuitMove>().Speed = gameObject.GetComponent<SuitMove>().MaxSpeedCharge;
+        if (Gestionnaire.isGlinding == true)
+        {
+            body.velocity = new Vector2(0f, 0f);
+            body.simulated = false;
+        }
+
+        if (Gestionnaire.PowerUps[2] > 0 && Gestionnaire.JumpCD == 1)
             {
                 body.velocity = new Vector2(0f, 0f);
                 body.simulated = false;
@@ -135,15 +137,15 @@ public class PowerJump : MonoBehaviour {
             body.velocity = new Vector2(0f, 0f);
             Jump = new Vector2((p.x - transform.position.x) * factor * Multiplier, (p.y - transform.position.y) * factor * Multiplier);
 
-            /*
-            if (Gestionnaire.isGlinding == true && gameObject.GetComponent<ResetJumpCD>().distance < 0 && Jump.x > 0)
+         /*   
+            if (Gestionnaire.isGlinding == true && Gestionnaire.GlideGauche == true)
             {
-                Jump.x = -Jump.x * 0.2f;
+                Jump.x = Jump.x - Jump.x * 0.2f;
             }
 
-            if (Gestionnaire.isGlinding == true && gameObject.GetComponent<ResetJumpCD>().distance > 0 && Jump.x < 0)
+            if (Gestionnaire.isGlinding == true && Gestionnaire.GlideGauche == false)
             {
-                Jump.x = -Jump.x * 0.2f;
+                Jump.x = Jump.x + Jump.x * 0.2f;
             }
 
     */

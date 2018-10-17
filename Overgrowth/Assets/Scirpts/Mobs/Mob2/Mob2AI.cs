@@ -47,7 +47,8 @@ public class Mob2AI : MonoBehaviour {
         patrol,
         follow,
         attac,
-        shoot
+        shoot,
+        wait
     }
     public enum Anims
     {
@@ -64,20 +65,25 @@ public class Mob2AI : MonoBehaviour {
         switch (myState)
         {
             case Actions.patrol:
-                Debug.Log("Patrol ongoing !");
+               // Debug.Log("Patrol ongoing !");
                 CheckActions();
                 Patrol();
                 break;
             case Actions.follow:
-                Debug.Log("follow incoming !");
+                //Debug.Log("follow incoming !");
                 Follow();
                 break;
             case Actions.attac:
-                Debug.Log("Attac incoming !");
+              //  Debug.Log("Attac incoming !");
                 Patrol();
                 break;
             case Actions.shoot:
-                Debug.Log("shoot ongoing !");
+               // Debug.Log("shoot ongoing !");
+                break;
+            case Actions.wait:
+                // Debug.Log("wait ongoing !");
+                CheckActions();
+                animState = Anims.idleAnim;
                 break;
         }
         switch (animState)
@@ -103,18 +109,31 @@ public class Mob2AI : MonoBehaviour {
     public void CheckActions()
     {
         RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, transform.right * side, 200f, layer_mask);
-        Debug.DrawLine(transform.position, hit.point, new Color(252, 252, 0));       
+        Debug.DrawLine(transform.position, hit.point, new Color(252, 252, 0));
+        RaycastHit2D hit2 = Physics2D.Raycast(gameObject.transform.position, transform.right * side*-1, 10f, layer_mask);
+        Debug.DrawRay(transform.position, transform.right * side * -10, new Color(252, 252, 0));
+        RaycastHit2D hit3 = Physics2D.Raycast(head.transform.position, transform.up * -1, 5f, layer_mask);
+        Debug.DrawLine(head.transform.position, hit3.point, new Color(252, 252, 0));
+
         distanceHit = Vector3.Distance(hit.point, transform.position);
 
         if (hit.collider != null)
         {
-            if (hit.collider.tag == "Player" && distanceHit < 50)
+            if (hit.collider.tag == "Player" && distanceHit < 50 || hit2.collider != null && hit2.collider.tag == "Player")
             {
                 myState = Actions.follow;
             }         
-            else if (hit.collider.tag != "Player" && distanceHit < 10)
+            else if (hit.collider.tag != "Player" && distanceHit < 10 || hit3.collider == null)
             {
-                TurnBacc();
+                if( hit2.collider == null)
+                {
+                    TurnBacc();
+                }
+                else
+                {
+                    myState = Actions.wait;
+                }
+             
             }
             else
             {
@@ -189,7 +208,7 @@ public class Mob2AI : MonoBehaviour {
     } 
     public void TurnBacc()
     {
-        Debug.Log("turnbacc ongoing !");
+      //  Debug.Log("turnbacc ongoing !");
         body.velocity = new Vector2(0f, 0f);
         side = -side;
         gameObject.transform.localScale = new Vector3(-gameObject.transform.localScale.x, gameObject.transform.localScale.y,1f); 
@@ -215,6 +234,7 @@ public class Mob2AI : MonoBehaviour {
     IEnumerator ResetLaser()
     {
         yield return new WaitForSeconds(1.3f);
+        body.velocity = new Vector2(0f, 0f);
         Shoot();
         yield return new WaitForSeconds(0.3f);
         Shoot();

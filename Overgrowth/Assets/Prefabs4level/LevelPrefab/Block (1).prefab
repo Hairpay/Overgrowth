@@ -29,7 +29,7 @@ GameObject:
   - component: {fileID: 114446213826809138}
   - component: {fileID: 114537548444491580}
   - component: {fileID: 114814346142405646}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Block (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,6 +139,7 @@ MonoBehaviour:
   Shrap: {fileID: 1983012964321800, guid: 3f7f2068b5efd504a943fb5c293bc8e7, type: 2}
   movescale: 0.3
   autoExplo: 0
+  nombre: 20
 --- !u!114 &114446213826809138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,10 +152,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charaDual: {fileID: 0}
+  Gestionnaire: {fileID: 0}
   analysisText: {fileID: 0}
   analysisPanel: {fileID: 0}
   compteur: 0
   speed: 1
+  lastMode: 0
 --- !u!114 &114537548444491580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,8 +188,6 @@ MonoBehaviour:
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   life: 5
   maxLife: 5
-  isDed: 0
-  ifram: 0
 --- !u!19719996 &2113883507241808144
 TilemapCollider2D:
   m_ObjectHideFlags: 1
