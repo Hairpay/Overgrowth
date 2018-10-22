@@ -86,21 +86,9 @@ public class PowerJump : MonoBehaviour {
                 }
                 if (Input.GetButtonUp("Jump")  || Multiplier > MaxMultiplier - 1)
                 {
-                    if (Multiplier > MaxMultiplier * 0.6f)
-                    {
-                        _PJumpUp();
-                        axisPressed = false;
-                        Gestionnaire.CharJump = false;
-                    }
-                    else
-                    {
-                        gameObject.GetComponent<Jump>()._Jump();
-                        Multiplier = MinMultiplier;
-
-                        axisPressed = false;
-                        Gestionnaire.CharJump = false;
-                    }
-
+                    _PJumpUp();
+                    axisPressed = false;
+                    Gestionnaire.CharJump = false;
                 }
             }
         }
@@ -110,7 +98,7 @@ public class PowerJump : MonoBehaviour {
     {
         Gestionnaire.CharJump = true;
         //    gameObject.GetComponent<SuitMove>().Speed = gameObject.GetComponent<SuitMove>().MaxSpeedCharge;
-        if (Gestionnaire.isGlinding == true)
+        if (Gestionnaire.isGlinding == true && Gestionnaire.PowerUps[6] > 0)
         {
             body.velocity = new Vector2(0f, 0f);
             body.simulated = false;

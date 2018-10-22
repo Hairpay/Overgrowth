@@ -18,6 +18,7 @@ public class Jump : MonoBehaviour {
     public bool isPlaning;
 
     public bool jumpPressed;
+    public bool jcd;
 
     // Use this for initialization
     void Start () {
@@ -45,8 +46,12 @@ public class Jump : MonoBehaviour {
             if (jumpPressed == true || Input.GetAxis("JumpM") < -0.3)
             {
                 _Jump();
-            }          
-
+            }
+            if (Input.GetButtonDown("Fire6") && Gestionnaire.isFiring == false && Gestionnaire.PowerUps[1] > 0)
+            {
+                jumpPressed = false;
+            }
+            /*
             if (Gestionnaire.isGlinding == true)
             {
                 isPlaning = false;
@@ -56,42 +61,56 @@ public class Jump : MonoBehaviour {
             {
                 gameObject.GetComponent<Rigidbody2D>().gravityScale = baseGravity;
             }
+            */
         }
         
     }
         public void _Jump()
     {      
-        if (Gestionnaire.JumpCD == 0)
+        if (jcd == false)
+        {
+            body.simulated = true;
+            jcd = true;
+            StartCoroutine("ReturnCD");
+
+            if (Gestionnaire.JumpCD == 0 && Gestionnaire.SuitActivated == false)
             {
-            /*
+
                 if (Gestionnaire.isGlinding == true && Gestionnaire.GlideGauche == false)
                 {
-                    gameObject.GetComponent<SuitMove>().enabled = false;
-                    decale = -1000f;
+                    Gestionnaire.KnockbackCD = true;
+                    decale = -2000f;
                     StartCoroutine("ReturnVariables");
                 }
 
                 else if (Gestionnaire.isGlinding == true && Gestionnaire.GlideGauche == true)
                 {
-                    gameObject.GetComponent<SuitMove>().enabled = false;
-                    decale = 1000f;
+                    Gestionnaire.KnockbackCD = true;
+                    decale = 2000f;
                     StartCoroutine("ReturnVariables");
                 }
                 else
                 {
                     decale = 0f;
                 }
-                */
+
                 finalJump = new Vector2(decale, jumpPower);
                 body.velocity = new Vector2(body.velocity.x, 0f);
                 body.AddForce(finalJump);
                 Gestionnaire.JumpCD = Gestionnaire.JumpCD + 1;
-        }            
+            }
+        }
+       
     }
 
     IEnumerator ReturnVariables()
     {
         yield return new WaitForSeconds(0.3f);
-        gameObject.GetComponent<SuitMove>().enabled = true;
+        Gestionnaire.KnockbackCD = false;
+    }
+    IEnumerator ReturnCD()
+    {
+        yield return new WaitForSeconds(0.1f);
+        jcd = false;
     }
 }

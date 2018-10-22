@@ -132,8 +132,7 @@ public class Mob2AI : MonoBehaviour {
                 else
                 {
                     myState = Actions.wait;
-                }
-             
+                }             
             }
             else
             {

@@ -37,9 +37,11 @@ public class SuitMove : MonoBehaviour {
 	void Update () {
 
       
-        float h = Input.GetAxis("Horizontal");       
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
         isJumping = gestionnaire.JumpCD;
-        Move(h);
+        Move(h,v);
+        body.gravityScale = 10;
         gestionnaire.Speed = Mathf.Abs(body.velocity.x);       
 
         if (gestionnaire.Crouch == true)
@@ -68,7 +70,35 @@ public class SuitMove : MonoBehaviour {
         }
 
         CheckCrouch();
+        CheckGround();
+    }
+    public void CheckGround()
+    {
+        Vector3 basPos = new Vector3(transform.position.x, transform.position.y - 1, 0);
+        Vector3 basPosG = new Vector3(transform.position.x - 0.7f, transform.position.y - 1, 0);
+        Vector3 basPosD = new Vector3(transform.position.x + 0.7f, transform.position.y - 1, 0);
 
+        RaycastHit2D rayGround = Physics2D.Raycast(basPos, Vector2.up * -1, 0.8f, layerMask);
+        Debug.DrawRay(basPos, Vector2.up * -0.8f, new Color(252, 252, 0));
+        RaycastHit2D rayGroundG = Physics2D.Raycast(basPosG, Vector2.up * -1, 0.8f, layerMask);
+        Debug.DrawRay(basPosG, Vector2.up * -0.8f, new Color(252, 252, 0));
+        RaycastHit2D rayGroundD = Physics2D.Raycast(basPosD, Vector2.up * -1, 0.8f, layerMask);
+        Debug.DrawRay(basPosD, Vector2.up * -0.8f, new Color(252, 252, 0));
+
+        if (gestionnaire.Jcd == false)
+        {
+            if(rayGround.collider != null || rayGroundG.collider != null|| rayGroundD.collider != null)
+            {
+                Debug.Log("grounded");
+                gestionnaire.JumpCD = 0;
+                gestionnaire.grounded = true;
+            }
+            else
+            {
+                gestionnaire.grounded = false;
+            }
+         
+        }
     }
 
     public void CheckCrouch()
@@ -76,15 +106,15 @@ public class SuitMove : MonoBehaviour {
         Vector3 hautPos = new Vector3(transform.position.x, transform.position.y + 1.6f, 0);
         Vector3 basPos = new Vector3(transform.position.x, transform.position.y - 1, 0);
 
-        RaycastHit2D leftHaut = Physics2D.Raycast(hautPos, Vector2.left, 1, layerMask);
-        Debug.DrawRay(hautPos, Vector2.left * 1);       
-        RaycastHit2D leftBas = Physics2D.Raycast(basPos, Vector2.left, 1, layerMask);
-        Debug.DrawRay(basPos, Vector2.left * 1);       
+        RaycastHit2D leftHaut = Physics2D.Raycast(hautPos, Vector2.left, 0.96f, layerMask);
+        Debug.DrawRay(hautPos, Vector2.left * 0.96f);       
+        RaycastHit2D leftBas = Physics2D.Raycast(basPos, Vector2.left, 0.96f, layerMask);
+        Debug.DrawRay(basPos, Vector2.left * 0.96f);       
       
-        RaycastHit2D rightHaut = Physics2D.Raycast(hautPos, Vector2.right, 1, layerMask);
-        Debug.DrawRay(hautPos, Vector2.right * 1);       
-        RaycastHit2D rightBas = Physics2D.Raycast(basPos, Vector2.right, 1, layerMask);
-        Debug.DrawRay(basPos, Vector2.right * 1);
+        RaycastHit2D rightHaut = Physics2D.Raycast(hautPos, Vector2.right, 0.96f, layerMask);
+        Debug.DrawRay(hautPos, Vector2.right * 0.96f);       
+        RaycastHit2D rightBas = Physics2D.Raycast(basPos, Vector2.right, 0.96f, layerMask);
+        Debug.DrawRay(basPos, Vector2.right * 0.96f);
 
         RaycastHit2D centre = Physics2D.Raycast(transform.position, Vector2.up, 2, layerMask);
         Debug.DrawRay(transform.position, Vector2.up * 2);
@@ -105,15 +135,23 @@ public class SuitMove : MonoBehaviour {
             }          
         }
         //check glide here
+       
         if (leftBas.collider != null && gestionnaire.grounded == false)
         {
-            Glide();
-            gestionnaire.GlideGauche = true;
+            if (gestionnaire.isGlinding == false)
+            {
+                Glide();
+                gestionnaire.GlideGauche = true;
+            }
+           
         }
         else if ( rightBas.collider != null && gestionnaire.grounded == false)
         {
-            Glide();
-            gestionnaire.GlideGauche = false;
+            if (gestionnaire.isGlinding == false)
+            {
+                Glide();
+                gestionnaire.GlideGauche = false;
+            }
         }
         else
         {
@@ -124,7 +162,7 @@ public class SuitMove : MonoBehaviour {
 
     public void Glide()
     {             
-        glideFactor = 1f;
+        glideFactor = 0.1f;
         gestionnaire.isGlinding = true;
          if (gestionnaire.PowerUps[6] > 0)
          {
@@ -132,15 +170,33 @@ public class SuitMove : MonoBehaviour {
          }       
     }
 
-    public void Move( float move )
+    public void Move( float move, float vmove)
     {
-        if( isJumping > 0 && gestionnaire.SuitActivated == true || gestionnaire.KnockbackCD == true )
+        if( isJumping > 0 && gestionnaire.SuitActivated == true || gestionnaire.KnockbackCD == true)
         {
-            body.velocity = new Vector2( ( move * speed * 0.06f ) + ( body.velocity.x ), body.velocity.y * glideFactor);
+            body.velocity = new Vector2( ( move * speed * 0.06f ) + ( body.velocity.x ), body.velocity.y);
         }
         else
         {
-            body.velocity = new Vector2( move * speed, body.velocity.y * glideFactor );
+            if (gestionnaire.isGlinding == true && gestionnaire.SuitActivated == false && gestionnaire.PowerUps[6] > 0)
+            {
+                if (vmove < 0.01f && vmove > -0.01f)
+                {
+                    body.simulated = false;
+                    body.velocity = new Vector2(0f, 0f);
+                }
+                else
+                {
+                    body.simulated = true;
+                }
+                body.gravityScale = 0;
+                body.velocity = new Vector2(move * speed, vmove * 10);
+                Debug.Log("boi");
+            }
+            else
+            {
+                body.velocity = new Vector2(move * speed, body.velocity.y * glideFactor);
+            }         
         }
         m_HasMoved = HasMoved();
         m_LastPos = body.position;
