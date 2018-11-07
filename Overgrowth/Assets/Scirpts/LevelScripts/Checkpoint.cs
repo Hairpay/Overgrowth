@@ -1,37 +1,46 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Checkpoint : MonoBehaviour {
 
-    public GameObject Character;
-    public Gestionnaire Gestionnaire;
+    public GameObject character;
+    public Gestionnaire gestionnaire;
+    public Gestionnaire gestionnaireCP;
+    public Text analysisText;
+    public Image analysisPanel;
 
-    public float dist;
-    public Color baseColor;
-    public Color otherColor;
 
-	// Use this for initialization
-	void Start () {
-        Character = GameObject.Find("character");
-        baseColor = gameObject.GetComponent<SpriteRenderer>().color;
-        otherColor = baseColor;        
-        otherColor.r = 0;
+    // Use this for initialization
+    void Start ()
+    {
+        character = GameObject.Find("character");
+        gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;
+        analysisPanel = character.GetComponent<UIGereur>().analysisPanel;
+        analysisText = character.GetComponent<UIGereur>().analysis;
     }
 	
 	// Update is called once per frame
-	void Update () {
-
-        dist = Vector3.Distance(Character.transform.position, transform.position);
-
-        if(dist < 10f)
+	void Update ()
+    {
+        if (gameObject.GetComponent<Description>().compteur > 50)
         {
-            Gestionnaire.Checkpoint = gameObject.transform.position;
-            gameObject.GetComponent<SpriteRenderer>().color = otherColor;
+            saveProgress();
         }
-        else
+    }
+
+    public void saveProgress()
+    {
+        analysisText.text = "Progress has been saved.";
+
+        gestionnaire.life = gestionnaire.PowerUps[4];
+
+        for (int i = 0; i < gestionnaire.PowerUps.Length; i++)
         {
-            gameObject.GetComponent<SpriteRenderer>().color = baseColor;
+            gestionnaireCP.PowerUps[i] = gestionnaire.PowerUps[i];
         }
+
+        gestionnaire.Checkpoint = gameObject.transform.position;
     }
 }

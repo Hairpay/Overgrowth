@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 436e7027cb19a6c4ba04677660a1a37b, type: 3}
+  m_Name: GestionnaireCheckpoint
+  m_EditorClassIdentifier: 
+  Speed: 0
+  Locked: 0
+  Crouch: 0
+  isGlinding: 0
+  GlideGauche: 0
+  grounded: 0
+  CharJump: 0
+  JumpCD: 0
+  Jcd: 0
+  KnockbackCD: 0
+  isFiring: 0
+  SuitActivated: 0
+  disfunction: 0
+  PowerUps: 00000000000000000000000000000000000000000000000000000000
+  life: 0
+  invicible: 0
+  Checkpoint: {x: 0, y: 0, z: 0}

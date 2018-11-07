@@ -14,9 +14,9 @@ MonoBehaviour:
   Speed: 0
   Locked: 0
   Crouch: 0
-  isGlinding: 0
+  isGlinding: 1
   GlideGauche: 0
-  grounded: 1
+  grounded: 0
   CharJump: 0
   JumpCD: 0
   Jcd: 0

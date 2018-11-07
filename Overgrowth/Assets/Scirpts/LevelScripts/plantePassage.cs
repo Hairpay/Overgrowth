@@ -10,7 +10,6 @@ public class plantePassage : MonoBehaviour {
     public Color baseColor;
     public Color otherColor;
     public int baseLayer;
-    
 
     // Use this for initialization
     void Awake ()
@@ -18,13 +17,14 @@ public class plantePassage : MonoBehaviour {
         baseColor = gameObject.GetComponent<SpriteRenderer>().color;
         otherColor = baseColor;
         otherColor.a = baseColor.a * 0.3f;
+        baseLayer = gameObject.layer;
     }
 
     void Start () {
 
         character = GameObject.Find("character");
         gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;
-        baseLayer = gameObject.layer;
+
     }
 	
 	// Update is called once per frame
@@ -32,15 +32,15 @@ public class plantePassage : MonoBehaviour {
 
         if ( gestionnaire. SuitActivated == suitMode)
         {
-            gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
-            gameObject.GetComponent<SpriteRenderer>().color = otherColor;
-            gameObject.layer = 0;
+            //    gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+            gameObject.layer = 24;
+            gameObject.GetComponent<SpriteRenderer>().color = otherColor;           
         }
         else
         {
-            gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
-            gameObject.GetComponent<SpriteRenderer>().color = baseColor;
-            gameObject.layer = baseLayer;        
+            // gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+            gameObject.layer = baseLayer;
+            gameObject.GetComponent<SpriteRenderer>().color = baseColor;                  
         }                      
 	}
 }

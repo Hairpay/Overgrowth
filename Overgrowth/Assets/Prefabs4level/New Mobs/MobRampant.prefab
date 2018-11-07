@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4208690401662948}
   - component: {fileID: 114990075670761920}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Torso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4301200939371352}
   - component: {fileID: 114494103654754846}
   - component: {fileID: 137927446874977748}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bras2Mob1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4704975331406102}
   - component: {fileID: 114804175835375786}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4114784282813684}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: bones
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4511969576021162}
   - component: {fileID: 114063220111630656}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArmA IK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4547731205865894}
   - component: {fileID: 114458705416146642}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArmA2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4909159981913264}
   - component: {fileID: 114781888835757318}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArmA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4571443404624364}
   - component: {fileID: 114638749155603228}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Armb3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4583791336433960}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MobParts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4729050201581154}
   - component: {fileID: 114713206567310330}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Armb2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4968562650022796}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MobRampant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 114603794119512804}
   - component: {fileID: 95547216880223884}
   - component: {fileID: 114670685100867564}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Mob1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 4767001813497142}
   - component: {fileID: 114477459588720322}
   - component: {fileID: 137949514587131188}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TorseMob1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4855089758904000}
   - component: {fileID: 114932493641818362}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArmA3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 4759091809655208}
   - component: {fileID: 114275550634054640}
   - component: {fileID: 137630491990096012}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bras1Mob1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4373437712141942}
   - component: {fileID: 114803032032323204}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArmB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4211346538613706}
   - component: {fileID: 114617797344134574}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4376550958655260}
   - component: {fileID: 114326346896858124}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4274369332243780}
   - component: {fileID: 114918570155900918}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArmB Ik
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -687,6 +687,7 @@ MonoBehaviour:
   Shrap: {fileID: 1983012964321800, guid: 3f7f2068b5efd504a943fb5c293bc8e7, type: 2}
   movescale: 0.3
   autoExplo: 0
+  nombre: 20
 --- !u!114 &114063220111630656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1105,6 +1106,7 @@ MonoBehaviour:
   analysisPanel: {fileID: 0}
   compteur: 0
   speed: 1
+  affichage: 0
   lastMode: 0
 --- !u!114 &114990075670761920
 MonoBehaviour:

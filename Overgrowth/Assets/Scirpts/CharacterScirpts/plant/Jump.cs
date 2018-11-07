@@ -45,7 +45,10 @@ public class Jump : MonoBehaviour {
 
             if (jumpPressed == true || Input.GetAxis("JumpM") < -0.3)
             {
-                _Jump();
+                if (Gestionnaire.Locked == false && Gestionnaire.Crouch == false)
+                {
+                    _Jump();
+                }            
             }
             if (Input.GetButtonDown("Fire6") && Gestionnaire.isFiring == false && Gestionnaire.PowerUps[1] > 0)
             {
@@ -73,26 +76,33 @@ public class Jump : MonoBehaviour {
             jcd = true;
             StartCoroutine("ReturnCD");
 
-            if (Gestionnaire.JumpCD == 0 && Gestionnaire.SuitActivated == false)
+            if (Gestionnaire.JumpCD == 0 && Gestionnaire.SuitActivated == false )
             {
-
-                if (Gestionnaire.isGlinding == true && Gestionnaire.GlideGauche == false)
+                if (Gestionnaire.PowerUps[6] > 0)
                 {
-                    Gestionnaire.KnockbackCD = true;
-                    decale = -2000f;
-                    StartCoroutine("ReturnVariables");
-                }
+                    if (Gestionnaire.isGlinding == true && Gestionnaire.GlideGauche == false)
+                    {
+                        Gestionnaire.KnockbackCD = true;
+                        decale = -2000f;
+                        StartCoroutine("ReturnVariables");
+                    }
 
-                else if (Gestionnaire.isGlinding == true && Gestionnaire.GlideGauche == true)
-                {
-                    Gestionnaire.KnockbackCD = true;
-                    decale = 2000f;
-                    StartCoroutine("ReturnVariables");
+                    else if (Gestionnaire.isGlinding == true && Gestionnaire.GlideGauche == true)
+                    {
+                        Gestionnaire.KnockbackCD = true;
+                        decale = 2000f;
+                        StartCoroutine("ReturnVariables");
+                    }
+                    else
+                    {
+                        decale = 0f;
+                    }
                 }
                 else
                 {
                     decale = 0f;
                 }
+
 
                 finalJump = new Vector2(decale, jumpPower);
                 body.velocity = new Vector2(body.velocity.x, 0f);

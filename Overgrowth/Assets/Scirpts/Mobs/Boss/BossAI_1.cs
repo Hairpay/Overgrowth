@@ -39,7 +39,7 @@ public class BossAI_1 : MonoBehaviour
         layer_mask = ~LayerMask.GetMask("Mobs");
         BossAnim = BossVisu.GetComponent<Animator>();
 
-        inverFlame = gameObject.transform.localScale.x * 11;
+      //  inverFlame = gameObject.transform.localScale.x * 11;
     }
 
     // Update is called once per frame
@@ -48,9 +48,6 @@ public class BossAI_1 : MonoBehaviour
         if (FlameThrowin == true)
         {
        
-           
-            
-
             RaycastHit2D target = Physics2D.Raycast(flamer.transform.position, flamer.transform.right, inverFlame, layer_mask);
             Debug.DrawRay(flamer.transform.position, flamer.transform.right * inverFlame, new Color(0, 252, 0));
 
@@ -64,7 +61,12 @@ public class BossAI_1 : MonoBehaviour
 
         dist = Vector3.Distance(Character.transform.position, transform.position);
 
-        if (dist < 50f)
+        if (dist > 100)
+        {
+            LockPlayer = false;
+        }
+
+         else if (dist < 50f)
         {
             RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Character.transform.position - gameObject.transform.position, dist, layer_mask);
             Debug.DrawLine(gameObject.transform.position, hit.point);

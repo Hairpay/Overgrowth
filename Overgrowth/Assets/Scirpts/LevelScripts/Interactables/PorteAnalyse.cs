@@ -11,6 +11,7 @@ public class PorteAnalyse : MonoBehaviour
     public Color baseColor;
     public Color otherColor;
     public float dist;
+    public int baseLayer;
 
     public bool Unlock;
     public bool open;
@@ -20,6 +21,7 @@ public class PorteAnalyse : MonoBehaviour
     public string OpeningMessage;
 
     public bool power = true;
+    public bool errorBlocked;
 
     public Text analysisText;
 
@@ -64,7 +66,15 @@ public class PorteAnalyse : MonoBehaviour
     {
         if (power == false)
         {
-            analysisText.text = ErrorMessage + "This door has no power.";
+            if (errorBlocked == false)
+            {
+                analysisText.text = ErrorMessage + "This door has no power.";
+            }
+            else
+            {
+                analysisText.text = ErrorMessage + "Something is blocking the door.";
+            }
+           
         }
         else if (AnalysisLevel > Gestionnaire.PowerUps[0])
         {
@@ -83,14 +93,14 @@ public class PorteAnalyse : MonoBehaviour
 
     public void Ouverture()
     {
-        gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        gameObject.layer = 24;
         gameObject.GetComponent<SpriteRenderer>().color = otherColor;
         open = true;
     }
 
     public void fermeture()
     {
-        gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+        gameObject.layer = baseLayer;
         gameObject.GetComponent<SpriteRenderer>().color = baseColor;
         open = false;
     }

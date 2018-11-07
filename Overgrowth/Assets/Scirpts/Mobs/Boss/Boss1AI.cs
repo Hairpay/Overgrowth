@@ -19,6 +19,8 @@ public class Boss1AI : MonoBehaviour
     public Animator BossAnim;
     public bool isCharging;
 
+    public Gestionnaire gestionnaire;
+
     // Use this for initialization
     void Start()
     {
@@ -27,13 +29,19 @@ public class Boss1AI : MonoBehaviour
         moBody = gameObject.GetComponent<Rigidbody2D>();
         layer_mask = ~LayerMask.GetMask("Mobs");
         BossAnim = BossVisu.GetComponent<Animator>();
+
+        gestionnaire = Character.GetComponent<PowerUps>().Gestionnaire;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+      
         dist = Vector3.Distance(Character.transform.position, transform.position);
+        if (dist > 100)
+        {
+            LockPlayer = false;
+        }
 
         if (dist < 50f)
         {
@@ -72,7 +80,7 @@ public class Boss1AI : MonoBehaviour
                     BossAnim.SetBool("isCharging", true);
                 }
             }
-        }
+        }     
     }
     IEnumerator Patern0()
     {

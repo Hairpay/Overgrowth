@@ -16,6 +16,8 @@ public class MecheMob : MonoBehaviour
     public bool isDed;
     public bool ifram;
 
+    public Gestionnaire gestionnaire;
+
     void Awake()
     {
         for (int i = 0; i < mobVisu.Length; i++)
@@ -28,7 +30,9 @@ public class MecheMob : MonoBehaviour
     }
     // Use this for initialization
     void Start()
-    {
+    {       
+        gestionnaire = GameObject.Find("character").GetComponent<PowerUps>().Gestionnaire;
+
         life = maxLife;
         if (mobdossier == null)
         {
@@ -39,6 +43,12 @@ public class MecheMob : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gestionnaire.life < 1)
+        {
+            life = maxLife;
+            colorChange();
+        }
+
         if (life < 1)
         {
            // gameObject.GetComponent<Collider2D>().isTrigger = true;

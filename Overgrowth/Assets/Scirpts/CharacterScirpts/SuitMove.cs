@@ -161,11 +161,11 @@ public class SuitMove : MonoBehaviour {
     }
 
     public void Glide()
-    {             
-        glideFactor = 0.1f;
-        gestionnaire.isGlinding = true;
+    {                   
          if (gestionnaire.PowerUps[6] > 0)
          {
+            glideFactor = 0.5f;
+            gestionnaire.isGlinding = true;
             gestionnaire.JumpCD = 0;
          }       
     }

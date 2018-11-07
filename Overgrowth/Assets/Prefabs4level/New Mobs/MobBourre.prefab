@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4574029347016250}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MobBourre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,6 +196,7 @@ MonoBehaviour:
   Shrap: {fileID: 1983012964321800, guid: 3f7f2068b5efd504a943fb5c293bc8e7, type: 2}
   movescale: 0.3
   autoExplo: 0
+  nombre: 20
 --- !u!114 &114612082598445504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -223,10 +224,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charaDual: {fileID: 0}
+  Gestionnaire: {fileID: 0}
   analysisText: {fileID: 0}
   analysisPanel: {fileID: 0}
   compteur: 0
   speed: 1
+  affichage: 0
+  lastMode: 0
 --- !u!114 &114860544187222162
 MonoBehaviour:
   m_ObjectHideFlags: 1

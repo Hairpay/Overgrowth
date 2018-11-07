@@ -19,32 +19,40 @@ public class PowerUpSelfDestruct : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	void Update ()
+    {
+        if (gameObject.GetComponent<Description>().compteur > 50)
+        {
+            Activate();
+        }
+    }
+    public void Activate()
+    {
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
+        gameObject.GetComponent<DescriptionText>().description = textRamasse;
+        gameObject.GetComponent<Description>().compteur = 55;
+        gameObject.GetComponent<Description>().addnalyse();
+
+        Gestionnaire.PowerUps[Boost] = Gestionnaire.PowerUps[Boost] + 1;
+        if (Boost == 1)
+        {
+            Gestionnaire.disfunction = false;
+        }
+        if (Boost == 4)
+        {
+            Gestionnaire.life = Gestionnaire.PowerUps[4];
+        }
+
+        StartCoroutine("selfDestroy");
+    }
 
     void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Player")
-        {          
-            gameObject.GetComponent<Collider2D>().enabled = false;
-            gameObject.GetComponent<SpriteRenderer>().enabled = false;
-
-            gameObject.GetComponent<DescriptionText>().description = textRamasse;
-            gameObject.GetComponent<Description>().compteur = 55;
-            gameObject.GetComponent<Description>().addnalyse();
-
-            Gestionnaire.PowerUps[Boost] = Gestionnaire.PowerUps[Boost] + 1;
-            if (Boost == 1)
-            {
-                Gestionnaire.disfunction = false;
-            }
-            if (Boost == 4)
-            {
-                Gestionnaire.life = Gestionnaire.PowerUps[4];
-            }
-
-            StartCoroutine("selfDestroy");
+        {
+            Activate();
         }
     }   
 

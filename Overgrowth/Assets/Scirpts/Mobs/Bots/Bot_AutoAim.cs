@@ -16,6 +16,7 @@ public class Bot_AutoAim : MonoBehaviour {
 
     public bool turnmode;
     public bool aimMode;
+    public bool aimAgainstSuit;
 
     public int compteur;
 
@@ -49,7 +50,7 @@ public class Bot_AutoAim : MonoBehaviour {
         }
        else 
         {
-            if (gestionnaire.SuitActivated == true)
+            if (gestionnaire.SuitActivated == true && aimAgainstSuit == false)
             {
                 HideLaser();              
             }

@@ -29,6 +29,8 @@ public class Ascenseur : MonoBehaviour {
     public Color baseColor;
     public Color activeColor;
 
+    public bool errorBlocked;
+
     // Use this for initialization
     void Start ()
     {
@@ -50,7 +52,15 @@ public class Ascenseur : MonoBehaviour {
 	
     public void Error()
     {
-        analysisText.text = "Error, this elevator has no power.";
+        if (errorBlocked == false)
+        {
+            analysisText.text = "Error, this elevator has no power.";
+        }
+        else
+        {
+            analysisText.text = "Error, something is blocking the elevator.";
+        }
+      
         analysisText.enabled = true;
         analysisPanel.enabled = true;
         StopAllCoroutines();
@@ -70,9 +80,15 @@ public class Ascenseur : MonoBehaviour {
     {
         v = Input.GetAxis("Vertical");
 
-        RaycastHit2D upHit = Physics2D.Raycast(transform.position, Vector2.up, 3f * transform.localScale.y, layer_mask);
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.up)* 3f * transform.localScale.y);
-        if(upHit.collider != null)
+        // RaycastHit2D upHit = Physics2D.Raycast(transform.position, Vector2.up, 3f * transform.localScale.y, layer_mask);
+        // Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.up)* 3f * transform.localScale.y);
+        RaycastHit2D upHit = Physics2D.Raycast(new Vector2(transform.position.x + 2, transform.position.y + (gameObject.transform.localScale.y * 2))
+            , Vector2.left, 5f, layer_mask);
+
+        Debug.DrawRay(new Vector2(transform.position.x + 2, transform.position.y + (gameObject.transform.localScale.y * 2))
+            , Vector2.left * 5);
+
+        if (upHit.collider != null)
         {
             Debug.Log(upHit.collider.name);
             active = true;

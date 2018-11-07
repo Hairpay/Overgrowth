@@ -9,6 +9,7 @@ public class UIGereur : MonoBehaviour {
   //  public GameObject UI;
     public GameObject Character;
     public Gestionnaire Gestionnaire;
+    public Gestionnaire gestionnaireCP;
 
     public Text lifes;
     public int lastLife;
@@ -26,7 +27,12 @@ public class UIGereur : MonoBehaviour {
 
         Gestionnaire.Checkpoint = gameObject.transform.position ;
 
-        
+        for (int i = 0; i < Gestionnaire.PowerUps.Length; i++)
+        {
+            gestionnaireCP.PowerUps[i] = Gestionnaire.PowerUps[i];
+        }
+
+
     }
 
     void Start () {
@@ -36,7 +42,7 @@ public class UIGereur : MonoBehaviour {
 
         if (Gestionnaire.life < 1)
         {
-            Gestionnaire.life = 5;
+            Gestionnaire.life = Gestionnaire.PowerUps[4];
         }
 
         lastLife = Gestionnaire.life;
@@ -61,9 +67,17 @@ public class UIGereur : MonoBehaviour {
 
         if (Gestionnaire.life < 1)
         {
+
+            Gestionnaire.life = Gestionnaire.PowerUps[4];
+
+            for (int i = 0; i < Gestionnaire.PowerUps.Length; i++)
+            {
+                Gestionnaire.PowerUps[i] = gestionnaireCP.PowerUps[i];
+            }
+
+            gameObject.transform.position = Gestionnaire.Checkpoint;
           
-          
-            SceneManager.LoadScene("Docks_P1_0");
+        //    SceneManager.LoadScene("Docks_P1_0");
         }
 		
 	}
