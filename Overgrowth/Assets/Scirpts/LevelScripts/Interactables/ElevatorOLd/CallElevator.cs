@@ -13,7 +13,8 @@ public class CallElevator : MonoBehaviour {
     public Image analysisPanel;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         charaDual = GameObject.Find("character");
         analysisPanel = charaDual.GetComponent<UIGereur>().analysisPanel;
         analysisText = charaDual.GetComponent<UIGereur>().analysis;
