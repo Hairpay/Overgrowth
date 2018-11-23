@@ -14,9 +14,10 @@ public class ElevatorMainV2 : MonoBehaviour
     public GameObject[] Arrets;
     public int position;
     public int basePosition;
+
     public float t;
-    public Vector3 oldPos;
-    public GameObject futurePos;
+    public Vector2 oldPos;
+    public Vector2 futurePos;
 
     public bool playerOn;
 
@@ -33,7 +34,9 @@ public class ElevatorMainV2 : MonoBehaviour
         analysisPanel = character.GetComponent<UIGereur>().analysisPanel;
         analysisText = character.GetComponent<UIGereur>().analysis;
         layer_mask = LayerMask.GetMask("Player");
-
+   
+        position = basePosition;
+        gameObject.transform.position = Arrets[basePosition].GetComponent<ElevatorCallV2>().posPlateforme.transform.position;
         oldPos = gameObject.transform.position;
     }
     public enum States
@@ -48,6 +51,7 @@ public class ElevatorMainV2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         switch (myState)
         {
             case States.off:
@@ -94,19 +98,21 @@ public class ElevatorMainV2 : MonoBehaviour
         {
             Debug.Log(upHit.collider.name);
             playerOn = true;
+            Arrets[position].GetComponent<ElevatorCallV2>().myState = ElevatorCallV2.States.fleches;
             myState = States.active;           
         }
         else
         {
             playerOn = false;
+            Arrets[position].GetComponent<ElevatorCallV2>().myState = ElevatorCallV2.States.call;
             myState = States.inactive;
         }
     }
-    public void Move(GameObject newPos)
+    public void Move(Vector2 newPos)
     {
         gameObject.transform.position = new Vector3(
-              (Mathf.Lerp(oldPos.x, newPos.transform.position.x, t)),
-              (Mathf.Lerp(oldPos.y, newPos.transform.position.y, t)),
+              (Mathf.Lerp(oldPos.x, newPos.x, t)),
+              (Mathf.Lerp(oldPos.y, newPos.y, t)),
               gameObject.transform.position.z);
 
         if (t < 1)
@@ -123,6 +129,7 @@ public class ElevatorMainV2 : MonoBehaviour
         {
             t = 0;
             oldPos = gameObject.transform.position;
+            myState = States.active;
             if (playerOn == true)
             {
                 character.GetComponent<Rigidbody2D>().simulated = true;
@@ -147,14 +154,14 @@ public class ElevatorMainV2 : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine("ReturnUnlock");
     }
-    public void Called()
+    public void Message(string message)
     {
-        analysisText.text = "Elevator called.";
+        analysisText.text = message;
         analysisText.enabled = true;
         analysisPanel.enabled = true;
         StopAllCoroutines();
         StartCoroutine("ReturnUnlock");
-    }
+    }   
 
     IEnumerator ReturnUnlock()
     {

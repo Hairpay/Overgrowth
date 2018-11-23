@@ -16,6 +16,8 @@ public class Description : MonoBehaviour {
     public int affichage;
     public bool lastMode;
 
+    public bool lockMode;
+
 	// Use this for initialization
 	void Start () {
 
@@ -67,28 +69,32 @@ public class Description : MonoBehaviour {
 
     public void addnalyse()
     {
-        if (compteur < 60)
-        {             
+        if (lockMode == false)
+        {
+            if (compteur < 60)
             {
-                compteur = compteur + speed;
+                {
+                    compteur = compteur + speed;
+                }
             }
-        }
 
-        if (compteur > 1 && compteur < 50)
-        {
-            affichage = (int)compteur;
-            analysisText.text = "analyzing..." + (affichage * 2).ToString() + " %";
-        }
-        else if (compteur > 50)
-        {
-            StopAllCoroutines();
-            StartCoroutine("ReturnUnlock");
-        }
+            if (compteur > 1 && compteur < 50)
+            {
+                affichage = (int)compteur;
+                analysisText.text = "analyzing..." + (affichage * 2).ToString() + " %";
+            }
+            else if (compteur > 50)
+            {
+                StopAllCoroutines();
+                StartCoroutine("ReturnUnlock");
+            }
 
-        analysisText.enabled = true;
-        analysisPanel.enabled = true;
-       
+            analysisText.enabled = true;
+            analysisPanel.enabled = true;
+
+        }
     }
+       
 
     IEnumerator ReturnUnlock()
     {
@@ -101,5 +107,17 @@ public class Description : MonoBehaviour {
         analysisText.enabled = false;
         analysisPanel.enabled = false;  
         compteur = 0;        
-    }  
+    }
+    public void stopeth()
+    {
+        compteur = 0;
+        lockMode = true;
+        StopAllCoroutines();
+        StartCoroutine("ReturnLockMode");
+    }
+    IEnumerator ReturnLockMode()
+    {
+        yield return new WaitForSeconds(2f);
+        lockMode = false;
+    }
 }
