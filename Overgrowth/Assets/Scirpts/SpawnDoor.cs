@@ -8,6 +8,7 @@ public class SpawnDoor : MonoBehaviour
     public GameObject PrefabDoor;
     public int AnalysisLevel;
     public bool power = true;
+    public bool autoClose;
     public bool errorBlocked;
 
     private void Start()
@@ -21,7 +22,7 @@ public class SpawnDoor : MonoBehaviour
         prefabDoor.GetComponent<PorteAnalyse>().AnalysisLevel = AnalysisLevel;
         prefabDoor.GetComponent<SpriteRenderer>().color = gameObject.GetComponent<SpriteRenderer>().color;
         prefabDoor.GetComponent<PorteAnalyse>().baseColor = gameObject.GetComponent<SpriteRenderer>().color;
-
+        prefabDoor.GetComponent<PorteAnalyse>().autoClose = autoClose;
         prefabDoor.GetComponent<PorteAnalyse>().power = power;
         prefabDoor.GetComponent<PorteAnalyse>().errorBlocked = errorBlocked;
 

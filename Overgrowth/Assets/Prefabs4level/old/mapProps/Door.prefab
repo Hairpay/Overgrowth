@@ -88,6 +88,7 @@ MonoBehaviour:
   speed: 1
   affichage: 0
   lastMode: 0
+  lockMode: 0
 --- !u!114 &114522173664360808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,12 +105,15 @@ MonoBehaviour:
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   otherColor: {r: 0, g: 0, b: 0, a: 0}
   dist: 0
-  Unlock: 0
-  open: 0
+  baseLayer: 0
+  unlock: 0
+  ready2unlock: 0
+  autoClose: 0
   AnalysisLevel: 0
   ErrorMessage: Error, access denied.
   OpeningMessage: Access granted.
   power: 1
+  errorBlocked: 0
   analysisText: {fileID: 0}
 --- !u!114 &114956989709700454
 MonoBehaviour:

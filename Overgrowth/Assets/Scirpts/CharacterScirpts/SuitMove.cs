@@ -28,7 +28,7 @@ public class SuitMove : MonoBehaviour {
         body = gameObject.GetComponent<Rigidbody2D>();
         speed = maxSpeedBase;
         gestionnaire = gameObject.GetComponent<PowerUps>().Gestionnaire;
-        layerMask = LayerMask.GetMask("Environment","VineBridge","Glass");
+        layerMask = LayerMask.GetMask("Environment","VineBridge","Glass","Door");
         sizebox = gameObject.GetComponent<CapsuleCollider2D>().size;
 
     }

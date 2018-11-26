@@ -7,14 +7,15 @@ public class PorteAnalyse : MonoBehaviour
 {
     public GameObject character;
     public Gestionnaire Gestionnaire;
-   
+
     public Color baseColor;
     public Color otherColor;
     public float dist;
     public int baseLayer;
 
-    public bool Unlock;
-    public bool open;
+    public bool unlock;
+    public bool ready2unlock;
+    public bool autoClose;
 
     public int AnalysisLevel;
     public string ErrorMessage;
@@ -31,6 +32,8 @@ public class PorteAnalyse : MonoBehaviour
         baseColor = gameObject.GetComponent<SpriteRenderer>().color;
         otherColor = baseColor;
         otherColor.a = baseColor.a * 0.3f;
+
+        baseLayer = gameObject.layer;
     }
 
     void Start()
@@ -43,22 +46,24 @@ public class PorteAnalyse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        dist = Vector3.Distance(character.transform.position, transform.position);
-
-        if (open == false && Unlock == true)
+        if (autoClose == true && unlock == true)
         {
-            Ouverture();
-            StopAllCoroutines();
-            StartCoroutine("ReturnUnlock");
+            dist = (character.transform.position.y - transform.position.y);
+            if (Mathf.Abs(dist)< 1)
+            {
+                ready2unlock = true;
+            }
+            if (Mathf.Abs(dist) > 3 && ready2unlock == true)
+            {
+                ready2unlock = false;
+                fermeture();
+            }         
         }
-        else if (open == true && Unlock == false && dist > 3f)
-        {
-            fermeture();
-        }
-
+        // check if door is analyzed
         if (gameObject.GetComponent<Description>().compteur > 50)
         {
             Unlockage();
+            gameObject.GetComponent<Description>().stopeth();
         }
     }
 
@@ -74,11 +79,10 @@ public class PorteAnalyse : MonoBehaviour
             {
                 analysisText.text = ErrorMessage + "Something is blocking the door.";
             }
-           
         }
         else if (AnalysisLevel > Gestionnaire.PowerUps[0])
         {
-            analysisText.text = ErrorMessage + "This door require a level " + AnalysisLevel +" security.";
+            analysisText.text = ErrorMessage + "This door require a level " + AnalysisLevel + " security.";
         }
         else if (Gestionnaire.SuitActivated == false)
         {
@@ -87,27 +91,21 @@ public class PorteAnalyse : MonoBehaviour
         else
         {
             analysisText.text = OpeningMessage;
-            Unlock = true;                
+            Ouverture();
         }
     }
 
     public void Ouverture()
     {
+        unlock = true;
         gameObject.layer = 24;
         gameObject.GetComponent<SpriteRenderer>().color = otherColor;
-        open = true;
     }
 
     public void fermeture()
     {
+        unlock = false;
         gameObject.layer = baseLayer;
         gameObject.GetComponent<SpriteRenderer>().color = baseColor;
-        open = false;
-    }
-
-    IEnumerator ReturnUnlock()
-    {
-        yield return new WaitForSeconds(5f);
-        Unlock = false;
     }
 }
