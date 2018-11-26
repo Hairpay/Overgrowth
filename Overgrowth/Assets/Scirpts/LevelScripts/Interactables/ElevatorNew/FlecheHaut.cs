@@ -18,7 +18,9 @@ public class FlecheHaut : MonoBehaviour {
         if (gameObject.GetComponent<Description>().compteur > 50)
         {
             //analysisText.text = "Elevator Called.";
+            Debug.Log("boihaut");
             elevatorCall.GetComponent<ElevatorCallV2>().GoHaut();
+            gameObject.GetComponent<Description>().stopeth();
         }
     }
 }

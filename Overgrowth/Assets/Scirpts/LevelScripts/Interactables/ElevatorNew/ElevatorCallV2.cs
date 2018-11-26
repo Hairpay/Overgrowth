@@ -6,6 +6,7 @@ public class ElevatorCallV2 : MonoBehaviour {
 
     public States myState;
     public GameObject plateforme;
+    private ElevatorMainV2 ElevatorMain;
     public GameObject flecheHaut;
     public Animator animator;
 
@@ -17,6 +18,7 @@ public class ElevatorCallV2 : MonoBehaviour {
     {
         animator = gameObject.GetComponent<Animator>();
         myState = States.off;
+        ElevatorMain = plateforme.GetComponent<ElevatorMainV2>();
 	}
     public enum States
     {
@@ -28,13 +30,13 @@ public class ElevatorCallV2 : MonoBehaviour {
     void Update ()
     {
         gameObject.GetComponent<BoxCollider2D>().size = new Vector2(0.8f, 2);
-        flecheHaut.SetActive(false);
+        flecheHaut.GetComponent<BoxCollider2D>().enabled = false; 
 
         switch (myState)
         {
             case States.off:
                 animator.Play("Off");
-                if (plateforme.GetComponent<ElevatorMainV2>().power == true)
+                if (ElevatorMain.power == true)
                 {
                     myState = States.call;
                 }
@@ -46,11 +48,11 @@ public class ElevatorCallV2 : MonoBehaviour {
 
             case States.call:
                 animator.Play("Call");
-                if (plateforme.GetComponent<ElevatorMainV2>().power == false)
+                if (ElevatorMain.power == false)
                 {
                     myState = States.off;
                 }
-                //else if (plateforme.GetComponent<ElevatorMainV2>().myState ==)
+                //else if (ElevatorMain.myState ==)
                 else if (gameObject.GetComponent<Description>().compteur > 50)
                 {
                     //analysisText.text = "Elevator Called.";
@@ -70,7 +72,7 @@ public class ElevatorCallV2 : MonoBehaviour {
                         GoBas();
                     }
                 }
-                else if (position == plateforme.GetComponent<ElevatorMainV2>().Arrets.Length - 1)
+                else if (position == ElevatorMain.Arrets.Length - 1)
                 {
                     animator.Play("FlecheHaut");
                     if (gameObject.GetComponent<Description>().compteur > 50)
@@ -83,7 +85,7 @@ public class ElevatorCallV2 : MonoBehaviour {
                 {
                     animator.Play("Fleches");
                     gameObject.GetComponent<BoxCollider2D>().size = new Vector2(0.8f, 0.8f);
-                    flecheHaut.SetActive(true);
+                    flecheHaut.GetComponent<BoxCollider2D>().enabled = true;
 
                     if (gameObject.GetComponent<Description>().compteur > 50)
                     {
@@ -99,39 +101,39 @@ public class ElevatorCallV2 : MonoBehaviour {
     public void ErrorMessage()
     {
         Debug.Log("errorMessage");
-        plateforme.GetComponent<ElevatorMainV2>().Error();
+        ElevatorMain.Error();
     }
     public void Call()
     {
-        if (plateforme.GetComponent<ElevatorMainV2>().position == position)
+        if (ElevatorMain.position == position)
         {
             Debug.Log("Elevator Called but it's here.");
-            plateforme.GetComponent<ElevatorMainV2>().Message("Elevator is already here.");
+            ElevatorMain.Message("Elevator is already here.");
         }
         else
         {
             Debug.Log("Elevator Called.");
-            plateforme.GetComponent<ElevatorMainV2>().Message("Elevator called.");
-            plateforme.GetComponent<ElevatorMainV2>().myState = ElevatorMainV2.States.moving;
-            plateforme.GetComponent<ElevatorMainV2>().futurePos = new Vector2(posPlateforme.transform.position.x, posPlateforme.transform.position.y);
-            plateforme.GetComponent<ElevatorMainV2>().position = position;
+            ElevatorMain.Message("Elevator called.");
+            ElevatorMain.myState = ElevatorMainV2.States.moving;
+            ElevatorMain.futurePos = new Vector2(posPlateforme.transform.position.x, posPlateforme.transform.position.y);
+            ElevatorMain.position = position;
         }
         
     }
     public void GoBas()
     {
         Debug.Log("Elevator goes down.");
-        plateforme.GetComponent<ElevatorMainV2>().Message("Elevator goes down.");
-        plateforme.GetComponent<ElevatorMainV2>().myState = ElevatorMainV2.States.moving;
-        plateforme.GetComponent<ElevatorMainV2>().position = plateforme.GetComponent<ElevatorMainV2>().position + 1;
-        plateforme.GetComponent<ElevatorMainV2>().futurePos = plateforme.GetComponent<ElevatorMainV2>().Arrets[plateforme.GetComponent<ElevatorMainV2>().position].GetComponent<ElevatorCallV2>().posPlateforme.transform.position;
+        ElevatorMain.Message("Elevator goes down.");
+        ElevatorMain.myState = ElevatorMainV2.States.moving;
+        ElevatorMain.position = ElevatorMain.position + 1;
+        ElevatorMain.futurePos = ElevatorMain.Arrets[ElevatorMain.position].GetComponent<ElevatorCallV2>().posPlateforme.transform.position;
     }
     public void GoHaut()
     {
         Debug.Log("Elevator goes up.");
-        plateforme.GetComponent<ElevatorMainV2>().Message("Elevator goes up.");
-        plateforme.GetComponent<ElevatorMainV2>().myState = ElevatorMainV2.States.moving;
-        plateforme.GetComponent<ElevatorMainV2>().position = plateforme.GetComponent<ElevatorMainV2>().position - 1;
-        plateforme.GetComponent<ElevatorMainV2>().futurePos = plateforme.GetComponent<ElevatorMainV2>().Arrets[plateforme.GetComponent<ElevatorMainV2>().position].GetComponent<ElevatorCallV2>().posPlateforme.transform.position;
+        ElevatorMain.Message("Elevator goes up.");
+        ElevatorMain.myState = ElevatorMainV2.States.moving;
+        ElevatorMain.position = ElevatorMain.position - 1;
+        ElevatorMain.futurePos = ElevatorMain.Arrets[ElevatorMain.position].GetComponent<ElevatorCallV2>().posPlateforme.transform.position;
     }
 }

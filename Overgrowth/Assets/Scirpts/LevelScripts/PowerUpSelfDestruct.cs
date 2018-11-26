@@ -9,6 +9,8 @@ public class PowerUpSelfDestruct : MonoBehaviour {
 
     public int Boost;
     public string textRamasse;
+
+    public bool once;
     
 
     // Use this for initialization
@@ -21,9 +23,10 @@ public class PowerUpSelfDestruct : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (gameObject.GetComponent<Description>().compteur > 50)
+        if (gameObject.GetComponent<Description>().compteur > 50 && once == false)
         {
             Activate();
+            once = true;
         }
     }
     public void Activate()

@@ -34,14 +34,16 @@ public class Description : MonoBehaviour {
             speed = 3;
         }
 
-        if (gameObject.GetComponent<cakeslice.Outline>() == null)
+        if (gameObject.GetComponent<cakeslice.Outline>() == null && gameObject.GetComponent<SpriteRenderer>() != null)
         {
             gameObject.AddComponent<cakeslice.Outline>();
         }
 
-        gameObject.GetComponent<cakeslice.Outline>().color = 1;
-        gameObject.GetComponent<cakeslice.Outline>().eraseRenderer = true;
-
+        if (gameObject.GetComponent<cakeslice.Outline>() != null)
+        {
+            gameObject.GetComponent<cakeslice.Outline>().color = 1;
+            gameObject.GetComponent<cakeslice.Outline>().eraseRenderer = true;
+        }        
         lastMode = Gestionnaire.SuitActivated;
     }
 	
@@ -49,12 +51,12 @@ public class Description : MonoBehaviour {
 	void Update ()
     {
         
-        if (Input.GetButtonDown("Fire4"))
+        if (gameObject.GetComponent<cakeslice.Outline>() != null && Input.GetButtonDown("Fire4") )
         {
             gameObject.GetComponent<cakeslice.Outline>().eraseRenderer = false;
         }
 
-        if (Input.GetButtonUp("Fire4"))
+        if (gameObject.GetComponent<cakeslice.Outline>() != null && Input.GetButtonUp("Fire4"))
         {
             gameObject.GetComponent<cakeslice.Outline>().eraseRenderer = true;
         }

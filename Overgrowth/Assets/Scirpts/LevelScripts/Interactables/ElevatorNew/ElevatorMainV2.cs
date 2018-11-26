@@ -88,10 +88,10 @@ public class ElevatorMainV2 : MonoBehaviour
 
     public void ActiveCheck()
     {
-        RaycastHit2D upHit = Physics2D.Raycast(new Vector2(transform.position.x + 2, transform.position.y + (gameObject.transform.localScale.y * 0.6f))
+        RaycastHit2D upHit = Physics2D.Raycast(new Vector2(transform.position.x + 2, transform.position.y + (gameObject.transform.localScale.y*2))
           , Vector2.left, 5f, layer_mask);
 
-        Debug.DrawRay(new Vector2(transform.position.x + 2, transform.position.y + (gameObject.transform.localScale.y *0.6f))
+        Debug.DrawRay(new Vector2(transform.position.x + 2, transform.position.y + (gameObject.transform.localScale.y*2))
             , Vector2.left * 5);
 
         if (upHit.collider != null)
