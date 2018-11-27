@@ -34,6 +34,10 @@ public class Switchmode : MonoBehaviour {
             else
             {
                 Gestionnaire.SuitActivated = !Gestionnaire.SuitActivated;
+                if (Gestionnaire.isGlinding == true)
+                {
+                   gameObject.GetComponent<Rigidbody2D>().simulated = true;
+                }
             }         
         }
 

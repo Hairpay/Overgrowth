@@ -22,6 +22,11 @@ public class SuitMove : MonoBehaviour {
     public bool m_HasMoved;
     public float glideFactor;
 
+    public bool edgeGripCd;
+
+    public float h;
+    public float v;
+
     // Use this for initialization
     void Start () {
 
@@ -37,12 +42,17 @@ public class SuitMove : MonoBehaviour {
 	void Update () {
 
       
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        h = Input.GetAxis("Horizontal");
+        v = Input.GetAxis("Vertical");
         isJumping = gestionnaire.JumpCD;
-        Move(h,v);
         body.gravityScale = 10;
-        gestionnaire.Speed = Mathf.Abs(body.velocity.x);       
+        gestionnaire.Speed = Mathf.Abs(body.velocity.x);
+
+        CheckCrouch();
+        CheckGround();
+        Move(h,v);
+
+         
 
         if (gestionnaire.Crouch == true)
         {
@@ -69,8 +79,6 @@ public class SuitMove : MonoBehaviour {
             gameObject.GetComponent<CapsuleCollider2D>().offset = new Vector2(0, 0.1f);
         }
 
-        CheckCrouch();
-        CheckGround();
     }
     public void CheckGround()
     {
@@ -134,9 +142,25 @@ public class SuitMove : MonoBehaviour {
                 gestionnaire.Crouch = false;
             }          
         }
-        //check glide here
+        //check edge grip here
        
-        if (leftBas.collider != null && gestionnaire.grounded == false)
+        if (leftBas.collider != null && leftHaut.collider == null || rightBas.collider != null && rightHaut.collider == null)
+        {
+            if (edgeGripCd == false && gestionnaire.Crouch == false)
+            {
+                Debug.Log("Edge grabbed !");
+                edgeGripCd = true;
+                body.velocity = new Vector2(0f, 30f);              
+            }
+        }
+        else if (edgeGripCd == true)
+        {
+            edgeGripCd = false;
+        }
+
+        //check glide here
+
+        if (leftBas.collider != null && gestionnaire.grounded == false && leftHaut.collider != null)
         {
             if (gestionnaire.isGlinding == false)
             {
@@ -145,7 +169,7 @@ public class SuitMove : MonoBehaviour {
             }
            
         }
-        else if ( rightBas.collider != null && gestionnaire.grounded == false)
+        else if ( rightBas.collider != null && gestionnaire.grounded == false && rightHaut.collider != null)
         {
             if (gestionnaire.isGlinding == false)
             {
@@ -157,6 +181,21 @@ public class SuitMove : MonoBehaviour {
         {
             gestionnaire.isGlinding = false;
             glideFactor = 1;
+        }
+        //check if need to move and get stucc
+        if (leftBas.collider != null || gestionnaire.grounded == false && leftHaut.collider != null)
+        {
+           if (h < -0.1f)
+            {
+                h = 0;
+            }
+        }
+        else if (rightBas.collider != null || gestionnaire.grounded == false && rightHaut.collider != null)
+        {
+            if (h > 0.1f)
+            {
+                h = 0;
+            }
         }
     }
 
@@ -191,7 +230,7 @@ public class SuitMove : MonoBehaviour {
                 }
                 body.gravityScale = 0;
                 body.velocity = new Vector2(move * speed, vmove * 10);
-                Debug.Log("boi");
+                Debug.Log("stuck on wall in green form");
             }
             else
             {

@@ -124,19 +124,6 @@ public class PowerJump : MonoBehaviour {
             body.simulated = true;
             body.velocity = new Vector2(0f, 0f);
             Jump = new Vector2((p.x - transform.position.x) * factor * Multiplier, (p.y - transform.position.y) * factor * Multiplier);
-
-         /*   
-            if (Gestionnaire.isGlinding == true && Gestionnaire.GlideGauche == true)
-            {
-                Jump.x = Jump.x - Jump.x * 0.2f;
-            }
-
-            if (Gestionnaire.isGlinding == true && Gestionnaire.GlideGauche == false)
-            {
-                Jump.x = Jump.x + Jump.x * 0.2f;
-            }
-
-    */
             Gestionnaire.JumpCD = Gestionnaire.JumpCD + 1;
             Gestionnaire.Jcd = true;
             StartCoroutine("ResetJcd");
