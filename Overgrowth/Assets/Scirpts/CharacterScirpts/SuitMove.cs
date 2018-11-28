@@ -153,7 +153,7 @@ public class SuitMove : MonoBehaviour {
                 body.velocity = new Vector2(0f, 30f);              
             }
         }
-        else if (edgeGripCd == true)
+        else if (edgeGripCd == true && gestionnaire.grounded == true)
         {
             edgeGripCd = false;
         }

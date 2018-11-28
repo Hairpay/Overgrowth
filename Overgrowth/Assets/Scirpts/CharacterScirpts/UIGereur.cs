@@ -51,11 +51,15 @@ public class UIGereur : MonoBehaviour {
       
        // Gestionnaire.toLoad = SceneManager.GetActiveScene().ToString;
     }
-	
-	// Update is called once per frame
-	void Update () {
 
-        if(lastLife != Gestionnaire.life && Gestionnaire.invicible == false)
+    // Update is called once per frame
+    void Update() {
+        if (Input.GetButtonDown("Fire7"))
+        {
+            Ded();
+        }
+
+            if (lastLife != Gestionnaire.life && Gestionnaire.invicible == false)
         {
             lastLife = Gestionnaire.life;
             Gestionnaire.invicible = true;
@@ -67,20 +71,24 @@ public class UIGereur : MonoBehaviour {
 
         if (Gestionnaire.life < 1)
         {
-
-            Gestionnaire.life = Gestionnaire.PowerUps[4];
-
-            for (int i = 0; i < Gestionnaire.PowerUps.Length; i++)
-            {
-                Gestionnaire.PowerUps[i] = gestionnaireCP.PowerUps[i];
-            }
-
-            gameObject.transform.position = Gestionnaire.Checkpoint;
-          
+            Ded();         
         //    SceneManager.LoadScene("Docks_P1_0");
         }
 		
 	}
+    public void Ded()
+    {
+        Gestionnaire.life = Gestionnaire.PowerUps[4];
+
+        /*
+        for (int i = 0; i < Gestionnaire.PowerUps.Length; i++)
+        {
+            Gestionnaire.PowerUps[i] = gestionnaireCP.PowerUps[i];
+        }
+        */
+        gameObject.GetComponent<Rigidbody2D>().simulated = true;
+        gameObject.transform.position = Gestionnaire.Checkpoint;
+    }
 
     IEnumerator ReturnVariables()
     {

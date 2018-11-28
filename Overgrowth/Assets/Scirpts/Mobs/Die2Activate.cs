@@ -37,6 +37,10 @@ public class Die2Activate : MonoBehaviour
                 {
                     toPower[i].gameObject.GetComponent<Ascenseur>().power = true;
                 }
+                if (toPower[i].gameObject.GetComponent<ElevatorMainV2>() != null)
+                {
+                    toPower[i].gameObject.GetComponent<ElevatorMainV2>().power = true;
+                }
             }
             for (int i = 0; i < toShow.Length; i++)
             {
