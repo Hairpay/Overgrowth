@@ -87,6 +87,9 @@ TagManager:
   - name: Char
     uniqueID: 2887076199
     locked: 0
+  - name: AvantPlan1
+    uniqueID: 2593685259
+    locked: 0
   - name: Tilemaps
     uniqueID: 475296205
     locked: 0
@@ -96,6 +99,6 @@ TagManager:
   - name: Dialogues
     uniqueID: 3610741281
     locked: 0
-  - name: Devant
+  - name: AvantPlan2(tout devant)
     uniqueID: 1488983805
     locked: 0

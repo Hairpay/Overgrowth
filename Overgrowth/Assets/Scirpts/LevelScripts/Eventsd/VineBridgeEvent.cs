@@ -61,7 +61,7 @@ public class VineBridgeEvent : MonoBehaviour
 
     IEnumerator selfDestroy()
     {
-        GameObject.Find("Directiowerfer").GetComponent<laserBeam>().ReturnWait(3f);
+        GameObject.Find("Directiowerfer").GetComponent<AnalysisBeam>().ReturnWait(3f);
         yield return new WaitForSeconds(0.2f);
       //  gameObject.GetComponent<Description>().hidenalyse();
         Destroy(gameObject);

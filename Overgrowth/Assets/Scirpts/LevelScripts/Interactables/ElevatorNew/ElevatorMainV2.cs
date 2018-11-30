@@ -18,6 +18,7 @@ public class ElevatorMainV2 : MonoBehaviour
     public float t;
     public Vector2 oldPos;
     public Vector2 futurePos;
+    public float factor;
 
     public bool playerOn;
 
@@ -46,12 +47,9 @@ public class ElevatorMainV2 : MonoBehaviour
         active,
         moving        
     }
-
-  
     // Update is called once per frame
     void Update()
     {
-
         switch (myState)
         {
             case States.off:
@@ -81,7 +79,7 @@ public class ElevatorMainV2 : MonoBehaviour
                 }
                 break;
             case States.moving:
-                Move(futurePos);
+                Move(futurePos, factor);
                 break;
         }
     }
@@ -108,8 +106,9 @@ public class ElevatorMainV2 : MonoBehaviour
             myState = States.inactive;
         }
     }
-    public void Move(Vector2 newPos)
+    public void Move(Vector2 newPos, float speedFactor)
     {
+        float delais = (newPos - oldPos).magnitude;
         gameObject.transform.position = new Vector3(
               (Mathf.Lerp(oldPos.x, newPos.x, t)),
               (Mathf.Lerp(oldPos.y, newPos.y, t)),
@@ -117,7 +116,7 @@ public class ElevatorMainV2 : MonoBehaviour
 
         if (t < 1)
         {
-            t += 0.4f * Time.deltaTime;
+            t += speedFactor * Time.deltaTime / delais;
             if (playerOn == true)
             {
                 character.GetComponent<Rigidbody2D>().simulated = false;

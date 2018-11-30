@@ -29,6 +29,15 @@ public class PowerUpSelfDestruct : MonoBehaviour {
             once = true;
         }
     }
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == "Player" && once == false)
+        {
+            Activate();
+            once = true;
+        }
+    }
+
     public void Activate()
     {
         gameObject.GetComponent<Collider2D>().enabled = false;
@@ -45,23 +54,17 @@ public class PowerUpSelfDestruct : MonoBehaviour {
         }
         if (Boost == 4)
         {
-            Gestionnaire.life = Gestionnaire.PowerUps[4];
+            Gestionnaire.life = Gestionnaire.life + 1;
         }
 
         StartCoroutine("selfDestroy");
     }
 
-    void OnCollisionEnter2D(Collision2D coll)
-    {
-        if (coll.gameObject.tag == "Player")
-        {
-            Activate();
-        }
-    }   
+     
 
     IEnumerator selfDestroy()
     {
-        GameObject.Find("Directiowerfer").GetComponent<laserBeam>().ReturnWait(3f);
+        GameObject.Find("Directiowerfer").GetComponent<AnalysisBeam>().ReturnWait(3f);
         yield return new WaitForSeconds(0.2f);
      //   gameObject.GetComponent<Description>().hidenalyse();
         Destroy(gameObject);

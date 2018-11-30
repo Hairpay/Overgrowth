@@ -116,6 +116,7 @@ public class ElevatorCallV2 : MonoBehaviour {
             ElevatorMain.Message("Elevator called.");
             ElevatorMain.myState = ElevatorMainV2.States.moving;
             ElevatorMain.futurePos = new Vector2(posPlateforme.transform.position.x, posPlateforme.transform.position.y);
+            ElevatorMain.factor = 30;
             ElevatorMain.position = position;
         }
         
@@ -127,6 +128,7 @@ public class ElevatorCallV2 : MonoBehaviour {
         ElevatorMain.myState = ElevatorMainV2.States.moving;
         ElevatorMain.position = ElevatorMain.position + 1;
         ElevatorMain.futurePos = ElevatorMain.Arrets[ElevatorMain.position].GetComponent<ElevatorCallV2>().posPlateforme.transform.position;
+        ElevatorMain.factor = 15;
     }
     public void GoHaut()
     {
@@ -135,5 +137,6 @@ public class ElevatorCallV2 : MonoBehaviour {
         ElevatorMain.myState = ElevatorMainV2.States.moving;
         ElevatorMain.position = ElevatorMain.position - 1;
         ElevatorMain.futurePos = ElevatorMain.Arrets[ElevatorMain.position].GetComponent<ElevatorCallV2>().posPlateforme.transform.position;
+        ElevatorMain.factor = 15;
     }
 }

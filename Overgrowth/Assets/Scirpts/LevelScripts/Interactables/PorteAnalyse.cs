@@ -100,6 +100,13 @@ public class PorteAnalyse : MonoBehaviour
         unlock = true;
         gameObject.layer = 24;
         gameObject.GetComponent<SpriteRenderer>().color = otherColor;
+
+        if (autoClose == false)
+        {
+            gameObject.GetComponent<cakeslice.Outline>().enabled = false;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            gameObject.GetComponent<Description>().enabled = false;
+        }
     }
 
     public void fermeture()

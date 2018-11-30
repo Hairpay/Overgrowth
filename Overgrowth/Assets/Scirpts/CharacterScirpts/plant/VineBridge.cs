@@ -136,7 +136,7 @@ public class VineBridge : MonoBehaviour {
                 line.enabled = true;
            
                 //moche ça:
-                gameObject.GetComponent<laserBeam>().enabled = false;
+                gameObject.GetComponent<AnalysisBeam>().enabled = false;
             }
                 if (Input.GetButtonUp("Fire3") && Gestionnaire.SuitActivated == false && Gestionnaire.PowerUps[5] > 0) 
             {
@@ -159,7 +159,7 @@ public class VineBridge : MonoBehaviour {
                 }
 
                 //moche ça:
-                gameObject.GetComponent<laserBeam>().enabled = true;
+                gameObject.GetComponent<AnalysisBeam>().enabled = true;
 
             }            
         }
