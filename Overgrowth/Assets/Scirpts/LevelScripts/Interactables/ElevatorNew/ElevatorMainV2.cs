@@ -151,7 +151,7 @@ public class ElevatorMainV2 : MonoBehaviour
         analysisText.enabled = true;
         analysisPanel.enabled = true;
         StopAllCoroutines();
-        StartCoroutine("ReturnUnlock");
+        GameObject.Find("Directiowerfer").GetComponent<AnalysisBeam>().ReturnWait(2f);
     }
     public void Message(string message)
     {
@@ -159,13 +159,6 @@ public class ElevatorMainV2 : MonoBehaviour
         analysisText.enabled = true;
         analysisPanel.enabled = true;
         StopAllCoroutines();
-        StartCoroutine("ReturnUnlock");
+        GameObject.Find("Directiowerfer").GetComponent<AnalysisBeam>().ReturnWait(2f);
     }   
-
-    IEnumerator ReturnUnlock()
-    {
-        yield return new WaitForSeconds(2f);
-        analysisText.enabled = false;
-        analysisPanel.enabled = false;
-    }
 }

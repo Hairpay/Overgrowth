@@ -104,12 +104,6 @@ public class Description : MonoBehaviour {
         compteur = 0;
     }
 
-    public void hidenalyse()
-    {      
-        analysisText.enabled = false;
-        analysisPanel.enabled = false;  
-        compteur = 0;        
-    }
     public void stopeth()
     {
         compteur = 0;

@@ -5,9 +5,6 @@ using UnityEngine;
 public class Autofufu : MonoBehaviour {
 
     // Use this for initialization
-    public int noSalle;
-
-    // Use this for initialization
     void Start()
     {
         gameObject.GetComponent<Renderer>().enabled = false;

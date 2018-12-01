@@ -37,15 +37,9 @@ public class ForcePlante : MonoBehaviour
             Gestionnaire.disfunction = true;
             Gestionnaire.SuitActivated = false;
 
-            StartCoroutine("selfDestroy");
+            GameObject.Find("Directiowerfer").GetComponent<AnalysisBeam>().ReturnWait(3f);
+            Destroy(gameObject);
         }
-    }
-
-    IEnumerator selfDestroy()
-    {
-        yield return new WaitForSeconds(4f);
-        gameObject.GetComponent<Description>().hidenalyse();
-        Destroy(gameObject);
     }
 }
 
