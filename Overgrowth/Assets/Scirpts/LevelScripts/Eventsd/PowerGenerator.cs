@@ -11,7 +11,7 @@ public class PowerGenerator : MonoBehaviour {
     public GameObject[] toShow;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 
         for (int i = 0; i < toShow.Length; i++)
         {

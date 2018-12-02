@@ -23,8 +23,7 @@ public class PorteAnalyse : MonoBehaviour
 
     public bool power = true;
     public bool errorBlocked;
-
-    public Text analysisText;
+    public Description description;
 
     // Use this for initialization
     void Awake()
@@ -32,7 +31,7 @@ public class PorteAnalyse : MonoBehaviour
         baseColor = gameObject.GetComponent<SpriteRenderer>().color;
         otherColor = baseColor;
         otherColor.a = baseColor.a * 0.3f;
-
+        description = gameObject.GetComponent<Description>();
         baseLayer = gameObject.layer;
     }
 
@@ -40,7 +39,6 @@ public class PorteAnalyse : MonoBehaviour
     {
         character = GameObject.Find("character");
         Gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;
-        analysisText = character.GetComponent<UIGereur>().analysis;
     }
 
     // Update is called once per frame
@@ -60,10 +58,10 @@ public class PorteAnalyse : MonoBehaviour
             }         
         }
         // check if door is analyzed
-        if (gameObject.GetComponent<Description>().compteur > 50)
+        if (description.compteur > 50)
         {
             Unlockage();
-            gameObject.GetComponent<Description>().stopeth();
+            description.stopeth();
         }
     }
 
@@ -73,24 +71,24 @@ public class PorteAnalyse : MonoBehaviour
         {
             if (errorBlocked == false)
             {
-                analysisText.text = ErrorMessage + "This door has no power.";
+                description.sayText(ErrorMessage + "This door has no power.");
             }
             else
             {
-                analysisText.text = ErrorMessage + "Something is blocking the door.";
+                description.sayText(ErrorMessage + "Something is blocking the door.");
             }
         }
         else if (AnalysisLevel > Gestionnaire.PowerUps[0])
         {
-            analysisText.text = ErrorMessage + "This door require a level " + AnalysisLevel + " security.";
+            description.sayText(ErrorMessage + "This door require a level " + AnalysisLevel + " security.");
         }
         else if (Gestionnaire.SuitActivated == false)
         {
-            analysisText.text = ErrorMessage + "Unknow biological signature.";
+            description.sayText(ErrorMessage + "Unknow biological signature.");
         }
         else
         {
-            analysisText.text = OpeningMessage;
+            description.sayText(OpeningMessage);
             Ouverture();
         }
     }
@@ -105,7 +103,7 @@ public class PorteAnalyse : MonoBehaviour
         {
             gameObject.GetComponent<cakeslice.Outline>().enabled = false;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            gameObject.GetComponent<Description>().enabled = false;
+            description.enabled = false;
         }
     }
 

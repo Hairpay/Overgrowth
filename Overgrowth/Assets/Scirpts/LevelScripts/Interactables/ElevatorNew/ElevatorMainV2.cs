@@ -23,8 +23,7 @@ public class ElevatorMainV2 : MonoBehaviour
     public bool playerOn;
 
     public bool power;
-    public Text analysisText;
-    public Image analysisPanel;
+    public Description description;
     public bool errorBlocked;
 
     // Use this for initialization
@@ -32,8 +31,7 @@ public class ElevatorMainV2 : MonoBehaviour
     {
         character = GameObject.Find("character");
         Gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;
-        analysisPanel = character.GetComponent<UIGereur>().analysisPanel;
-        analysisText = character.GetComponent<UIGereur>().analysis;
+        description = gameObject.GetComponent<Description>();      
         layer_mask = LayerMask.GetMask("Player");
    
         position = basePosition;
@@ -141,23 +139,19 @@ public class ElevatorMainV2 : MonoBehaviour
     {
         if (errorBlocked == false)
         {
-            analysisText.text = "Error, this elevator has no power.";
+            description.sayText("Error, this elevator has no power.");
         }
         else
         {
-            analysisText.text = "Error, something is blocking the elevator.";
-        }
-
-        analysisText.enabled = true;
-        analysisPanel.enabled = true;
+            description.sayText("Error, something is blocking the elevator.");
+        }  
         StopAllCoroutines();
         GameObject.Find("Directiowerfer").GetComponent<AnalysisBeam>().ReturnWait(2f);
     }
     public void Message(string message)
     {
-        analysisText.text = message;
-        analysisText.enabled = true;
-        analysisPanel.enabled = true;
+        string relay = message;
+        description.sayText(relay);
         StopAllCoroutines();
         GameObject.Find("Directiowerfer").GetComponent<AnalysisBeam>().ReturnWait(2f);
     }   

@@ -41,11 +41,8 @@ public class PowerUpSelfDestruct : MonoBehaviour {
     public void Activate()
     {
         gameObject.GetComponent<Collider2D>().enabled = false;
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
-
-        gameObject.GetComponent<DescriptionText>().description = textRamasse;
-        gameObject.GetComponent<Description>().compteur = 55;
-        gameObject.GetComponent<Description>().addnalyse();
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;     
+        gameObject.GetComponent<Description>().sayText(textRamasse);
 
         Gestionnaire.PowerUps[Boost] = Gestionnaire.PowerUps[Boost] + 1;
         if (Boost == 1)

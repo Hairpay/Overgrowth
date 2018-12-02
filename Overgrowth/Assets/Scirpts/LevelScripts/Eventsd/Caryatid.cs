@@ -13,6 +13,7 @@ public class Caryatid : MonoBehaviour
     public Image analysisPanel;
 
     public GameObject gift;
+    public bool giftOnce;
 
     public bool cd;
 
@@ -53,9 +54,10 @@ public class Caryatid : MonoBehaviour
             }                        
         }
 
-        if(gameObject.GetComponent<MecheTilemap>().life < 8)
+        if(gameObject.GetComponent<MecheTilemap>().life < 8 && giftOnce == false)
         {
             gift.GetComponent<Explotron2D>().Explosion();
+            giftOnce = true;
         }
     }
 }

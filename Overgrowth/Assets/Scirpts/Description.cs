@@ -83,7 +83,11 @@ public class Description : MonoBehaviour {
             if (compteur > 1 && compteur < 50)
             {
                 affichage = (int)compteur;
-                analysisText.text = "analyzing..." + (affichage * 2).ToString() + " %";
+                if (Gestionnaire.stopText == false)
+                {
+                    analysisText.text = "analyzing..." + (affichage * 2).ToString() + " %";
+                }
+               
             }
             else if (compteur > 50)
             {
@@ -96,7 +100,15 @@ public class Description : MonoBehaviour {
 
         }
     }
-       
+    public void sayText(string text)
+    {
+        if (Gestionnaire.stopText == false)
+        {
+            analysisText.text = text;
+            analysisText.enabled = true;
+            analysisPanel.enabled = true;
+        }
+    }
 
     IEnumerator ReturnUnlock()
     {

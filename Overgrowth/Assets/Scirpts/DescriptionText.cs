@@ -6,19 +6,12 @@ using UnityEngine.UI;
 public class DescriptionText : MonoBehaviour
 {
 
-    public GameObject charaDual;
-    public Text analysisText;
-    public Image analysisPanel;
-
     public string description;
 
     // Use this for initialization
     void Start()
     {
-
-        charaDual = GameObject.Find("character");
-        analysisPanel = charaDual.GetComponent<UIGereur>().analysisPanel;
-        analysisText = charaDual.GetComponent<UIGereur>().analysis;            
+           
     }
 
     // Update is called once per frame
@@ -26,7 +19,7 @@ public class DescriptionText : MonoBehaviour
     {
         if(gameObject.GetComponent<Description>().compteur > 50)
         {
-            analysisText.text = description;
+            gameObject.GetComponent<Description>().sayText(description);
         }       
     }
 }

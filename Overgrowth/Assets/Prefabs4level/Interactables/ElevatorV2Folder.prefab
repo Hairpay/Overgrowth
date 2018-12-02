@@ -179,6 +179,8 @@ GameObject:
   - component: {fileID: 212436895573909232}
   - component: {fileID: 61562960673609280}
   - component: {fileID: 114036880097563540}
+  - component: {fileID: 114406929193282616}
+  - component: {fileID: 114900348976250476}
   m_Layer: 18
   m_Name: PlateForme
   m_TagString: Untagged
@@ -373,7 +375,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1286658510565502}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 5.5, z: 0.9}
+  m_LocalPosition: {x: 0.5, y: 23.5, z: 0.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4216488636583630}
@@ -814,14 +816,14 @@ MonoBehaviour:
   - {fileID: 1862662318564490}
   - {fileID: 1794641906669134}
   position: 0
-  basePosition: 3
+  basePosition: 2
   t: 0
   oldPos: {x: 0, y: 0}
   futurePos: {x: 0, y: 0}
+  factor: 0
   playerOn: 0
   power: 1
-  analysisText: {fileID: 0}
-  analysisPanel: {fileID: 0}
+  description: {fileID: 0}
   errorBlocked: 0
 --- !u!114 &114117456786709976
 MonoBehaviour:
@@ -917,6 +919,26 @@ MonoBehaviour:
   animator: {fileID: 0}
   posPlateforme: {fileID: 1081423985877458}
   position: 3
+--- !u!114 &114406929193282616
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1790247144184140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32cb03d331d5cfd46b53809fabae1699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charaDual: {fileID: 0}
+  Gestionnaire: {fileID: 0}
+  analysisText: {fileID: 0}
+  analysisPanel: {fileID: 0}
+  compteur: 0
+  speed: 1
+  affichage: 0
+  lastMode: 0
+  lockMode: 0
 --- !u!114 &114416401992936242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1079,6 +1101,18 @@ MonoBehaviour:
   affichage: 0
   lastMode: 0
   lockMode: 0
+--- !u!114 &114900348976250476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1790247144184140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f8f6706d0f5b64b91135de99698bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: This is an elevator.
 --- !u!212 &212275956769548342
 SpriteRenderer:
   m_ObjectHideFlags: 1

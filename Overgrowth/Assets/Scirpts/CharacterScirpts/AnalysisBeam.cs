@@ -24,7 +24,6 @@ public class AnalysisBeam : MonoBehaviour
 
     public RaycastHit2D hit;
     public float tim2w8t;
-    public bool lockMode;
 
 
     // Use this for initialization
@@ -52,7 +51,7 @@ public class AnalysisBeam : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire4"))
         {
-            if (gestionnaire.Locked == false && gestionnaire.disfunction == false && lockMode == false)
+            if (gestionnaire.Locked == false && gestionnaire.disfunction == false)
             {
                 line.enabled = true;
                 myState = States.search;
@@ -140,7 +139,7 @@ public class AnalysisBeam : MonoBehaviour
         tim2w8t = time;
         line.enabled = false;
         myState = States.wait;
-        lockMode = true;
+        gestionnaire.stopText = true;
         StopAllCoroutines();
         StartCoroutine("ReturnVariables");
     }
@@ -149,7 +148,7 @@ public class AnalysisBeam : MonoBehaviour
     {
         yield return new WaitForSeconds(tim2w8t + 1f);
         tim2w8t = 0f;
-        lockMode = false;
+        gestionnaire.stopText = false;
         analysisText.enabled = false;
         analysisPanel.enabled = false;
     }

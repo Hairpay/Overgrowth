@@ -8,8 +8,6 @@ public class Checkpoint : MonoBehaviour {
     public GameObject character;
     public Gestionnaire gestionnaire;
     public Gestionnaire gestionnaireCP;
-    public Text analysisText;
-    public Image analysisPanel;
 
 
     // Use this for initialization
@@ -17,8 +15,6 @@ public class Checkpoint : MonoBehaviour {
     {
         character = GameObject.Find("character");
         gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;
-        analysisPanel = character.GetComponent<UIGereur>().analysisPanel;
-        analysisText = character.GetComponent<UIGereur>().analysis;
     }
 	
 	// Update is called once per frame
@@ -32,8 +28,7 @@ public class Checkpoint : MonoBehaviour {
 
     public void saveProgress()
     {
-        analysisText.text = "Progress has been saved.";
-
+        gameObject.GetComponent<Description>().sayText("Progress has been saved.");
         gestionnaire.life = gestionnaire.PowerUps[4];
 
         for (int i = 0; i < gestionnaire.PowerUps.Length; i++)

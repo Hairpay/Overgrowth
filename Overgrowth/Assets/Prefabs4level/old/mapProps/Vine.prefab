@@ -83,9 +83,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f8f6706d0f5b64b91135de99698bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charaDual: {fileID: 0}
-  analysisText: {fileID: 0}
-  analysisPanel: {fileID: 0}
   description: Theses vines could be destroyed with the right weapon.
 --- !u!114 &114291319453429574
 MonoBehaviour:
@@ -113,9 +110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681b70c7c538a864780d81c8a027add9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Shrap: {fileID: 1651283066740880, guid: 3a6c053a0437f7c4188929a500512478, type: 2}
+  Shrap: {fileID: 1983012964321800}
   movescale: 0.3
   autoExplo: 0
+  nombre: 20
 --- !u!114 &114661665781367516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,10 +126,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charaDual: {fileID: 0}
+  Gestionnaire: {fileID: 0}
   analysisText: {fileID: 0}
   analysisPanel: {fileID: 0}
   compteur: 0
   speed: 1
+  affichage: 0
+  lastMode: 0
+  lockMode: 0
 --- !u!114 &114951866030852082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,6 +153,7 @@ MonoBehaviour:
   maxLife: 1
   isDed: 0
   ifram: 0
+  gestionnaire: {fileID: 0}
 --- !u!114 &114985324954331378
 MonoBehaviour:
   m_ObjectHideFlags: 1
