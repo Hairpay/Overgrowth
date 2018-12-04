@@ -115,6 +115,8 @@ public class ElevatorMainV2_1 : MonoBehaviour
         if (t < 1)
         {
             t += speedFactor * Time.deltaTime / delais;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
             if (playerOn == true)
             {
                 character.GetComponent<Rigidbody2D>().simulated = false;
@@ -125,6 +127,7 @@ public class ElevatorMainV2_1 : MonoBehaviour
         else
         {
             t = 0;
+            gameObject.GetComponent<BoxCollider2D>().enabled = true;
             oldPos = gameObject.transform.position;
             myState = States.active;
             if (playerOn == true)

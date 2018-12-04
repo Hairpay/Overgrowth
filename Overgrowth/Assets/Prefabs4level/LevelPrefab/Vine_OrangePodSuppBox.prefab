@@ -20,6 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4802235487192268}
   - component: {fileID: 60193602793648834}
+  - component: {fileID: 114291640309272624}
+  - component: {fileID: 114123058855345188}
+  - component: {fileID: 114089790327196650}
   m_Layer: 0
   m_Name: Vine_OrangePodSuppBox
   m_TagString: Untagged
@@ -54,7 +57,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1311116008281600}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4802235487192268}
@@ -67,8 +70,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1085915817412300}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17, y: 3, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: 21.5, y: 23.5, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 3}
   m_Children:
   - {fileID: 4136680282684330}
   m_Father: {fileID: 0}
@@ -256,6 +259,60 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114089790327196650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1085915817412300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 681b70c7c538a864780d81c8a027add9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shrap: {fileID: 1983012964321800, guid: 3f7f2068b5efd504a943fb5c293bc8e7, type: 2}
+  movescale: 0.3
+  autoExplo: 0
+  nombre: 20
+--- !u!114 &114123058855345188
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1085915817412300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7998a3982adb9fb44bc16fdbbb811e6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mobdossier: {fileID: 0}
+  mobVisu:
+  - {fileID: 1311116008281600}
+  actualColor:
+  - {r: 0, g: 0, b: 0, a: 0}
+  baseColor:
+  - {r: 0, g: 0, b: 0, a: 0}
+  life: 0
+  maxLife: 7
+  isDed: 0
+  ifram: 0
+  gestionnaire: {fileID: 0}
+--- !u!114 &114291640309272624
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1085915817412300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83bae0c1fa10069439cedca41bae9173, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  once: 0
+  toPower:
+  - {fileID: 0}
+  toHide: []
+  toShow: []
 --- !u!114 &114380073811828844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -287,10 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f8f6706d0f5b64b91135de99698bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charaDual: {fileID: 0}
-  analysisText: {fileID: 0}
-  analysisPanel: {fileID: 0}
-  description: i dont know what's this thing.
+  description: This thick mass of alien lifeform is blocking the door.
 --- !u!212 &212896022324324796
 SpriteRenderer:
   m_ObjectHideFlags: 1

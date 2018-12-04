@@ -40,6 +40,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4018495052726498}
   - component: {fileID: 60419959129268386}
+  - component: {fileID: 114214592536005112}
+  - component: {fileID: 114601305049446890}
+  - component: {fileID: 114225693198218964}
   m_Layer: 0
   m_Name: VinePod2_Box
   m_TagString: Untagged
@@ -54,7 +57,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1679245833299608}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.5, y: 5.5, z: 0}
+  m_LocalPosition: {x: 27, y: 34, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4783094873547662}
@@ -384,6 +387,44 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114214592536005112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1679245833299608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7998a3982adb9fb44bc16fdbbb811e6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mobdossier: {fileID: 0}
+  mobVisu:
+  - {fileID: 1086630946861648}
+  actualColor:
+  - {r: 0, g: 0, b: 0, a: 0}
+  baseColor:
+  - {r: 0, g: 0, b: 0, a: 0}
+  life: 0
+  maxLife: 10
+  isDed: 0
+  ifram: 0
+  gestionnaire: {fileID: 0}
+--- !u!114 &114225693198218964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1679245833299608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83bae0c1fa10069439cedca41bae9173, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  once: 0
+  toPower: []
+  toHide: []
+  toShow: []
 --- !u!114 &114243533612202556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -404,6 +445,21 @@ MonoBehaviour:
   affichage: 0
   lastMode: 0
   lockMode: 0
+--- !u!114 &114601305049446890
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1679245833299608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 681b70c7c538a864780d81c8a027add9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shrap: {fileID: 1983012964321800, guid: 3f7f2068b5efd504a943fb5c293bc8e7, type: 2}
+  movescale: 1
+  autoExplo: 0
+  nombre: 40
 --- !u!114 &114755679026690262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -415,10 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f8f6706d0f5b64b91135de99698bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charaDual: {fileID: 0}
-  analysisText: {fileID: 0}
-  analysisPanel: {fileID: 0}
-  description: Tendrils are flaying from this mass.
+  description: This mass is blocking the elevator.
 --- !u!212 &212624386282783646
 SpriteRenderer:
   m_ObjectHideFlags: 1
