@@ -87,6 +87,9 @@ TagManager:
   - name: Char
     uniqueID: 2887076199
     locked: 0
+  - name: Paralax(doors)
+    uniqueID: 1924086921
+    locked: 0
   - name: AvantPlan1
     uniqueID: 2593685259
     locked: 0

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4245810447843008}
   - component: {fileID: 212946790641420568}
   - component: {fileID: 114336065059222110}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: VineSpawner
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}

@@ -62,6 +62,7 @@ public class AnalysisBeam : MonoBehaviour
         {         
             line.enabled = false;
             myState = States.wait;
+            StopAllCoroutines();
             StartCoroutine("ReturnVariables");
         }
         switch (myState)

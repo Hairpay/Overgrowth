@@ -18,18 +18,19 @@ public class Cheatpoint : MonoBehaviour {
 
         if (active == true)
         {
-            character.transform.position = gameObject.transform.position;
-            Gestionnaire.SuitActivated = Template.SuitActivated;
-            Gestionnaire.disfunction = Template.disfunction;
-            for (int i = 0; i < Gestionnaire.PowerUps.Length; i++)
-            {
-                Gestionnaire.PowerUps[i] = Template.PowerUps[i];
-            }
+            ActivatePoint();
         }      
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+public void ActivatePoint()
+    {
+        character.transform.position = gameObject.transform.position;
+        Gestionnaire.SuitActivated = Template.SuitActivated;
+        Gestionnaire.disfunction = Template.disfunction;
+        Gestionnaire.Checkpoint = gameObject.transform.position;
+        for (int i = 0; i < Gestionnaire.PowerUps.Length; i++)
+        {
+            Gestionnaire.PowerUps[i] = Template.PowerUps[i];
+        }
+    }
 }

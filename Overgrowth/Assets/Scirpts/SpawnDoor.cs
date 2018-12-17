@@ -19,12 +19,11 @@ public class SpawnDoor : MonoBehaviour
         prefabDoor = Instantiate(PrefabDoor, this.transform);
         prefabDoor.transform.localPosition = new Vector3(0, 0, 0);
        // prefabDoor.transform.localScale = gameObject.transform.localScale;
-        prefabDoor.GetComponent<PorteAnalyse>().AnalysisLevel = AnalysisLevel;
-        prefabDoor.GetComponent<SpriteRenderer>().color = gameObject.GetComponent<SpriteRenderer>().color;
-        prefabDoor.GetComponent<PorteAnalyse>().baseColor = gameObject.GetComponent<SpriteRenderer>().color;
-        prefabDoor.GetComponent<PorteAnalyse>().autoClose = autoClose;
-        prefabDoor.GetComponent<PorteAnalyse>().power = power;
-        prefabDoor.GetComponent<PorteAnalyse>().errorBlocked = errorBlocked;
+        prefabDoor.GetComponent<PorteAnalyseV2>().analysisLevel = AnalysisLevel;
+
+        prefabDoor.GetComponent<PorteAnalyseV2>().autoClose = autoClose;
+        prefabDoor.GetComponent<PorteAnalyseV2>().power = power;
+        prefabDoor.GetComponent<PorteAnalyseV2>().errorBlocked = errorBlocked;
 
     }
 }

@@ -7,9 +7,8 @@ public class AutoText : MonoBehaviour
 {
 
     public GameObject character;
-    public Gestionnaire gestionnaire;
-    public Text analysisText;
-    public Image analysisPanel;
+    public Text ttsText;
+    public Image ttsPanel;
     public bool once;
 
     public float activeDist;
@@ -25,12 +24,10 @@ public class AutoText : MonoBehaviour
     {
 
         character = GameObject.Find("character");
-        gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;
-        analysisPanel = character.GetComponent<UIGereur>().analysisPanel;
-        analysisText = character.GetComponent<UIGereur>().analysis;
-
-        analysisText.enabled = false;
-        analysisPanel.enabled = false;
+        ttsPanel = GameObject.Find("TTSPanel").GetComponent<Image>();
+        ttsText = GameObject.Find("TTSText").GetComponent<Text>();
+        ttsText.enabled = false;
+        ttsPanel.enabled = false;
     }
 
     // Update is called once per frame
@@ -41,20 +38,23 @@ public class AutoText : MonoBehaviour
         if (Mathf.Abs(dist) < activeDist && once == false)
         {
             once = true;
-            Speech();
-            GameObject.Find("Directiowerfer").GetComponent<AnalysisBeam>().ReturnWait((dialogues.Length*textTime) + 0.1f);           
+            Speech();                
         }
     }
     public void Speech()
     {
         Debug.Log("text update");
-        analysisText.enabled = true;
-        analysisPanel.enabled = true;
+        ttsPanel.enabled = true;
+        ttsText.enabled = true;
 
-        analysisText.text = dialogues[i];
+        ttsText.text = dialogues[i];
         if (i < dialogues.Length - 1)
         {
             StartCoroutine("NexText"); 
+        }
+        else
+        {
+            StartCoroutine("Stahp");
         }
      
     }
@@ -63,5 +63,11 @@ public class AutoText : MonoBehaviour
         yield return new WaitForSeconds(textTime);
         i++;
         Speech();
+    }
+    IEnumerator Stahp()
+    {
+        yield return new WaitForSeconds(textTime);
+        ttsPanel.enabled = false;
+        ttsText.enabled = false;
     }
 }

@@ -85,7 +85,7 @@ public class Description : MonoBehaviour {
                 affichage = (int)compteur;
                 if (Gestionnaire.stopText == false)
                 {
-                    analysisText.text = "analyzing..." + (affichage * 2).ToString() + " %";
+                    sayText("analyzing..." + (affichage * 2).ToString() + " %");
                 }
                
             }

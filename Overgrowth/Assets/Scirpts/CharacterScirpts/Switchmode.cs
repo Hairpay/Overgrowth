@@ -17,7 +17,7 @@ public class Switchmode : MonoBehaviour {
         character = GameObject.Find("character");
         Gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;
 
-        layer_mask = ~LayerMask.GetMask("Player");
+        layer_mask = ~LayerMask.GetMask("Player","Default");
     }
 	
 	// Update is called once per frame

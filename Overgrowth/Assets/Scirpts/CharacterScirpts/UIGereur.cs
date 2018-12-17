@@ -53,11 +53,7 @@ public class UIGereur : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
-        if (Input.GetButtonDown("Fire7"))
-        {
-            Ded();
-        }
+    void Update() {       
 
             if (lastLife != Gestionnaire.life && Gestionnaire.invicible == false)
         {

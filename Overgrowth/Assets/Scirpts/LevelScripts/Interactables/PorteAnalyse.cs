@@ -16,6 +16,7 @@ public class PorteAnalyse : MonoBehaviour
     public bool unlock;
     public bool ready2unlock;
     public bool autoClose;
+    public bool onlySuit;
 
     public int AnalysisLevel;
     public string ErrorMessage;
@@ -82,7 +83,7 @@ public class PorteAnalyse : MonoBehaviour
         {
             description.sayText(ErrorMessage + "This door require a level " + AnalysisLevel + " security.");
         }
-        else if (Gestionnaire.SuitActivated == false)
+        else if (Gestionnaire.SuitActivated == false && onlySuit == true)
         {
             description.sayText(ErrorMessage + "Unknow biological signature.");
         }
