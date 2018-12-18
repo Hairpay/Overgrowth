@@ -15,7 +15,7 @@ public class PorteAnalyseV2 : MonoBehaviour
     public bool autoClose;
     public bool onlySuit;
     public int analysisLevel;
-    public bool power = true;
+    public bool basePower = true;
     public bool errorBlocked;
 
     public Description description;
@@ -35,6 +35,11 @@ public class PorteAnalyseV2 : MonoBehaviour
         character = GameObject.Find("character");
         gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;
         animator = gameObject.GetComponent<Animator>();
+        if (gameObject.GetComponent<PowerSource>() == null)
+        {
+            gameObject.AddComponent<PowerSource>();
+            gameObject.GetComponent<PowerSource>().power = basePower;
+        }
     }
 
     public enum States
@@ -101,7 +106,7 @@ public class PorteAnalyseV2 : MonoBehaviour
 
     public void Checkstate()
     {
-        if (power == false)
+        if (gameObject.GetComponent<PowerSource>().power == false)
         {
             if (description.compteur > 50)
             {

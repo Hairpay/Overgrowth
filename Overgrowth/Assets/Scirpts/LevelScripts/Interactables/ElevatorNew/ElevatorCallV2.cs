@@ -36,7 +36,7 @@ public class ElevatorCallV2 : MonoBehaviour {
         {
             case States.off:
                 animator.Play("Off");
-                if (ElevatorMain.power == true)
+                if (plateforme.GetComponent<PowerSource>().power == true)
                 {
                     myState = States.call;
                 }
@@ -48,7 +48,7 @@ public class ElevatorCallV2 : MonoBehaviour {
 
             case States.call:
                 animator.Play("Call");
-                if (ElevatorMain.power == false)
+                if (plateforme.GetComponent<PowerSource>().power == false)
                 {
                     myState = States.off;
                 }

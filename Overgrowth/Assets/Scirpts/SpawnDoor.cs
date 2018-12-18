@@ -22,7 +22,7 @@ public class SpawnDoor : MonoBehaviour
         prefabDoor.GetComponent<PorteAnalyseV2>().analysisLevel = AnalysisLevel;
 
         prefabDoor.GetComponent<PorteAnalyseV2>().autoClose = autoClose;
-        prefabDoor.GetComponent<PorteAnalyseV2>().power = power;
+        prefabDoor.GetComponent<PorteAnalyseV2>().basePower = power;
         prefabDoor.GetComponent<PorteAnalyseV2>().errorBlocked = errorBlocked;
 
     }

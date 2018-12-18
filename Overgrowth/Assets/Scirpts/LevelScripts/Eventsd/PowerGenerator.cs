@@ -28,18 +28,19 @@ public class PowerGenerator : MonoBehaviour {
             once = true;
             for (int i = 0; i < toPower.Length; i++)
             {
-                if (toPower[i].gameObject.GetComponentInChildren<PorteAnalyse>() != null)
+                if (toPower[i].gameObject.GetComponent<PowerSource>() != null)
                 {
-                    toPower[i].gameObject.GetComponentInChildren<PorteAnalyse>().power = true;
+                    toPower[i].gameObject.GetComponent<PowerSource>().power = true;
                 }
-                if (toPower[i].gameObject.GetComponent<Ascenseur>() != null)
+                else if (toPower[i].gameObject.GetComponentInChildren<PowerSource>() != null)
                 {
-                    toPower[i].gameObject.GetComponent<Ascenseur>().power = true;
+                    toPower[i].gameObject.GetComponentInChildren<PowerSource>().power = true;
                 }
-                if (toPower[i].gameObject.GetComponent<ElevatorMainV2>() != null)
+                else
                 {
-                    toPower[i].gameObject.GetComponent<ElevatorMainV2>().power = true;
+                    Debug.Log(toPower[i].gameObject + " has no power source");
                 }
+              
             }
             for (int i = 0; i < toShow.Length; i++)
             {

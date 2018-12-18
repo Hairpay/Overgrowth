@@ -22,7 +22,7 @@ public class ElevatorMainV2 : MonoBehaviour
 
     public bool playerOn;
 
-    public bool power;
+    public bool basePower;
     public Description description;
     public bool errorBlocked;
 
@@ -37,6 +37,12 @@ public class ElevatorMainV2 : MonoBehaviour
         position = basePosition;
         gameObject.transform.position = Arrets[basePosition].GetComponent<ElevatorCallV2>().posPlateforme.transform.position;
         oldPos = gameObject.transform.position;
+
+        if (gameObject.GetComponent<PowerSource>() == null)
+        {
+            gameObject.AddComponent<PowerSource>();
+            gameObject.GetComponent<PowerSource>().power = basePower;
+        }
     }
     public enum States
     {
@@ -51,13 +57,13 @@ public class ElevatorMainV2 : MonoBehaviour
         switch (myState)
         {
             case States.off:
-               if(power == true)
+               if(gameObject.GetComponent<PowerSource>().power == true)
                 {
                     myState = States.inactive;
                 }               
                 break;
             case States.inactive:
-                if (power == false)
+                if (gameObject.GetComponent<PowerSource>().power == false)
                 {
                     myState = States.off;
                 }
@@ -67,7 +73,7 @@ public class ElevatorMainV2 : MonoBehaviour
                 }
                 break;
             case States.active:
-                if (power == false)
+                if (gameObject.GetComponent<PowerSource>().power == false)
                 {
                     myState = States.off;
                 }
