@@ -138,6 +138,7 @@ public class PorteAnalyseV2 : MonoBehaviour
             if (description.compteur > 50)
             {
                 myState = States.open;
+                description.sayText("Door is open.");
                 description.stopeth();
             }
             else

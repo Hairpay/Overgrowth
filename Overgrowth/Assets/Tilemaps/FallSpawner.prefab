@@ -52,8 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f61f728831c5844a533297b0e571e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabPlayer: {fileID: 1588219442209780, guid: 79a4d9a37d897454395fb4a0de3e4a63,
-    type: 2}
+  PrefabPlayer:
+  - {fileID: 1588219442209780, guid: 79a4d9a37d897454395fb4a0de3e4a63, type: 2}
   isPlayer: 0
 --- !u!212 &212931569333292414
 SpriteRenderer:

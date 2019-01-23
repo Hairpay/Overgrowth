@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnPlayer : MonoBehaviour {
 
-    public GameObject PrefabPlayer;
+    public GameObject[] PrefabPlayer;
     public bool isPlayer;
 
     void Awake()
@@ -14,7 +14,7 @@ public class SpawnPlayer : MonoBehaviour {
         if (isPlayer == true)
         {
             GameObject prefabPlayer;
-            prefabPlayer = Instantiate(PrefabPlayer, this.transform);
+            prefabPlayer = Instantiate(PrefabPlayer[0], this.transform);
             prefabPlayer.transform.localPosition = new Vector3(0, 0, 0);
             prefabPlayer.transform.parent = null;
         }
@@ -26,8 +26,9 @@ public class SpawnPlayer : MonoBehaviour {
         if (isPlayer == false)
         {
             GameObject prefabPlayer;
-            prefabPlayer = Instantiate(PrefabPlayer, this.transform);
-            prefabPlayer.transform.localPosition = new Vector3(0, 0, 0);
+            int i = Random.Range(0, PrefabPlayer.Length);
+            prefabPlayer = Instantiate(PrefabPlayer[i], this.transform);
+            prefabPlayer.transform.localPosition = new Vector3(0, 0, 0);                  
         }
     }
 }

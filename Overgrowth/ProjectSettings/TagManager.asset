@@ -57,6 +57,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Fond(SpaceBG)
+    uniqueID: 1803908407
+    locked: 0
   - name: Fond
     uniqueID: 3026965249
     locked: 0
@@ -101,6 +104,9 @@ TagManager:
     locked: 0
   - name: Dialogues
     uniqueID: 3610741281
+    locked: 0
+  - name: TilemapDecors
+    uniqueID: 1117109129
     locked: 0
   - name: AvantPlan2(tout devant)
     uniqueID: 1488983805

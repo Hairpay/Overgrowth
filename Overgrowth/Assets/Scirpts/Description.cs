@@ -91,6 +91,11 @@ public class Description : MonoBehaviour {
             }
             else if (compteur > 50)
             {
+                if (speed < 1)
+                {
+                    speed = 1;
+                }
+                        
                 StopAllCoroutines();
                 StartCoroutine("ReturnUnlock");
             }
