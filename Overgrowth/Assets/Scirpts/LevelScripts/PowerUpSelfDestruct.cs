@@ -40,6 +40,10 @@ public class PowerUpSelfDestruct : MonoBehaviour {
 
     public void Activate()
     {
+        if (gameObject.GetComponent<Die2Activate>() == true)
+        {
+            gameObject.GetComponent<Die2Activate>().activateDed();
+        }
         gameObject.GetComponent<Collider2D>().enabled = false;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;     
         gameObject.GetComponent<Description>().sayText(textRamasse);

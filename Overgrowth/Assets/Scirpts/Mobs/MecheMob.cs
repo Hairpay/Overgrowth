@@ -50,27 +50,8 @@ public class MecheMob : MonoBehaviour
         }
 
         if (life < 1)
-        {
-           // gameObject.GetComponent<Collider2D>().isTrigger = true;
-
-            if (gameObject.GetComponent<Rigidbody2D>() != null)
-            {
-                if (gameObject.GetComponent<Dangerous>() != null)
-                {
-                    gameObject.GetComponent<Dangerous>().enabled = false;
-                }
-                   
-                gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
-            //    gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
-                ifram = true;
-                isDed = true;
-                StartCoroutine("iFrames");
-            }
-            else
-            {
-                ded();
-            }
-           
+        {         
+            ded();                   
         }
 
        
@@ -107,11 +88,5 @@ public class MecheMob : MonoBehaviour
         }
         gameObject.GetComponent<Explotron2D>().Explosion();
         Destroy(mobdossier);
-    }
-
-    IEnumerator iFrames()
-    {
-        yield return new WaitForSeconds(1.5f);
-        ifram = false;
     }
 }
