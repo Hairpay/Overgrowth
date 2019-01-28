@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 426cbc64114a03c4ea2a0a96075dbe2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobdossier: {fileID: 1983012964321800}
+  mobdossier: {fileID: 1154875139786174, guid: 30e7f5a75d86ac24f82da851118e591b, type: 2}
   mobVisu: []
   actualColor: []
   baseColor: []
