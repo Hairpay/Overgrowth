@@ -613,7 +613,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1654416040963414}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.02, y: 21.47, z: -2.0604734}
+  m_LocalPosition: {x: -53.626186, y: -119.74025, z: -2.0604734}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4746674604322872}
@@ -819,10 +819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f8f6706d0f5b64b91135de99698bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charaDual: {fileID: 0}
-  analysisText: {fileID: 0}
-  analysisPanel: {fileID: 0}
-  description: This thing looks dangerous.
+  description: Hazard Suit MKII, Alien lifeform detected inside.
 --- !u!114 &114458705416146642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -835,7 +832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 3.0000167
+  m_Length: 3.0000153
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4855089758904000}
   m_AttachedIK: {fileID: 114063220111630656}
@@ -972,7 +969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 4.2902036
+  m_Length: 4.2902007
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4547731205865894}
   m_AttachedIK: {fileID: 114063220111630656}
@@ -988,7 +985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 4.68324
+  m_Length: 4.6832385
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4729050201581154}
   m_AttachedIK: {fileID: 114918570155900918}
@@ -1073,6 +1070,7 @@ MonoBehaviour:
   maxLife: 6
   isDed: 0
   ifram: 0
+  gestionnaire: {fileID: 0}
 --- !u!114 &114932493641818362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1108,6 +1106,7 @@ MonoBehaviour:
   speed: 1
   affichage: 0
   lastMode: 0
+  lockMode: 0
 --- !u!114 &114990075670761920
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1120,7 +1119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 2.3733668
+  m_Length: 2.373367
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4376550958655260}
   m_AttachedIK: {fileID: 0}
@@ -1156,7 +1155,7 @@ SkinnedMeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1558302161
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
@@ -1205,7 +1204,7 @@ SkinnedMeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1558302161
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 2
   serializedVersion: 2
   m_Quality: 0
@@ -1254,7 +1253,7 @@ SkinnedMeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1558302161
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 1
   serializedVersion: 2
   m_Quality: 0

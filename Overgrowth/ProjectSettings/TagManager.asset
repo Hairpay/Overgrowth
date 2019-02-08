@@ -60,6 +60,9 @@ TagManager:
   - name: Fond(SpaceBG)
     uniqueID: 1803908407
     locked: 0
+  - name: fond ( apres APDouble)
+    uniqueID: 873668253
+    locked: 0
   - name: Fond
     uniqueID: 3026965249
     locked: 0
@@ -110,4 +113,7 @@ TagManager:
     locked: 0
   - name: AvantPlan2(tout devant)
     uniqueID: 1488983805
+    locked: 0
+  - name: SoundMaps
+    uniqueID: 2422305079
     locked: 0

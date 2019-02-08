@@ -9,6 +9,7 @@ public class SpawnDoor : MonoBehaviour
     public int AnalysisLevel;
     public bool power = true;
     public bool autoClose;
+    public bool onlySuit;
     public bool errorBlocked;
 
     private void Start()
@@ -20,7 +21,7 @@ public class SpawnDoor : MonoBehaviour
         prefabDoor.transform.localPosition = new Vector3(0, 0, 0);
        // prefabDoor.transform.localScale = gameObject.transform.localScale;
         prefabDoor.GetComponent<PorteAnalyseV2>().analysisLevel = AnalysisLevel;
-
+        prefabDoor.GetComponent<PorteAnalyseV2>().onlySuit = onlySuit;
         prefabDoor.GetComponent<PorteAnalyseV2>().autoClose = autoClose;
         prefabDoor.GetComponent<PorteAnalyseV2>().basePower = power;
         prefabDoor.GetComponent<PorteAnalyseV2>().errorBlocked = errorBlocked;

@@ -34,6 +34,10 @@ public class Explotron2D : MonoBehaviour {
         for (int i = 0; i < nombre; i++)
         {            
             GameObject shrapnel = Instantiate(Shrap);
+            if (shrapnel.GetComponent<BoxCollider2D>() == null)
+            {
+                shrapnel.AddComponent<BoxCollider2D>();
+            }
         
             shrapnel.transform.parent = parent.transform;
             shrapnel.transform.localPosition = new Vector3(0, 0, 0);

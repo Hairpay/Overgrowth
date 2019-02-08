@@ -86,7 +86,15 @@ public class MecheMob : MonoBehaviour
         {
             gameObject.GetComponent<Die2Activate>().activateDed();
         }
-        gameObject.GetComponent<Explotron2D>().Explosion();
+        if (gameObject.GetComponent<Explotron2D>() != null)
+        {
+            gameObject.GetComponent<Explotron2D>().Explosion();
+        }
+        if (gameObject.GetComponent<Explotron2D>() != null)
+        {
+            gameObject.GetComponent<Explotron2D>().Explosion();
+        }
+
         Destroy(mobdossier);
     }
 }

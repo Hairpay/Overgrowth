@@ -82,10 +82,10 @@ public class Ascenseur : MonoBehaviour {
 
         // RaycastHit2D upHit = Physics2D.Raycast(transform.position, Vector2.up, 3f * transform.localScale.y, layer_mask);
         // Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.up)* 3f * transform.localScale.y);
-        RaycastHit2D upHit = Physics2D.Raycast(new Vector2(transform.position.x + 2, transform.position.y + (gameObject.transform.localScale.y * 2))
+        RaycastHit2D upHit = Physics2D.Raycast(new Vector2(transform.position.x + 2, transform.position.y + (3.2f))
             , Vector2.left, 5f, layer_mask);
 
-        Debug.DrawRay(new Vector2(transform.position.x + 2, transform.position.y + (gameObject.transform.localScale.y * 2))
+        Debug.DrawRay(new Vector2(transform.position.x + 2, transform.position.y + (3.2f))
             , Vector2.left * 5);
 
         if (upHit.collider != null)
@@ -109,27 +109,27 @@ public class Ascenseur : MonoBehaviour {
             gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
         }
 
-        if (isMoving == false && active == true && v > 0.1f && power == true)
+        if (isMoving == false && active == true && power == true)
         {
             if (position > 0)
             {
                 isMoving = true;
                 position = position - 1;
-                character.GetComponent<Rigidbody2D>().simulated = false;
-                character.transform.parent = gameObject.transform;
-                Gestionnaire.Locked = true;
+              character.GetComponent<Rigidbody2D>().simulated = false;
+               character.transform.parent = gameObject.transform;
+              Gestionnaire.Locked = true;
             }         
         }
 
-        if (isMoving == false && active == true && v < -0.1f && power == true)
+        if (isMoving == false && active == true && power == true)
         {
             if(position < Arrets.Length - 1)
             {
                 isMoving = true;
                 position = position + 1;
-                character.GetComponent<Rigidbody2D>().simulated = false;
-                character.transform.parent = gameObject.transform;
-                Gestionnaire.Locked = true;
+               character.GetComponent<Rigidbody2D>().simulated = false;
+               character.transform.parent = gameObject.transform;
+              Gestionnaire.Locked = true;
             }                 
         }
 

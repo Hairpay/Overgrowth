@@ -965,7 +965,7 @@ Transform:
   m_Children:
   - {fileID: 167762873}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &323340067
 GameObject:
@@ -1048,77 +1048,47 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &528998720
+--- !u!1001 &407599128
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4164097159770886, guid: fec58110de2ff4a4e933e24c2c6cd6f0, type: 2}
+    - target: {fileID: 4791587516640206, guid: 70e1045649b2f734ea0ff13ecd61b529, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -12.86
       objectReference: {fileID: 0}
-    - target: {fileID: 4164097159770886, guid: fec58110de2ff4a4e933e24c2c6cd6f0, type: 2}
+    - target: {fileID: 4791587516640206, guid: 70e1045649b2f734ea0ff13ecd61b529, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.15
       objectReference: {fileID: 0}
-    - target: {fileID: 4164097159770886, guid: fec58110de2ff4a4e933e24c2c6cd6f0, type: 2}
+    - target: {fileID: 4791587516640206, guid: 70e1045649b2f734ea0ff13ecd61b529, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4164097159770886, guid: fec58110de2ff4a4e933e24c2c6cd6f0, type: 2}
+    - target: {fileID: 4791587516640206, guid: 70e1045649b2f734ea0ff13ecd61b529, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4164097159770886, guid: fec58110de2ff4a4e933e24c2c6cd6f0, type: 2}
+    - target: {fileID: 4791587516640206, guid: 70e1045649b2f734ea0ff13ecd61b529, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4164097159770886, guid: fec58110de2ff4a4e933e24c2c6cd6f0, type: 2}
+    - target: {fileID: 4791587516640206, guid: 70e1045649b2f734ea0ff13ecd61b529, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4164097159770886, guid: fec58110de2ff4a4e933e24c2c6cd6f0, type: 2}
+    - target: {fileID: 4791587516640206, guid: 70e1045649b2f734ea0ff13ecd61b529, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4164097159770886, guid: fec58110de2ff4a4e933e24c2c6cd6f0, type: 2}
+    - target: {fileID: 4791587516640206, guid: 70e1045649b2f734ea0ff13ecd61b529, type: 2}
       propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 137348970038659534, guid: fec58110de2ff4a4e933e24c2c6cd6f0,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 137447511131065590, guid: fec58110de2ff4a4e933e24c2c6cd6f0,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 137810893424046440, guid: fec58110de2ff4a4e933e24c2c6cd6f0,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 137002079113354180, guid: fec58110de2ff4a4e933e24c2c6cd6f0,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 137133668994427104, guid: fec58110de2ff4a4e933e24c2c6cd6f0,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 137247528742710054, guid: fec58110de2ff4a4e933e24c2c6cd6f0,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: fec58110de2ff4a4e933e24c2c6cd6f0, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 70e1045649b2f734ea0ff13ecd61b529, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1348810487
 GameObject:

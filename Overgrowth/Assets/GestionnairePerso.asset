@@ -28,4 +28,4 @@ MonoBehaviour:
   PowerUps: 00000000000000000000000000000000050000000000000000000000
   life: 5
   invicible: 0
-  Checkpoint: {x: 33, y: 18.7, z: 0}
+  Checkpoint: {x: -30.14, y: -81.37984, z: 0}
