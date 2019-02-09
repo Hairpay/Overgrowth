@@ -9,6 +9,7 @@ public class AutoText : MonoBehaviour
     public GameObject character;
     public Text ttsText;
     public Image ttsPanel;
+    public GameObject ttsPanelObject;
     public bool once;
 
     public float activeDist;
@@ -24,9 +25,10 @@ public class AutoText : MonoBehaviour
     {
 
         character = GameObject.Find("character");
-        ttsPanel = GameObject.Find("TTSPanel").GetComponent<Image>();
+        ttsPanelObject = GameObject.Find("TTSPanel");
+        ttsPanel = ttsPanelObject.GetComponent<Image>();
         ttsText = GameObject.Find("TTSText").GetComponent<Text>();
-        ttsText.enabled = false;
+        ttsPanelObject.SetActive(false);
         ttsPanel.enabled = false;
     }
 
@@ -44,7 +46,7 @@ public class AutoText : MonoBehaviour
     public void Speech()
     {
         Debug.Log("text update");
-        ttsPanel.enabled = true;
+        ttsPanelObject.SetActive(true);
         ttsText.enabled = true;
 
         ttsText.text = dialogues[i];
@@ -67,7 +69,7 @@ public class AutoText : MonoBehaviour
     IEnumerator Stahp()
     {
         yield return new WaitForSeconds(textTime);
-        ttsPanel.enabled = false;
+        ttsPanelObject.SetActive(false);
         ttsText.enabled = false;
     }
 }

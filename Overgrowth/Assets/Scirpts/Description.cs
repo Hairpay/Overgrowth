@@ -8,7 +8,7 @@ public class Description : MonoBehaviour {
     public GameObject charaDual;
     public Gestionnaire Gestionnaire;
     public Text analysisText;
-    public Image analysisPanel;
+    public GameObject analysisPanel;
 
     public float compteur;
     public float speed = 1;
@@ -27,7 +27,7 @@ public class Description : MonoBehaviour {
         analysisText = charaDual.GetComponent<UIGereur>().analysis;
 
         analysisText.enabled = false;
-        analysisPanel.enabled = false;
+        analysisPanel.SetActive(false);
 
         if (gameObject.GetComponent<PorteAnalyse>() != null || gameObject.GetComponent<CallElevator>() != null)
         {
@@ -101,7 +101,7 @@ public class Description : MonoBehaviour {
             }
 
             analysisText.enabled = true;
-            analysisPanel.enabled = true;
+            analysisPanel.SetActive(true); 
 
         }
     }
@@ -111,7 +111,7 @@ public class Description : MonoBehaviour {
         {
             analysisText.text = text;
             analysisText.enabled = true;
-            analysisPanel.enabled = true;
+            analysisPanel.SetActive(true); 
         }
     }
 

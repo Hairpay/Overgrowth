@@ -16,7 +16,7 @@ public class UIGereur : MonoBehaviour {
     public float iFrames = 1f;
 
     public Text analysis;
-    public Image analysisPanel;
+    public GameObject analysisPanel;
 
     // Use this for initialization
     void Awake()

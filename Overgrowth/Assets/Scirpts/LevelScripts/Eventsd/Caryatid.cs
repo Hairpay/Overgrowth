@@ -10,7 +10,6 @@ public class Caryatid : MonoBehaviour
     public Gestionnaire Gestionnaire;
 
     public Text analysisText;
-    public Image analysisPanel;
 
     public GameObject gift;
     public bool giftOnce;
@@ -22,7 +21,6 @@ public class Caryatid : MonoBehaviour
     {
         charaDual = GameObject.Find("character");
         Gestionnaire = charaDual.GetComponent<PowerUps>().Gestionnaire;
-        analysisPanel = charaDual.GetComponent<UIGereur>().analysisPanel;
         analysisText = charaDual.GetComponent<UIGereur>().analysis;
 
         gift.SetActive(false);

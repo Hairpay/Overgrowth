@@ -24,8 +24,6 @@ public class Ascenseur : MonoBehaviour {
     public bool power = true;
 
     public Text analysisText;
-    public Image analysisPanel;
-
     public Color baseColor;
     public Color activeColor;
 
@@ -36,7 +34,6 @@ public class Ascenseur : MonoBehaviour {
     {
         character = GameObject.Find("character");
         Gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;
-        analysisPanel = character.GetComponent<UIGereur>().analysisPanel;
         analysisText = character.GetComponent<UIGereur>().analysis;
 
         layer_mask = LayerMask.GetMask("Player");
@@ -62,7 +59,6 @@ public class Ascenseur : MonoBehaviour {
         }
       
         analysisText.enabled = true;
-        analysisPanel.enabled = true;
         StopAllCoroutines();
         StartCoroutine("ReturnUnlock");
     }
@@ -70,7 +66,6 @@ public class Ascenseur : MonoBehaviour {
     {
         analysisText.text = "Elevator called.";
         analysisText.enabled = true;
-        analysisPanel.enabled = true;
         StopAllCoroutines();
         StartCoroutine("ReturnUnlock");
     }
@@ -173,6 +168,5 @@ public class Ascenseur : MonoBehaviour {
     {
         yield return new WaitForSeconds(2f);
         analysisText.enabled = false;
-        analysisPanel.enabled = false;
     }   
 }
