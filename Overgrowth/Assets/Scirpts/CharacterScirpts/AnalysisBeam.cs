@@ -17,7 +17,7 @@ public class AnalysisBeam : MonoBehaviour
     public Vector3 targetOffset;
 
     public Text analysisText;
-    public Image analysisPanel;
+    public GameObject analysisPanel;
 
     public GameObject character;
     public Gestionnaire gestionnaire;
@@ -37,7 +37,7 @@ public class AnalysisBeam : MonoBehaviour
         character = GameObject.Find("character");
         gestionnaire = character.GetComponent<PowerUps>().Gestionnaire;
         analysisText.enabled = false;
-        analysisPanel.enabled = false;
+        analysisPanel.SetActive(false);
     }
     public enum States
     {
@@ -151,6 +151,6 @@ public class AnalysisBeam : MonoBehaviour
         tim2w8t = 0f;
         gestionnaire.stopText = false;
         analysisText.enabled = false;
-        analysisPanel.enabled = false;
+        analysisPanel.SetActive(false); 
     }
 }

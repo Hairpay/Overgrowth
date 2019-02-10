@@ -24,22 +24,16 @@ public class UIGereur : MonoBehaviour {
         //UI.SetActive(true);
         Character = GameObject.Find("character");
         Gestionnaire = Character.GetComponent<PowerUps>().Gestionnaire;
-
         Gestionnaire.Checkpoint = gameObject.transform.position ;
 
         for (int i = 0; i < Gestionnaire.PowerUps.Length; i++)
         {
             gestionnaireCP.PowerUps[i] = Gestionnaire.PowerUps[i];
         }
-
-
     }
 
-    void Start () {
-
-
-     
-
+    void Start ()
+    {
         if (Gestionnaire.life < 1)
         {
             Gestionnaire.life = Gestionnaire.PowerUps[4];
@@ -47,9 +41,6 @@ public class UIGereur : MonoBehaviour {
 
         lastLife = Gestionnaire.life;
         Gestionnaire.invicible = false;
-
-      
-       // Gestionnaire.toLoad = SceneManager.GetActiveScene().ToString;
     }
 
     // Update is called once per frame
@@ -68,20 +59,12 @@ public class UIGereur : MonoBehaviour {
         if (Gestionnaire.life < 1)
         {
             Ded();         
-        //    SceneManager.LoadScene("Docks_P1_0");
         }
 		
 	}
     public void Ded()
     {
         Gestionnaire.life = Gestionnaire.PowerUps[4];
-
-        /*
-        for (int i = 0; i < Gestionnaire.PowerUps.Length; i++)
-        {
-            Gestionnaire.PowerUps[i] = gestionnaireCP.PowerUps[i];
-        }
-        */
         gameObject.GetComponent<Rigidbody2D>().simulated = true;
         gameObject.transform.position = Gestionnaire.Checkpoint;
     }

@@ -18,16 +18,17 @@ public class Description : MonoBehaviour {
 
     public bool lockMode;
 
-	// Use this for initialization
-	void Start () {
-
+    void Awake()
+    {
         charaDual = GameObject.Find("character");
         Gestionnaire = charaDual.GetComponent<PowerUps>().Gestionnaire;
         analysisPanel = charaDual.GetComponent<UIGereur>().analysisPanel;
         analysisText = charaDual.GetComponent<UIGereur>().analysis;
 
-        analysisText.enabled = false;
-        analysisPanel.SetActive(false);
+    }
+
+    // Use this for initialization
+    void Start () {
 
         if (gameObject.GetComponent<PorteAnalyse>() != null || gameObject.GetComponent<CallElevator>() != null)
         {

@@ -8,7 +8,6 @@ public class AutoText : MonoBehaviour
 
     public GameObject character;
     public Text ttsText;
-    public Image ttsPanel;
     public GameObject ttsPanelObject;
     public bool once;
 
@@ -20,16 +19,18 @@ public class AutoText : MonoBehaviour
 
     public int textTime = 2;
 
+    void Awake()
+    {
+        character = GameObject.Find("character");
+        ttsPanelObject = GameObject.Find("TTSPanel");
+        ttsText = GameObject.Find("TTSText").GetComponent<Text>();     
+        ttsText.enabled = false;
+    }
+
     // Use this for initialization
     void Start()
     {
-
-        character = GameObject.Find("character");
-        ttsPanelObject = GameObject.Find("TTSPanel");
-        ttsPanel = ttsPanelObject.GetComponent<Image>();
-        ttsText = GameObject.Find("TTSText").GetComponent<Text>();
         ttsPanelObject.SetActive(false);
-        ttsPanel.enabled = false;
     }
 
     // Update is called once per frame
