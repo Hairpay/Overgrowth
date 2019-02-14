@@ -10,6 +10,8 @@ public class MusicManager : MonoBehaviour {
     public List<AudioSource> srcs;
     public List<bool> tracksOn;
 
+    private int i;
+
 	// Use this for initialization
 	void Start () {
 
@@ -19,8 +21,17 @@ public class MusicManager : MonoBehaviour {
             a.clip = trax;
             a.loop = true;
             a.Play();
-            a.volume = 0.0f;
             srcs.Add(a);
+
+            if(tracksOn[i] == true)
+            {
+                a.volume = 1.0f;
+            }
+            else
+            {
+                a.volume = 0.0f;
+            }
+            i++;
         }
     }
 	
@@ -44,11 +55,13 @@ public class MusicManager : MonoBehaviour {
                 else
                 {
                     tracksOn[i] = true;
+                    StopCoroutine(VolumeOff(srcs[i]));
                     StartCoroutine(VolumeOn(srcs[i]));
+
                 }
 
             }
-            if (zone[i] == false)
+            else if (zone[i] == false)
             {
                 //srcs[i].volume = 0.0f;
                 if (tracksOn[i] == false)
@@ -58,6 +71,7 @@ public class MusicManager : MonoBehaviour {
                 else
                 {
                     tracksOn[i] = false;
+                 //   StopCoroutine(VolumeOn(srcs[i]));
                     StartCoroutine(VolumeOff(srcs[i]));
                 }
                 

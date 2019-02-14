@@ -32,7 +32,7 @@ public class MusicZone : MonoBehaviour {
     {     
         if (coll.gameObject.tag == Tag && active)
         {
-            Debug.Log("yee");
+           // Debug.Log("yee");
             musicManager.SendMessage("Zone", trax);
         }
     }
