@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f8f6706d0f5b64b91135de99698bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Power. Recovered.
+  description: Power. Restored.
 --- !u!114 &114699239322229746
 MonoBehaviour:
   m_ObjectHideFlags: 1
